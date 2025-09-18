@@ -198,7 +198,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$badge$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/badge.js [app-ssr] (ecmascript) <export default as Badge>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bell$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/bell.js [app-ssr] (ecmascript) <export default as Bell>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bitcoin$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bitcoin$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/bitcoin.js [app-ssr] (ecmascript) <export default as Bitcoin>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bolt$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bolt$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/bolt.js [app-ssr] (ecmascript) <export default as Bolt>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Book$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/book.js [app-ssr] (ecmascript) <export default as Book>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$briefcase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Briefcase$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/briefcase.js [app-ssr] (ecmascript) <export default as Briefcase>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$building$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Building$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/building.js [app-ssr] (ecmascript) <export default as Building>");
@@ -206,7 +205,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$captions$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Captions$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/captions.js [app-ssr] (ecmascript) <export default as Captions>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-ssr] (ecmascript) <export default as CheckCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Code$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/code.js [app-ssr] (ecmascript) <export default as Code>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$codepen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Codepen$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/codepen.js [app-ssr] (ecmascript) <export default as Codepen>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$coffee$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Coffee$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/coffee.js [app-ssr] (ecmascript) <export default as Coffee>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__File$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file.js [app-ssr] (ecmascript) <export default as File>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$euro$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Euro$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/euro.js [app-ssr] (ecmascript) <export default as Euro>");
@@ -229,7 +227,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$network$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Network$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/network.js [app-ssr] (ecmascript) <export default as Network>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plug$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Plug$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/plug.js [app-ssr] (ecmascript) <export default as Plug>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$scroll$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ScrollText$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/scroll-text.js [app-ssr] (ecmascript) <export default as ScrollText>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$settings$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Settings$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/settings.js [app-ssr] (ecmascript) <export default as Settings>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Share2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/share-2.js [app-ssr] (ecmascript) <export default as Share2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shield.js [app-ssr] (ecmascript) <export default as Shield>");
@@ -237,7 +234,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shopping-cart.js [app-ssr] (ecmascript) <export default as ShoppingCart>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$mouse$2d$pointer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SquareMousePointer$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/square-mouse-pointer.js [app-ssr] (ecmascript) <export default as SquareMousePointer>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/star.js [app-ssr] (ecmascript) <export default as Star>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$theater$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Theater$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/theater.js [app-ssr] (ecmascript) <export default as Theater>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trending-up.js [app-ssr] (ecmascript) <export default as TrendingUp>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserCheck$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/user-check.js [app-ssr] (ecmascript) <export default as UserCheck>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-user.js [app-ssr] (ecmascript) <export default as UserCircle>");
@@ -249,17 +245,24 @@ const MENU_SIDEBAR = [
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutGrid$3e$__["LayoutGrid"],
         children: [
             {
-                title: 'Light Sidebar',
+                title: 'Home',
                 path: '/'
-            },
-            {
-                title: 'Dark Sidebar',
-                path: '/dark-sidebar'
             }
         ]
     },
     {
-        heading: 'User'
+        title: 'Category',
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserCircle$3e$__["UserCircle"],
+        children: [
+            {
+                title: 'Category Create',
+                path: '/category/all-category'
+            },
+            {
+                title: 'Sub Category',
+                path: '/category/sub-category'
+            }
+        ]
     },
     {
         title: 'Public Profile',
@@ -368,440 +371,6 @@ const MENU_SIDEBAR = [
                 ]
             }
         ]
-    },
-    {
-        title: 'My Account',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$settings$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Settings$3e$__["Settings"],
-        children: [
-            {
-                title: 'Account',
-                children: [
-                    {
-                        title: 'Get Started',
-                        path: '/account/home/get-started'
-                    },
-                    {
-                        title: 'User Profile',
-                        path: '/account/home/user-profile'
-                    },
-                    {
-                        title: 'Company Profile',
-                        path: '/account/home/company-profile'
-                    },
-                    {
-                        title: 'Settings - With Sidebar',
-                        path: '/account/home/settings-sidebar'
-                    },
-                    {
-                        title: 'Settings - Enterprise',
-                        path: '/account/home/settings-enterprise'
-                    },
-                    {
-                        title: 'Settings - Plain',
-                        path: '/account/home/settings-plain'
-                    },
-                    {
-                        title: 'Settings - Modal',
-                        path: '/account/home/settings-modal'
-                    }
-                ]
-            },
-            {
-                title: 'Billing',
-                children: [
-                    {
-                        title: 'Billing - Basic',
-                        path: '/account/billing/basic'
-                    },
-                    {
-                        title: 'Billing - Enterprise',
-                        path: '/account/billing/enterprise'
-                    },
-                    {
-                        title: 'Plans',
-                        path: '/account/billing/plans'
-                    },
-                    {
-                        title: 'Billing History',
-                        path: '/account/billing/history'
-                    }
-                ]
-            },
-            {
-                title: 'Security',
-                children: [
-                    {
-                        title: 'Get Started',
-                        path: '/account/security/get-started'
-                    },
-                    {
-                        title: 'Security Overview',
-                        path: '/account/security/overview'
-                    },
-                    {
-                        title: 'Allowed IP Addresses',
-                        path: '/account/security/allowed-ip-addresses'
-                    },
-                    {
-                        title: 'Privacy Settings',
-                        path: '/account/security/privacy-settings'
-                    },
-                    {
-                        title: 'Device Management',
-                        path: '/account/security/device-management'
-                    },
-                    {
-                        title: 'Backup & Recovery',
-                        path: '/account/security/backup-and-recovery'
-                    },
-                    {
-                        title: 'Current Sessions',
-                        path: '/account/security/current-sessions'
-                    },
-                    {
-                        title: 'Security Log',
-                        path: '/account/security/security-log'
-                    }
-                ]
-            },
-            {
-                title: 'Members & Roles',
-                children: [
-                    {
-                        title: 'Teams Starter',
-                        path: '/account/members/team-starter'
-                    },
-                    {
-                        title: 'Teams',
-                        path: '/account/members/teams'
-                    },
-                    {
-                        title: 'Team Info',
-                        path: '/account/members/team-info'
-                    },
-                    {
-                        title: 'Members Starter',
-                        path: '/account/members/members-starter'
-                    },
-                    {
-                        title: 'Team Members',
-                        path: '/account/members/team-members'
-                    },
-                    {
-                        title: 'Import Members',
-                        path: '/account/members/import-members'
-                    },
-                    {
-                        title: 'Roles',
-                        path: '/account/members/roles'
-                    },
-                    {
-                        title: 'Permissions - Toggler',
-                        path: '/account/members/permissions-toggle'
-                    },
-                    {
-                        title: 'Permissions - Check',
-                        path: '/account/members/permissions-check'
-                    }
-                ]
-            },
-            {
-                title: 'Integrations',
-                path: '/account/integrations'
-            },
-            {
-                title: 'Notifications',
-                path: '/account/notifications'
-            },
-            {
-                title: 'API Keys',
-                path: '/account/api-keys'
-            },
-            {
-                title: 'More',
-                collapse: true,
-                collapseTitle: 'Show less',
-                expandTitle: 'Show 3 more',
-                children: [
-                    {
-                        title: 'Appearance',
-                        path: '/account/appearance'
-                    },
-                    {
-                        title: 'Invite a Friend',
-                        path: '/account/invite-a-friend'
-                    },
-                    {
-                        title: 'Activity',
-                        path: '/account/activity'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title: 'Network',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
-        children: [
-            {
-                title: 'Get Started',
-                path: '/network/get-started'
-            },
-            {
-                title: 'User Cards',
-                children: [
-                    {
-                        title: 'Mini Cards',
-                        path: '/network/user-cards/mini-cards'
-                    },
-                    {
-                        title: 'Team Crew',
-                        path: '/network/user-cards/team-crew'
-                    },
-                    {
-                        title: 'Author',
-                        path: '/network/user-cards/author'
-                    },
-                    {
-                        title: 'NFT',
-                        path: '/network/user-cards/nft'
-                    },
-                    {
-                        title: 'Social',
-                        path: '/network/user-cards/social'
-                    }
-                ]
-            },
-            {
-                title: 'User Table',
-                children: [
-                    {
-                        title: 'Team Crew',
-                        path: '/network/user-table/team-crew'
-                    },
-                    {
-                        title: 'App Roster',
-                        path: '/network/user-table/app-roster'
-                    },
-                    {
-                        title: 'Market Authors',
-                        path: '/network/user-table/market-authors'
-                    },
-                    {
-                        title: 'SaaS Users',
-                        path: '/network/user-table/saas-users'
-                    },
-                    {
-                        title: 'Store Clients',
-                        path: '/network/user-table/store-clients'
-                    },
-                    {
-                        title: 'Visitors',
-                        path: '/network/user-table/visitors'
-                    }
-                ]
-            },
-            {
-                title: 'Cooperations',
-                path: '/network/cooperations',
-                disabled: true
-            },
-            {
-                title: 'Leads',
-                path: '/network/leads',
-                disabled: true
-            },
-            {
-                title: 'Donators',
-                path: '/network/donators',
-                disabled: true
-            }
-        ]
-    },
-    {
-        title: 'Authentication',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"],
-        children: [
-            {
-                title: 'Sign In',
-                path: '/signin'
-            },
-            {
-                title: 'Check Email',
-                path: '/signup'
-            },
-            {
-                title: 'Reset Password',
-                path: '/reset-password'
-            },
-            {
-                title: '2FA',
-                path: '/2fa'
-            },
-            {
-                title: 'Welcome Message',
-                path: '/auth/welcome-message'
-            },
-            {
-                title: 'Account Deactivated',
-                path: '/auth/account-deactivated'
-            },
-            {
-                title: 'Error 404',
-                path: '/error/404'
-            },
-            {
-                title: 'Error 500',
-                path: '/error/500'
-            }
-        ]
-    },
-    {
-        heading: 'Apps'
-    },
-    {
-        title: 'User Management',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2d$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShieldUser$3e$__["ShieldUser"],
-        children: [
-            {
-                title: 'Users',
-                path: '/user-management/users'
-            },
-            {
-                title: 'Roles',
-                path: '/user-management/roles'
-            },
-            {
-                title: 'Permissions',
-                path: '/user-management/permissions'
-            },
-            {
-                title: 'Account',
-                path: '/user-management/account'
-            },
-            {
-                title: 'Logs',
-                path: '/user-management/logs'
-            },
-            {
-                title: 'Settings',
-                path: '/user-management/settings'
-            }
-        ]
-    },
-    {
-        title: 'Store - Client',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
-        children: [
-            {
-                title: 'Home',
-                path: '/store-client/home'
-            },
-            {
-                title: 'Search Results - Grid',
-                path: '/store-client/search-results-grid'
-            },
-            {
-                title: 'Search Results - List',
-                path: '/store-client/search-results-list'
-            },
-            {
-                title: 'Product Details',
-                path: '/store-client/product-details'
-            },
-            {
-                title: 'Wishlist',
-                path: '/store-client/wishlist'
-            },
-            {
-                title: 'Checkout',
-                children: [
-                    {
-                        title: 'Order Summary',
-                        path: '/store-client/checkout/order-summary'
-                    },
-                    {
-                        title: 'Shipping Info',
-                        path: '/store-client/checkout/shipping-info'
-                    },
-                    {
-                        title: 'Payment Method',
-                        path: '/store-client/checkout/payment-method'
-                    },
-                    {
-                        title: 'Order Placed',
-                        path: '/store-client/checkout/order-placed'
-                    }
-                ]
-            },
-            {
-                title: 'My Orders',
-                path: '/store-client/my-orders'
-            },
-            {
-                title: 'Order Receipt',
-                path: '/store-client/order-receipt'
-            }
-        ]
-    },
-    {
-        title: 'Store - Admin',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bolt$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bolt$3e$__["Bolt"],
-        disabled: true,
-        children: [
-            {
-                title: 'Dashboard',
-                path: '/store-admin/dashboard'
-            },
-            {
-                title: 'Inventory',
-                children: [
-                    {
-                        title: 'All Products',
-                        path: '/store-admin/inventory/all-products'
-                    },
-                    {
-                        title: 'Current Stock',
-                        path: '/store-admin/inventory/current-stock'
-                    },
-                    {
-                        title: 'Inbound Stock',
-                        path: '/store-admin/inventory/inbound-stock'
-                    },
-                    {
-                        title: 'Outbound Stock',
-                        path: '/store-admin/inventory/outbound-stock'
-                    },
-                    {
-                        title: 'Stock Planner',
-                        path: '/store-admin/inventory/stock-planner'
-                    },
-                    {
-                        title: 'Track Shipping',
-                        path: '/'
-                    },
-                    {
-                        title: 'Create Shipping Label',
-                        path: '/'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title: 'Store - Services',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$codepen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Codepen$3e$__["Codepen"],
-        disabled: true
-    },
-    {
-        title: 'AI Promt',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$theater$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Theater$3e$__["Theater"],
-        disabled: true
-    },
-    {
-        title: 'Invoice Generator',
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$scroll$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ScrollText$3e$__["ScrollText"],
-        disabled: true
     }
 ];
 const MENU_SIDEBAR_CUSTOM = [

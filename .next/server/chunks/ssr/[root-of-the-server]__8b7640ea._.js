@@ -403,8 +403,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$providers$2f$theme$2d$provid
 ;
 const metadata = {
     title: {
-        template: '%s | Metronic',
-        default: 'Metronic'
+        template: '%s | WiQi Plus',
+        default: 'WiQi Plus'
     }
 };
 async function RootLayout({ children }) {
