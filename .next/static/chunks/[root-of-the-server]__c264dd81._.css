@@ -2777,6 +2777,14 @@
     width: 100px;
   }
 
+  .w-\[110px\] {
+    width: 110px;
+  }
+
+  .w-\[120px\] {
+    width: 120px;
+  }
+
   .w-\[125px\] {
     width: 125px;
   }
@@ -9145,6 +9153,12 @@
   @media (width >= 48rem) {
     .md\:w-80 {
       width: calc(var(--spacing) * 80);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:w-\[140px\] {
+      width: 140px;
     }
   }
 

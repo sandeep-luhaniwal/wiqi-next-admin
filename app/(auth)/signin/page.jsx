@@ -1,16 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { RiErrorWarningFill } from '@remixicon/react';
-import { AlertCircle, Eye, EyeOff, LoaderCircleIcon } from 'lucide-react';
-import { signIn } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
 import { Alert, AlertIcon, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -20,206 +11,155 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Icons } from '@/components/common/icons';
-import { getSigninSchema } from '../forms/signin-schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Check,
+  Eye,
+  EyeOff,
+  LoaderCircleIcon
+} from 'lucide-react';
+import { signIn } from 'next-auth/react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Suspense, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+// ----- Add the schema (inline) -----
+const getSigninSchema = () =>
+  z.object({
+    email: z.string().email({ message: 'Enter a valid email address' }),
+    password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+  });
 
 export default function Page() {
   const router = useRouter();
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState(null);
+  // added missing `success` state used later in the component
+  const [success, setSuccess] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(getSigninSchema()),
     defaultValues: {
-      email: 'demo@kt.com',
-      password: 'demo123',
-      rememberMe: false,
+      email: 'wiqiadmin@gmail.com',
+      password: 'wiqiadmin@gmail.com',
     },
   });
 
-  async function onSubmit(values) {
+  const onSubmit = async (values) => {
     setIsProcessing(true);
     setError(null);
 
     try {
-      const response = await signIn('credentials', {
+      const res = await signIn("credentials", {
         redirect: false,
         email: values.email,
         password: values.password,
-        rememberMe: values.rememberMe,
       });
 
-      if (response?.error) {
-        const errorData = JSON.parse(response.error);
-        setError(errorData.message);
-      } else {
-        router.push('/');
+      if (res?.error) {
+        setError(res.error);
+        return;
       }
+
+      const sessionRes = await fetch("/api/auth/session");
+      const session = await sessionRes.json();
+
+      if (session?.user?.api_token) {
+        localStorage.setItem("token", session.user.api_token);
+      }
+
+      router.push("/");
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'An unexpected error occurred. Please try again.',
-      );
+      setError('Login failed. Please try again.');
     } finally {
       setIsProcessing(false);
     }
+  };
+
+  if (success) {
+    return (
+      <Alert onClose={() => setSuccess(false)}>
+        <AlertIcon>
+          <Check />
+        </AlertIcon>
+        <AlertTitle>
+          You have successfully signed up! Please check your email to verify
+          your account and then{' '}
+          <Link
+            href="/signup"
+            className="text-primary hover:text-primary-darker"
+          >
+            Log in
+          </Link>
+          .
+        </AlertTitle>
+      </Alert>
+    );
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="block w-full space-y-5"
-      >
-        <div className="space-y-1.5 pb-3">
-          <h1 className="text-2xl font-semibold tracking-tight text-center">
-            Sign in to Metronic
-          </h1>
-        </div>
+    <Suspense>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-md mx-auto mt-2 md:mt-8 lg:mt-10">
+          <h2 className="text-xl font-bold text-center">Login to WiQi Life</h2>
 
-        <Alert size="sm" close={false}>
-          <AlertIcon>
-            <RiErrorWarningFill className="text-primary" />
-          </AlertIcon>
-          <AlertTitle className="text-accent-foreground">
-            Use <span className="text-mono font-semibold">demo@kt.com</span>{' '}
-            username and{' '}
-            <span className="text-mono font-semibold">demo123</span> for demo
-            access.
-          </AlertTitle>
-        </Alert>
+          {error && <p className="text-red-600 text-sm">{error}</p>}
 
-        <div className="flex flex-col gap-3.5">
-          <Button
-            variant="outline"
-            type="button"
-            onClick={() => signIn('google', { callbackUrl: '/' })}
-          >
-            <Icons.googleColorful className="size-5! opacity-100!" /> Sign in
-            with Google
-          </Button>
-        </div>
-
-        <div className="relative py-1.5">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">or</span>
-          </div>
-        </div>
-
-        {error && (
-          <Alert variant="destructive">
-            <AlertIcon>
-              <AlertCircle />
-            </AlertIcon>
-            <AlertTitle>{error}</AlertTitle>
-          </Alert>
-        )}
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Your email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex justify-between items-center gap-2.5">
-                <FormLabel>Password</FormLabel>
-                <Link
-                  href="/reset-password"
-                  className="text-sm font-semibold text-foreground hover:text-primary"
-                >
-                  Forgot Password?
-                </Link>
-              </div>
-              <div className="relative">
-                <Input
-                  placeholder="Your password"
-                  type={passwordVisible ? 'text' : 'password'} // Toggle input type
-                  {...field}
-                />
-
-                <Button
-                  type="button"
-                  variant="ghost"
-                  mode="icon"
-                  size="sm"
-                  onClick={() => setPasswordVisible(!passwordVisible)} // Toggle visibility
-                  className="absolute end-0 top-1/2 -translate-y-1/2 h-7 w-7 me-1.5 bg-transparent!"
-                  aria-label={
-                    passwordVisible ? 'Hide password' : 'Show password'
-                  }
-                >
-                  {passwordVisible ? (
-                    <EyeOff className="text-muted-foreground" />
-                  ) : (
-                    <Eye className="text-muted-foreground" />
-                  )}
-                </Button>
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div className="flex items-center space-x-2">
           <FormField
             control={form.control}
-            name="rememberMe"
+            name="email"
             render={({ field }) => (
-              <>
-                <Checkbox
-                  id="remember-me"
-                  checked={field.value}
-                  onCheckedChange={(checked) => field.onChange(!!checked)}
-                />
-
-                <label
-                  htmlFor="remember-me"
-                  className="text-sm leading-none text-muted-foreground"
-                >
-                  Remember me
-                </label>
-              </>
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Enter email" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
           />
-        </div>
 
-        <div className="flex flex-col gap-2.5">
-          <Button type="submit" disabled={isProcessing}>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <div className="relative">
+                  <Input
+                    {...field}
+                    type={passwordVisible ? 'text' : 'password'}
+                    placeholder="Enter password"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className="absolute hover:bg-transparent hover:text-primary top-1/2 right-2 -translate-y-1/2"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                  >
+                    {passwordVisible ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </Button>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" disabled={isProcessing} className="w-full">
             {isProcessing ? (
-              <LoaderCircleIcon className="size-4 animate-spin" />
-            ) : null}
-            Continue
+              <>
+                <LoaderCircleIcon className="mr-2 h-4 w-4 animate-spin inline-block" />
+                Logging in...
+              </>
+            ) : (
+              'Login'
+            )}
           </Button>
-        </div>
-
-        <p className="text-sm text-muted-foreground text-center">
-          Don&apos;t have an account?{' '}
-          <Link
-            href="/signup"
-            className="text-sm font-semibold text-foreground hover:text-primary"
-          >
-            Sign Up
-          </Link>
-        </p>
-      </form>
-    </Form>
+        </form>
+      </Form>
+    </Suspense>
   );
 }
