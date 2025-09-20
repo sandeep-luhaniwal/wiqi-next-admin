@@ -27,7 +27,7 @@ export default function CreateCategory() {
 
     const [name, setName] = useState("");
     const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState(null);
     const [type, setType] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
@@ -80,8 +80,7 @@ export default function CreateCategory() {
             formData.append("name", name);
             formData.append("title", title);
             formData.append("type", type);
-            // formData.append("url", url.trim() === "" ? null : url.trim());
-            formData.append("url", url && url.trim() !== "" ? url.trim() : null);
+            if (url !== null) formData.append("url", url);
             if (categoryToEdit?._id) {
                 formData.append("id", categoryToEdit._id);
                 if (imageFile) {
@@ -101,17 +100,17 @@ export default function CreateCategory() {
                 headers: { Authorization: `Bearer ${token}` },
                 body: formData,
             });
-
             const data = await res.json();
             if (!res.ok || !data.success)
                 throw new Error(data.message || "Failed to save category");
 
+            console.log("haiurhdsfiufd", data)
             toast.success(categoryToEdit ? "Category updated!" : "Category created!");
 
             // Reset form
             setName("");
             setTitle("");
-            setUrl("");
+            setUrl(null);
             setType("");
             setImageFile(null);
             setPreview(null);
@@ -156,7 +155,15 @@ export default function CreateCategory() {
                     </div>
                     <div>
                         <Label htmlFor="url">URL (optional)</Label>
-                        <Input id="url" placeholder="Enter URL" value={url} onChange={(e) => setUrl(e.target.value)} />
+                        <Input
+                            id="url"
+                            placeholder="Enter URL"
+                            value={url || ""} // input needs a string, so use empty string for null
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setUrl(val === "" ? null : val); // convert empty string to null
+                            }}
+                        />
                     </div>
                     <div>
                         <Label htmlFor="type">Type</Label>

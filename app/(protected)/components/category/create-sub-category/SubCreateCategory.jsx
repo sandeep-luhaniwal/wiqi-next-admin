@@ -31,7 +31,7 @@ export default function SubCreateCategory() {
     const [type, setType] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
-    const [parentCategory, setParentCategory] = useState(""); // parent category id
+    const [categoryId, setcategoryId] = useState(""); // parent category id
     const [categoryList, setCategoryList] = useState([]); // list from API
 
     const [errors, setErrors] = useState({});
@@ -70,7 +70,7 @@ export default function SubCreateCategory() {
             setUrl(subCategoryToEdit.url || "");
             setType(subCategoryToEdit.type || "");
             setPreview(subCategoryToEdit.image || null);
-            setParentCategory(subCategoryToEdit.parentCategory || "");
+            setcategoryId(subCategoryToEdit.categoryId || "");
             setImageFile(null);
         }
     }, [subCategoryToEdit]);
@@ -80,7 +80,7 @@ export default function SubCreateCategory() {
         if (!name.trim()) newErrors.name = "Name is required";
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
-        if (!parentCategory) newErrors.parentCategory = "Parent category is required";
+        if (!categoryId) newErrors.categoryId = "Parent category is required";
         if (!imageFile && !preview) newErrors.image = "Image is required";
         return newErrors;
     };
@@ -109,7 +109,7 @@ export default function SubCreateCategory() {
             formData.append("name", name);
             formData.append("title", title);
             formData.append("type", type);
-            formData.append("parentCategory", parentCategory);
+            formData.append("categoryId", categoryId);
             formData.append("url", url && url.trim() !== "" ? url.trim() : "");
 
             if (subCategoryToEdit?._id) {
@@ -143,7 +143,7 @@ export default function SubCreateCategory() {
             setTitle("");
             setUrl("");
             setType("");
-            setParentCategory("");
+            setcategoryId("");
             setImageFile(null);
             setPreview(null);
             setSubCategoryToEdit(null); // ✅ fixed
@@ -213,9 +213,9 @@ export default function SubCreateCategory() {
 
                     {/* Parent Category Dropdown */}
                     <div className="md:col-span-2">
-                        <Label htmlFor="parentCategory">Parent Category</Label>
-                        <Select value={parentCategory} onValueChange={(v) => setParentCategory(v)}>
-                            <SelectTrigger id="parentCategory" className="w-full cursor-pointer">
+                        <Label htmlFor="categoryId">Parent Category</Label>
+                        <Select value={categoryId} onValueChange={(v) => setcategoryId(v)}>
+                            <SelectTrigger id="categoryId" className="w-full cursor-pointer">
                                 <SelectValue placeholder="Select Parent Category" />
                             </SelectTrigger>
                             <SelectContent>
@@ -226,8 +226,8 @@ export default function SubCreateCategory() {
                                 ))}
                             </SelectContent>
                         </Select>
-                        {errors.parentCategory && (
-                            <p className="text-sm text-red-600">{errors.parentCategory}</p>
+                        {errors.categoryId && (
+                            <p className="text-sm text-red-600">{errors.categoryId}</p>
                         )}
                     </div>
                 </div>

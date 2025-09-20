@@ -1,6 +1,5 @@
 {
   "/(auth)/signin/page": "app/(auth)/signin/page.js",
-  "/(auth)/signup/page": "app/(auth)/signup/page.js",
   "/(protected)/category/all-category/page": "app/(protected)/category/all-category/page.js",
   "/(protected)/category/sub-category/page": "app/(protected)/category/sub-category/page.js",
   "/(protected)/page": "app/(protected)/page.js",

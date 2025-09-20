@@ -1,23 +1,7 @@
 'use client';
 
-import { Suspense, useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import {
-  AlertCircle,
-  Check,
-  Eye,
-  EyeOff,
-  LoaderCircleIcon,
-} from 'lucide-react';
-import { signIn } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
-import { apiFetch } from '@/lib/api';
 import { Alert, AlertIcon, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -27,6 +11,19 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Check,
+  Eye,
+  EyeOff,
+  LoaderCircleIcon
+} from 'lucide-react';
+import { signIn, getSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Suspense, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 // ----- Add the schema (inline) -----
 const getSigninSchema = () =>
@@ -56,7 +53,7 @@ export default function Page() {
     setError(null);
 
     try {
-      const res = await signIn('credentials', {
+      const res = await signIn("credentials", {
         redirect: false,
         email: values.email,
         password: values.password,
@@ -67,20 +64,21 @@ export default function Page() {
         return;
       }
 
-      const sessionRes = await fetch('/api/auth/session');
-      const session = await sessionRes.json();
+      // 👇 yaha session fetch karo
+      const session = await getSession();
 
-      if (session?.user?.token) {
-        localStorage.setItem('token', session.user.token); // save API token
+      if (session?.user?.api_token) {
+        localStorage.setItem("token", session.user.api_token);
       }
 
-      router.push('/');
+      router.push("/");
     } catch (err) {
-      setError('Login failed. Please try again.');
+      setError("Login failed. Please try again.");
     } finally {
       setIsProcessing(false);
     }
   };
+
 
   if (success) {
     return (
@@ -92,7 +90,7 @@ export default function Page() {
           You have successfully signed up! Please check your email to verify
           your account and then{' '}
           <Link
-            href="/signin/"
+            href="/signup"
             className="text-primary hover:text-primary-darker"
           >
             Log in

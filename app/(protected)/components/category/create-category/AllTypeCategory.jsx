@@ -29,7 +29,7 @@ export default function AllTypeCategory() {
                 const token = localStorage.getItem("token");
                 if (!token) throw new Error("Token not found");
 
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory", {
+                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory?limit===10000000", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await res.json();

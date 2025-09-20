@@ -18,7 +18,7 @@ import {
   EyeOff,
   LoaderCircleIcon
 } from 'lucide-react';
-import { signIn } from 'next-auth/react';
+import { signIn, getSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Suspense, useState } from 'react';
@@ -64,8 +64,8 @@ export default function Page() {
         return;
       }
 
-      const sessionRes = await fetch("/api/auth/session");
-      const session = await sessionRes.json();
+      // 👇 yaha session fetch karo
+      const session = await getSession();
 
       if (session?.user?.api_token) {
         localStorage.setItem("token", session.user.api_token);
@@ -73,11 +73,12 @@ export default function Page() {
 
       router.push("/");
     } catch (err) {
-      setError('Login failed. Please try again.');
+      setError("Login failed. Please try again.");
     } finally {
       setIsProcessing(false);
     }
   };
+
 
   if (success) {
     return (
