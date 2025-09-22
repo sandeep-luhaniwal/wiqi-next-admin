@@ -69,6 +69,7 @@ export const MENU_SIDEBAR = [
     children: [
       { title: 'Category Create', path: '/category/all-category' },
       { title: 'Sub Category', path: '/category/sub-category' },
+      { title: 'Pro Sub Category', path: '/category/pro-sub-category' },
     ]
   },
   // {

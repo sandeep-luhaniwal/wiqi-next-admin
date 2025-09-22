@@ -9826,6 +9826,10 @@ const MENU_SIDEBAR = [
             {
                 title: 'Sub Category',
                 path: '/category/sub-category'
+            },
+            {
+                title: 'Pro Sub Category',
+                path: '/category/pro-sub-category'
             }
         ]
     }

@@ -2937,6 +2937,10 @@
     max-width: 280px;
   }
 
+  .max-w-\[300px\] {
+    max-width: 300px;
+  }
+
   .max-w-\[350px\] {
     max-width: 350px;
   }

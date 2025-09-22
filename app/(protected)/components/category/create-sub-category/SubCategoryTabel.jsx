@@ -74,13 +74,13 @@ export default function SubCategoryTable() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <span className="truncate block max-w-[200px] cursor-help">{row.original.title}</span>
+                            <span className="truncate block max-w-[300px] cursor-help">{row.original.title}</span>
                         </TooltipTrigger>
                         <TooltipContent side="top" className="max-w-xs">{row.original.title}</TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
             ),
-            size: 200,
+            size: 300,
         },
         {
             id: "parent",
@@ -102,12 +102,25 @@ export default function SubCategoryTable() {
             header: () => <span className="font-bold">URL</span>,
             cell: ({ row }) => (
                 row.original.url ? (
-                    <Link href={row.original.url} target="_blank" className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-sm">
-                        <Link2 size={16} /> Visit
-                    </Link>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Link
+                                    href={row.original.url}
+                                    target="_blank"
+                                    className="text-blue-600 max-w-max hover:text-blue-800 flex items-center gap-1 text-sm"
+                                >
+                                    <Link2 size={16} /> Visit
+                                </Link>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>{row.original.url}</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
                 ) : "Null"
             ),
-            size: 90,
+            size: 85,
         },
         {
             id: "actions",
@@ -120,7 +133,7 @@ export default function SubCategoryTable() {
                                 <button onClick={() => {
                                     setSubCategoryToEdit(row.original);
                                     window.scrollTo({ top: 0, behavior: "smooth" });
-                                }} className="text-blue-600 hover:text-blue-800"><Pencil size={18} /></button>
+                                }} className="text-blue-600 cursor-pointer hover:text-blue-800"><Pencil size={18} /></button>
                             </TooltipTrigger>
                             <TooltipContent>Edit</TooltipContent>
                         </Tooltip>
@@ -128,7 +141,7 @@ export default function SubCategoryTable() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <button className="text-red-600 hover:text-red-800"><Trash2 size={18} /></button>
+                                <button className="text-red-600 cursor-pointer hover:text-red-800"><Trash2 size={18} /></button>
                             </TooltipTrigger>
                             <TooltipContent>Delete</TooltipContent>
                         </Tooltip>
