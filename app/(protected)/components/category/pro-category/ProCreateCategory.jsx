@@ -20,26 +20,24 @@ import {
     SelectItem,
 } from "@/components/ui/select";
 import { Pencil, Trash2, Upload } from "lucide-react";
-import { useProduct } from "./pro-category";
 
-export default function ProCreateCategory() {
-    const { productToEdit, setProductToEdit, triggerRefresh } = useProduct();
-
-    const [name, setName] = useState("");
+export default function ProCreateCategory({ triggerRefresh }) {
+    const [name, setName] = useState(null);
     const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState(null);
     const [type, setType] = useState("");
-    const [subCategoryId, setSubCategoryId] = useState(""); // subcategory dropdown
+    const [subCategoryId, setSubCategoryId] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
-    const [categoryId, setCategoryId] = useState(""); // parent category id
-    const [categoryList, setCategoryList] = useState([]); // main categories
-    const [subCategoryList, setSubCategoryList] = useState([]); // subcategories
+    const [categoryId, setCategoryId] = useState("");
+    const [categoryList, setCategoryList] = useState([]);
+    const [subCategoryList, setSubCategoryList] = useState([]);
+    const [subLoading, setSubLoading] = useState(false);
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
-    // Fetch main categories
+    // fetch categories
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -57,63 +55,62 @@ export default function ProCreateCategory() {
         fetchCategories();
     }, []);
 
-    // Fetch subcategories
+    // fetch subcategories
     useEffect(() => {
+        if (!categoryId) {
+            setSubCategoryList([]);
+            setSubCategoryId("");
+            return;
+        }
+
         const fetchSubCategories = async () => {
             try {
+                setSubLoading(true);
                 const token = localStorage.getItem("token");
-                const res = await fetch(
-                    "https://wiqiapi.testenvapp.com/api/admin/subCategoryName",
-                    { headers: { Authorization: `Bearer ${token}` } }
-                );
-                const data = await res.json();
-                if (data.success) setSubCategoryList(data.data || []);
-            } catch (err) {
-                toast.error(err.message);
-            }
-        };
-        fetchSubCategories();
-    }, []);
 
-    // Fetch product data if editing
-    useEffect(() => {
-        const fetchProById = async (id) => {
-            try {
-                const token = localStorage.getItem("token");
                 const res = await fetch(
-                    `https://wiqiapi.testenvapp.com/api/admin/getSubCategoryById?id=${id}`,
-                    { headers: { Authorization: `Bearer ${token}` } }
+                    `https://wiqiapi.testenvapp.com/api/admin/subCategoryName?id=${categoryId}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
+                console.log('ewrkjjherw', res)
                 const data = await res.json();
-                if (data.success) {
-                    const p = data.data;
-                    setName(p.name || "");
-                    setTitle(p.title || "");
-                    setUrl(p.url || "");
-                    setType(p.type || "");
-                    setPreview(p.image || null);
-                    setCategoryId(p.categoryId || "");
-                    setSubCategoryId(p.subCategoryId || "");
-                    setImageFile(null);
+
+                if (data.success && data.data?.length > 0) {
+                    setSubCategoryList(data.data);
                 } else {
-                    throw new Error(data.message || "Failed to fetch product");
+                    setSubCategoryList([{ _id: "notfound", name: "Not Found" }]);
                 }
             } catch (err) {
                 toast.error(err.message);
+            } finally {
+                setSubLoading(false);
             }
         };
 
-        if (productToEdit?._id) fetchProById(productToEdit._id);
-    }, [productToEdit]);
+        fetchSubCategories();
+    }, [categoryId]);
 
     const validate = () => {
         const newErrors = {};
-        if (!name.trim()) newErrors.name = "Name is required";
+        if (!name && !url) {
+            newErrors.name = "Either Name or URL is required";
+        }
+
+        if (name && url) {
+            newErrors.name = "You cannot provide both Name and URL";
+            newErrors.url = "You cannot provide both Name and URL";
+        }
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
         if (!categoryId) newErrors.categoryId = "Category is required";
-        if (!subCategoryId) newErrors.subCategoryId = "SubCategory is required";
-        if (!imageFile && !preview) newErrors.image = "Image is required";
+        if (!subCategoryId || subCategoryId === "notfound")
+            newErrors.subCategoryId = "SubCategory is required";
+        if (!imageFile) newErrors.image = "Image is required";
         return newErrors;
     };
 
@@ -138,45 +135,42 @@ export default function ProCreateCategory() {
             if (!token) throw new Error("Token not found");
 
             const formData = new FormData();
-            formData.append("name", name);
-            formData.append("title", title);
-            formData.append("type", type);
+            if (name !== null) formData.append("name", name);
+            formData.append("title", title.trim());
+            formData.append("type", type.trim());
             formData.append("categoryId", categoryId);
             formData.append("subCategoryId", subCategoryId);
-            formData.append("url", url && url.trim() !== "" ? url.trim() : "");
+            if (url !== null) formData.append("url", url);
 
-            if (productToEdit?._id) {
-                formData.append("id", productToEdit._id);
-                if (imageFile) formData.append("image", imageFile);
-            } else {
-                if (imageFile) formData.append("image", imageFile);
-                else throw new Error("Image is required for new product");
+            formData.append("image", imageFile);
+
+            const res = await fetch(
+                "https://wiqiapi.testenvapp.com/api/admin/proSubCategory",
+                {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${token}` },
+                    body: formData,
+                }
+            );
+            console.log("dfsiuiuuesdhjerh", res)
+            console.log("Submitting with subCategoryId:", subCategoryId);
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.message || "Failed to save product");
             }
 
-            const urlEndpoint = "https://wiqiapi.testenvapp.com/api/admin/proSubCategory";
+            toast.success("Product created!");
 
-            const res = await fetch(urlEndpoint, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.success)
-                throw new Error(data.message || "Failed to save product");
-
-            toast.success(productToEdit ? "Product updated!" : "Product created!");
-
-            setName("");
+            // reset form
+            setName(null);
             setTitle("");
-            setUrl("");
+            setUrl(null);
             setType("");
             setCategoryId("");
             setSubCategoryId("");
             setImageFile(null);
             setPreview(null);
-            setProductToEdit(null);
-            triggerRefresh();
+            triggerRefresh && triggerRefresh();
         } catch (err) {
             toast.error(err.message || "Something went wrong");
         } finally {
@@ -188,24 +182,26 @@ export default function ProCreateCategory() {
         <Card className="w-full">
             <CardHeader>
                 <CardTitle className="text-xl font-bold text-primary">
-                    {productToEdit ? "Edit Product" : "Create New Product"}
+                    Create New Product
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {/* Name */}
                     <div>
                         <Label htmlFor="name">Name</Label>
                         <Input
                             id="name"
                             placeholder="Enter Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setName(val === "" ? null : val); // convert empty string to null
+                            }}
                         />
-                        {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+                        {errors.name && (
+                            <p className="text-sm text-red-600">{errors.name}</p>
+                        )}
                     </div>
 
-                    {/* Title */}
                     <div>
                         <Label htmlFor="title">Title</Label>
                         <Input
@@ -214,21 +210,24 @@ export default function ProCreateCategory() {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                        {errors.title && <p className="text-sm text-red-600">{errors.title}</p>}
+                        {errors.title && (
+                            <p className="text-sm text-red-600">{errors.title}</p>
+                        )}
                     </div>
 
-                    {/* URL */}
                     <div>
                         <Label htmlFor="url">URL (optional)</Label>
                         <Input
                             id="url"
                             placeholder="Enter URL"
-                            value={url}
-                            onChange={(e) => setUrl(e.target.value)}
+                            value={url || ""} // input needs a string, so use empty string for null
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setUrl(val === "" ? null : val); // convert empty string to null
+                            }}
                         />
                     </div>
 
-                    {/* Type Dropdown */}
                     <div>
                         <Label htmlFor="type">Type</Label>
                         <Select value={type} onValueChange={(v) => setType(v)}>
@@ -243,56 +242,90 @@ export default function ProCreateCategory() {
                                 <SelectItem value="Reads">Reads</SelectItem>
                             </SelectContent>
                         </Select>
-                        {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
+                        {errors.type && (
+                            <p className="text-sm text-red-600">{errors.type}</p>
+                        )}
                     </div>
 
-                    {/* Main Category Dropdown */}
                     <div>
                         <Label htmlFor="categoryId">Category</Label>
-                        <Select value={categoryId} onValueChange={(v) => setCategoryId(v)}>
+                        <Select
+                            value={categoryId}
+                            onValueChange={(v) => {
+                                setCategoryId(v);
+                                setSubCategoryId("");
+                            }}
+                        >
                             <SelectTrigger id="categoryId" className="w-full cursor-pointer">
                                 <SelectValue placeholder="Select Category" />
                             </SelectTrigger>
                             <SelectContent>
                                 {categoryList.map((cat) => (
-                                    <SelectItem key={cat._id} value={cat._id}>{cat.name}</SelectItem>
+                                    <SelectItem key={cat._id} value={cat._id}>
+                                        {cat.name}
+                                    </SelectItem>
                                 ))}
                             </SelectContent>
                         </Select>
-                        {errors.categoryId && <p className="text-sm text-red-600">{errors.categoryId}</p>}
+                        {errors.categoryId && (
+                            <p className="text-sm text-red-600">{errors.categoryId}</p>
+                        )}
                     </div>
 
-                    {/* SubCategory Dropdown */}
                     <div>
                         <Label htmlFor="subCategoryId">SubCategory</Label>
-                        <Select value={subCategoryId} onValueChange={(v) => setSubCategoryId(v)}>
-                            <SelectTrigger id="subCategoryId" className="w-full cursor-pointer">
-                                <SelectValue placeholder="Select SubCategory" />
+                        <Select
+                            value={subCategoryId}
+                            onValueChange={(v) => setSubCategoryId(v)}
+                            disabled={subLoading}
+                        >
+                            <SelectTrigger
+                                id="subCategoryId"
+                                className="w-full cursor-pointer"
+                            >
+                                <SelectValue
+                                    placeholder={subLoading ? "Loading..." : "Select SubCategory"}
+                                />
                             </SelectTrigger>
                             <SelectContent>
                                 {subCategoryList.map((sub) => (
-                                    <SelectItem key={sub._id} value={sub._id}>{sub.name}</SelectItem>
+                                    <SelectItem key={sub._id} value={sub._id}>
+                                        {sub.name}
+                                    </SelectItem>
                                 ))}
                             </SelectContent>
                         </Select>
-                        {errors.subCategoryId && <p className="text-sm text-red-600">{errors.subCategoryId}</p>}
+                        {errors.subCategoryId && (
+                            <p className="text-sm text-red-600">{errors.subCategoryId}</p>
+                        )}
                     </div>
                 </div>
 
-                {/* Image */}
                 <div className="flex flex-col gap-2">
                     <Label>Image</Label>
                     {preview ? (
                         <div className="relative w-32 h-32">
-                            <img src={preview} alt="Preview" className="w-32 h-32 rounded object-cover border" />
+                            <img
+                                src={preview}
+                                alt="Preview"
+                                className="w-32 h-32 rounded object-cover border"
+                            />
                             <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 rounded opacity-0 hover:opacity-100 transition">
                                 <label className="cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100">
                                     <Pencil className="w-4 h-4 text-blue-600" />
-                                    <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
+                                    <input
+                                        type="file"
+                                        className="hidden"
+                                        accept="image/*"
+                                        onChange={(e) => handleImageChange(e.target.files?.[0])}
+                                    />
                                 </label>
                                 <button
                                     type="button"
-                                    onClick={() => { setImageFile(null); setPreview(null); }}
+                                    onClick={() => {
+                                        setImageFile(null);
+                                        setPreview(null);
+                                    }}
                                     className="bg-white p-2 cursor-pointer rounded-full shadow hover:bg-gray-100"
                                 >
                                     <Trash2 className="w-4 h-4 text-red-600" />
@@ -303,16 +336,23 @@ export default function ProCreateCategory() {
                         <label className="flex items-center justify-center border border-dashed border-gray-400 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
                             <Upload className="w-5 h-5 mr-2 text-gray-500" />
                             <span className="text-gray-600">Choose Image</span>
-                            <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
+                            <input
+                                type="file"
+                                className="hidden"
+                                accept="image/*"
+                                onChange={(e) => handleImageChange(e.target.files?.[0])}
+                            />
                         </label>
                     )}
-                    {errors.image && <p className="text-sm text-red-600">{errors.image}</p>}
+                    {errors.image && (
+                        <p className="text-sm text-red-600">{errors.image}</p>
+                    )}
                 </div>
             </CardContent>
 
             <CardFooter className="flex justify-end">
                 <Button onClick={handleSubmit} disabled={loading}>
-                    {loading ? "Saving..." : productToEdit ? "Update" : "Create"}
+                    {loading ? "Saving..." : "Create"}
                 </Button>
                 <Toaster position="top-right" />
             </CardFooter>

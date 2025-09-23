@@ -401,7 +401,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth
 ;
 ;
 function AuthProvider({ children, session }) {
-    const basePath = (("TURBOPACK compile-time truthy", 1) ? ("TURBOPACK compile-time value", "http://localhost:3000/") : ("TURBOPACK unreachable", undefined)) || '';
+    const basePath = (("TURBOPACK compile-time truthy", 1) ? ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app") : ("TURBOPACK unreachable", undefined)) || '';
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SessionProvider"], {
         session: session,
         basePath: `${basePath}/api/auth`,
@@ -2769,9 +2769,9 @@ function getInitials(name, count) {
     return count && count > 0 ? initials.slice(0, count).join('') : initials.join('');
 }
 function toAbsoluteUrl(pathname) {
-    const baseUrl = ("TURBOPACK compile-time value", "http://localhost:3000/");
+    const baseUrl = ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app");
     if ("TURBOPACK compile-time truthy", 1) {
-        return ("TURBOPACK compile-time value", "http://localhost:3000/") + pathname;
+        return ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app") + pathname;
     } else {
         "TURBOPACK unreachable";
     }

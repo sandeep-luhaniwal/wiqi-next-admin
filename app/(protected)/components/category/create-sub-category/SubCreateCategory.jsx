@@ -25,9 +25,9 @@ import { useSubCategory } from "./sub-category-context"; // ✅ Add this
 export default function SubCreateCategory() {
     const { subCategoryToEdit, setSubCategoryToEdit, triggerRefresh } = useSubCategory();
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState(null);
     const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState(null);
     const [type, setType] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
@@ -77,7 +77,14 @@ export default function SubCreateCategory() {
 
     const validate = () => {
         const newErrors = {};
-        if (!name.trim()) newErrors.name = "Name is required";
+        if (!name && !url) {
+            newErrors.name = "Either Name or URL is required";
+        }
+
+        if (name && url) {
+            newErrors.name = "You cannot provide both Name and URL";
+            newErrors.url = "You cannot provide both Name and URL";
+        }
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
         if (!categoryId) newErrors.categoryId = "Parent category is required";
@@ -106,11 +113,11 @@ export default function SubCreateCategory() {
             if (!token) throw new Error("Token not found");
 
             const formData = new FormData();
-            formData.append("name", name);
+            if (name !== null) formData.append("name", name);
             formData.append("title", title);
             formData.append("type", type);
             formData.append("categoryId", categoryId);
-            formData.append("url", url && url.trim() !== "" ? url.trim() : "");
+            if (url !== null) formData.append("url", url);
 
             if (subCategoryToEdit?._id) {
                 formData.append("id", subCategoryToEdit._id);
@@ -139,10 +146,10 @@ export default function SubCreateCategory() {
             toast.success(subCategoryToEdit ? "SubCategory updated!" : "SubCategory created!");
 
             // Reset form
-            setName("");
+            setName(null);
             setTitle("");
             setUrl("");
-            setType("");
+            setType(null);
             setcategoryId("");
             setImageFile(null);
             setPreview(null);
@@ -170,8 +177,12 @@ export default function SubCreateCategory() {
                         <Input
                             id="name"
                             placeholder="Enter Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={name || ""}
+                            // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setName(val === "" ? null : val); // convert empty string to null
+                            }}
                         />
                         {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
                     </div>
@@ -190,8 +201,11 @@ export default function SubCreateCategory() {
                         <Input
                             id="url"
                             placeholder="Enter URL"
-                            value={url}
-                            onChange={(e) => setUrl(e.target.value)}
+                            value={url || ""} // input needs a string, so use empty string for null
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setUrl(val === "" ? null : val); // convert empty string to null
+                            }}
                         />
                     </div>
                     <div>

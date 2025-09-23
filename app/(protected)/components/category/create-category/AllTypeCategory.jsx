@@ -65,7 +65,17 @@ export default function AllTypeCategory() {
             id: "name",
             accessorFn: (row) => row.name,
             header: () => <span className="font-bold">Name</span>,
-            cell: ({ row }) => <span className="font-bold truncate block max-w-[200px]" title={row.original.name}>{row.original.name}</span>,
+            cell: ({ row }) =>
+                row.original.name ? (
+                    <span
+                        className="font-bold truncate block max-w-[150px]"
+                        title={row.original.name}
+                    >
+                        {row.original.name}
+                    </span>
+                ) : (
+                    <span className="text-gray-400">Null</span>
+                ),
             size: 150,
         },
         {
@@ -109,7 +119,7 @@ export default function AllTypeCategory() {
                                     <Link2 size={16} className="w-4 h-4" /> Visit
                                 </Link>
                             ) : (
-                                "Null"
+                                <span className="text-gray-400">Null</span>
                             )}
                         </span>
                     </TooltipTrigger>

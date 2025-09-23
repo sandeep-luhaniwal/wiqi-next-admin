@@ -25,7 +25,7 @@ import { useCategory } from "./category-context";
 export default function CreateCategory() {
     const { categoryToEdit, setCategoryToEdit, triggerRefresh } = useCategory();
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState(null);
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState(null);
     const [type, setType] = useState("");
@@ -38,7 +38,7 @@ export default function CreateCategory() {
     // Fill form when editing
     useEffect(() => {
         if (categoryToEdit) {
-            setName(categoryToEdit.name || "");
+            setName(categoryToEdit.name || null);
             setTitle(categoryToEdit.title || "");
             setUrl(categoryToEdit.url || null);
             setType(categoryToEdit.type || "");
@@ -49,7 +49,14 @@ export default function CreateCategory() {
 
     const validate = () => {
         const newErrors = {};
-        if (!name.trim()) newErrors.name = "Name is required";
+        if (!name && !url) {
+            newErrors.name = "Either Name or URL is required";
+        }
+
+        if (name && url) {
+            newErrors.name = "You cannot provide both Name and URL";
+            newErrors.url = "You cannot provide both Name and URL";
+        }
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
         if (!imageFile && !preview) newErrors.image = "Image is required";
@@ -77,7 +84,8 @@ export default function CreateCategory() {
             if (!token) throw new Error("Token not found");
 
             const formData = new FormData();
-            formData.append("name", name);
+            if (name !== null) formData.append("name", name);
+            // formData.append("name", name);
             formData.append("title", title);
             formData.append("type", type);
             if (url !== null) formData.append("url", url);
@@ -108,7 +116,7 @@ export default function CreateCategory() {
             toast.success(categoryToEdit ? "Category updated!" : "Category created!");
 
             // Reset form
-            setName("");
+            setName(null);
             setTitle("");
             setUrl(null);
             setType("");
@@ -138,8 +146,13 @@ export default function CreateCategory() {
                         <Input
                             id="name"
                             placeholder="Enter Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            // value={name}
+                            value={name || ""}
+                            // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => {
+                                const val = e.target.value.trim();
+                                setName(val === "" ? null : val); // convert empty string to null
+                            }}
                         />
                         {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
                     </div>
