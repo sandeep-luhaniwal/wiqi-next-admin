@@ -49,6 +49,7 @@ import {
   UserCheck,
   UserCircle,
   Users,
+  Users2,
   Briefcase as WorkIcon,
   Zap,
 } from 'lucide-react';
@@ -70,6 +71,14 @@ export const MENU_SIDEBAR = [
       { title: 'Category Create', path: '/category/all-category' },
       { title: 'Sub Category', path: '/category/sub-category' },
       { title: 'Pro Sub Category', path: '/category/pro-sub-category' },
+    ]
+  },
+  {
+    title: 'Stream Category',
+    icon: Users2,
+    children: [
+      { title: 'Stream Create', path: '/stream-category/all-category' },
+     
     ]
   },
   // {

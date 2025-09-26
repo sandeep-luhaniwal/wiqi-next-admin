@@ -6,6 +6,7 @@ import { toAbsoluteUrl } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
 import { useSettings } from '@/providers/settings-provider';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export function SidebarHeader() {
   const { settings, storeOption } = useSettings();
@@ -21,30 +22,35 @@ export function SidebarHeader() {
     <div className="sidebar-header hidden lg:flex items-center relative justify-between px-3 lg:px-6 shrink-0">
       <Link href="/">
         <div className="dark:hidden">
-          <img
-            src={toAbsoluteUrl('/media/app/default-logo.svg')}
-            className="default-logo h-[22px] max-w-none"
-            alt="Default Logo"
+
+          <Image
+            width={40}
+            className="default-logo h-[32px] max-w-none"
+            height={40} src={'/media/images/png/page-logo.png'}
+            alt='pageplod'
           />
 
-          <img
-            src={toAbsoluteUrl('/media/app/mini-logo.svg')}
-            className="small-logo h-[22px] max-w-none"
-            alt="Mini Logo"
-          />
+          <Image
+            className="small-logo h-[32px] max-w-none"
+            width={40} height={40}
+            src={'/media/images/png/page-logo.png'}
+            alt='pageplod' />
+
+
         </div>
         <div className="hidden dark:block">
-          <img
-            src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}
-            className="default-logo h-[22px] max-w-none"
-            alt="Default Dark Logo"
+          <Image
+            width={40}
+            className="default-logo h-[32px] max-w-none"
+            height={40} src={'/media/images/png/page-logo.png'}
+            alt='pageplod'
           />
 
-          <img
-            src={toAbsoluteUrl('/media/app/mini-logo.svg')}
-            className="small-logo h-[22px] max-w-none"
-            alt="Mini Logo"
-          />
+          <Image
+            className="small-logo h-[32px] max-w-none"
+            width={40} height={40}
+            src={'/media/images/png/page-logo.png'}
+            alt='pageplod' />
         </div>
       </Link>
       <Button

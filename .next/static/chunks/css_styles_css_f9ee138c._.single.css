@@ -1638,6 +1638,10 @@
     margin-top: calc(var(--spacing) * 7);
   }
 
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
@@ -2196,6 +2200,10 @@
 
   .h-\[30px\] {
     height: 30px;
+  }
+
+  .h-\[32px\] {
+    height: 32px;
   }
 
   .h-\[34px\] {
@@ -5904,6 +5912,10 @@
 
   .text-red-400 {
     color: var(--color-red-400);
+  }
+
+  .text-red-500 {
+    color: var(--color-red-500);
   }
 
   .text-red-600 {
