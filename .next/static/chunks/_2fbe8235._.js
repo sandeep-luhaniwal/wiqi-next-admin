@@ -190,98 +190,35 @@ function Footer() {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$common$2f$container$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Container"], {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 py-5",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex order-2 md:order-1  gap-2 font-normal text-sm",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-muted-foreground",
-                                children: [
-                                    currentYear,
-                                    " ©"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 14,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: "https://keenthemes.com",
-                                target: "_blank",
-                                className: "text-secondary-foreground hover:text-primary",
-                                children: "Keenthemes Inc."
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 15,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                        lineNumber: 13,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                        className: "flex order-1 md:order-2 gap-4 font-normal text-sm text-muted-foreground",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$general$2e$config$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["generalSettings"].docsLink,
-                                target: "_blank",
-                                className: "hover:text-primary",
-                                children: "Docs"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 24,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$general$2e$config$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["generalSettings"].purchaseLink,
-                                target: "_blank",
-                                className: "hover:text-primary",
-                                children: "Purchase"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 31,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$general$2e$config$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["generalSettings"].faqLink,
-                                target: "_blank",
-                                className: "hover:text-primary",
-                                children: "FAQ"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 38,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: "https://devs.keenthemes.com",
-                                target: "_blank",
-                                className: "hover:text-primary",
-                                children: "Support"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 45,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$general$2e$config$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["generalSettings"].licenseLink,
-                                target: "_blank",
-                                className: "hover:text-primary",
-                                children: "License"
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                                lineNumber: 52,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
-                        lineNumber: 23,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex order-2 md:order-1  gap-2 font-normal text-sm",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-muted-foreground",
+                            children: [
+                                currentYear,
+                                " ©"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
+                            lineNumber: 14,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-secondary-foreground hover:text-primary",
+                            children: "Wiqi Application"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
+                            lineNumber: 15,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
+                    lineNumber: 13,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/app/components/layouts/demo1/components/footer.jsx",
                 lineNumber: 12,
                 columnNumber: 9

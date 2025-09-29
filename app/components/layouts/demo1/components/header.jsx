@@ -63,7 +63,7 @@ export function Header() {
         <div className="flex lg:hidden items-center gap-2.5">
           <Link href="/" className="shrink-0">
             <img
-              src={toAbsoluteUrl('/media/app/mini-logo.svg')}
+              src={'/media/images/png/wiqi-logo.png'}
               className="h-[25px] w-full"
               alt="mini-logo"
             />
@@ -91,28 +91,6 @@ export function Header() {
                 </SheetContent>
               </Sheet>
             )}
-            {mobileMode && (
-              <Sheet
-                open={isMegaMenuSheetOpen}
-                onOpenChange={setIsMegaMenuSheetOpen}
-              >
-                <SheetTrigger asChild>
-                  <Button variant="ghost" mode="icon">
-                    <SquareChevronRight className="text-muted-foreground/70" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent
-                  className="p-0 gap-0 w-[275px]"
-                  side="left"
-                  close={false}
-                >
-                  <SheetHeader className="p-0 space-y-0" />
-                  <SheetBody className="p-0 overflow-y-auto">
-                    <MegaMenuMobile />
-                  </SheetBody>
-                </SheetContent>
-              </Sheet>
-            )}
           </div>
         </div>
 
@@ -129,59 +107,7 @@ export function Header() {
             <StoreClientTopbar />
           ) : (
             <>
-              {!mobileMode && (
-                <SearchDialog
-                  trigger={
-                    <Button
-                      variant="ghost"
-                      mode="icon"
-                      shape="circle"
-                      className="size-9 hover:bg-primary/10 hover:[&_svg]:text-primary"
-                    >
-                      <Search className="size-4.5!" />
-                    </Button>
-                  }
-                />
-              )}
-              <NotificationsSheet
-                trigger={
-                  <Button
-                    variant="ghost"
-                    mode="icon"
-                    shape="circle"
-                    className="size-9 hover:bg-primary/10 hover:[&_svg]:text-primary"
-                  >
-                    <Bell className="size-4.5!" />
-                  </Button>
-                }
-              />
-
-              <ChatSheet
-                trigger={
-                  <Button
-                    variant="ghost"
-                    mode="icon"
-                    shape="circle"
-                    className="size-9 hover:bg-primary/10 hover:[&_svg]:text-primary"
-                  >
-                    <MessageCircleMore className="size-4.5!" />
-                  </Button>
-                }
-              />
-
-              <AppsDropdownMenu
-                trigger={
-                  <Button
-                    variant="ghost"
-                    mode="icon"
-                    shape="circle"
-                    className="size-9 hover:bg-primary/10 hover:[&_svg]:text-primary"
-                  >
-                    <LayoutGrid className="size-4.5!" />
-                  </Button>
-                }
-              />
-
+             
               <UserDropdownMenu
                 trigger={
                   <img

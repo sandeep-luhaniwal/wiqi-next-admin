@@ -60,8 +60,6 @@ export const MENU_SIDEBAR = [
     icon: LayoutGrid,
     children: [
       { title: 'Home', path: '/' },
-      // { title: 'Light Sidebar', path: '/light' },
-      // { title: 'Dark Sidebar', path: '/dark-sidebar' },
     ],
   },
   {

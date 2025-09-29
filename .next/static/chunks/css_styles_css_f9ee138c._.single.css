@@ -1638,10 +1638,6 @@
     margin-top: calc(var(--spacing) * 7);
   }
 
-  .mt-10 {
-    margin-top: calc(var(--spacing) * 10);
-  }
-
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
@@ -9176,6 +9172,12 @@
   @media (width >= 48rem) {
     .md\:rounded-bl-\[40px\] {
       border-bottom-left-radius: 40px;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:px-3 {
+      padding-inline: calc(var(--spacing) * 3);
     }
   }
 

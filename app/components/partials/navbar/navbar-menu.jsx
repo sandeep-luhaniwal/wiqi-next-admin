@@ -51,7 +51,7 @@ const NavbarMenu = ({ items }) => {
             <MenubarTrigger
               asChild
               className={cn(
-                'flex items-center px-2 py-3.5 text-sm text-secondary-foreground px-3',
+                'flex items-center px-2 py-3.5 text-sm text-secondary-foreground md:px-3',
                 'rounded-none border-b-2 border-transparent bg-transparent!',
                 'hover:text-primary hover:bg-transparent',
                 'focus:text-primary focus:bg-transparent',

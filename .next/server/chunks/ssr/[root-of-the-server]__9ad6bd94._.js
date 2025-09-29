@@ -319,7 +319,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth
 ;
 ;
 function AuthProvider({ children, session }) {
-    const basePath = (("TURBOPACK compile-time falsy", 0) ? ("TURBOPACK unreachable", undefined) : ("TURBOPACK compile-time value", "http://localhost:3000/")) || '';
+    const basePath = (("TURBOPACK compile-time falsy", 0) ? ("TURBOPACK unreachable", undefined) : ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app")) || '';
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SessionProvider"], {
         session: session,
         basePath: `${basePath}/api/auth`,
@@ -2532,9 +2532,9 @@ function getInitials(name, count) {
     return count && count > 0 ? initials.slice(0, count).join('') : initials.join('');
 }
 function toAbsoluteUrl(pathname) {
-    const baseUrl = ("TURBOPACK compile-time value", "http://localhost:3000/");
+    const baseUrl = ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app");
     if ("TURBOPACK compile-time truthy", 1) {
-        return ("TURBOPACK compile-time value", "http://localhost:3000/") + pathname;
+        return ("TURBOPACK compile-time value", "https://wiqi-next-admin.vercel.app") + pathname;
     } else {
         "TURBOPACK unreachable";
     }
