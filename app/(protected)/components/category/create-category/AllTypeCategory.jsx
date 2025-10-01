@@ -114,7 +114,7 @@ export default function AllTypeCategory() {
                                     href={row.original.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-sm"
+                                    className="text-primary duration-300 hover:text-blue-800 flex items-center gap-1 text-sm"
                                 >
                                     <Link2 size={16} className="w-4 h-4" /> Visit
                                 </Link>
@@ -145,7 +145,7 @@ export default function AllTypeCategory() {
                                     setCategoryToEdit(row.original);
                                     window.scrollTo({ top: 0, behavior: "smooth" });
                                 }}
-                                    className="text-blue-600 cursor-pointer hover:text-blue-800"><Pencil size={18} /></button>
+                                    className="text-primary duration-300 cursor-pointer hover:text-blue-800"><Pencil size={18} /></button>
                             </TooltipTrigger>
                             <TooltipContent>Edit</TooltipContent>
                         </Tooltip>
@@ -188,12 +188,12 @@ export default function AllTypeCategory() {
                 <CardHeader className="py-3.5">
                     <CardTitle>Categories</CardTitle>
                     <CardToolbar className="relative">
-                        <Search className="absolute start-3 top-1/2 -translate-y-1/2" />
+                        <Search className="absolute start-2 text-primary top-1/2 -translate-y-1/2" />
                         <Input
                             placeholder="Search categories..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="ps-9 max-w-[200px] w-full"
+                            className="ps-9 max-w-[300px] w-full"
                         />
                         {searchQuery && <Button variant="ghost" className="absolute end-1.5 top-1/2 -translate-y-1/2 h-6 w-6" onClick={() => setSearchQuery("")}><X /></Button>}
                     </CardToolbar>

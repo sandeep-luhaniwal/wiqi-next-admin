@@ -116,7 +116,7 @@ const StreamCategoryTable = () => {
                                 <TooltipTrigger asChild>
                                     <button
                                         onClick={() => setStreamCategoryToEdit(row.original)}
-                                        className="text-blue-600 cursor-pointer hover:text-blue-800"
+                                        className="text-primary duration-300 cursor-pointer hover:text-blue-800"
                                     >
                                         <Pencil size={18} />
                                     </button>
@@ -172,12 +172,12 @@ const StreamCategoryTable = () => {
                 <CardHeader className="py-3.5">
                     <CardTitle>Stream Categories</CardTitle>
                     <CardToolbar className="relative">
-                        <Search className="absolute start-3 top-1/2 -translate-y-1/2" />
+                        <Search className="absolute start-2 text-primary duration-300 top-1/2 -translate-y-1/2" />
                         <Input
                             placeholder="Search categories..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="ps-9 max-w-[200px] w-full"
+                            className="ps-9 max-w-[300px] w-full"
                         />
                         {searchQuery && (
                             <Button

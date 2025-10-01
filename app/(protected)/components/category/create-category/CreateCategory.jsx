@@ -5,8 +5,6 @@ import toast, { Toaster } from "react-hot-toast";
 import {
     Card,
     CardContent,
-    CardHeader,
-    CardTitle,
     CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,6 +20,15 @@ import {
 import { Pencil, Trash2, Upload } from "lucide-react";
 import { useCategory } from "./category-context";
 
+// Shadcn dialog
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+
 export default function CreateCategory() {
     const { categoryToEdit, setCategoryToEdit, triggerRefresh } = useCategory();
 
@@ -35,6 +42,21 @@ export default function CreateCategory() {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
+    // Dialog open state
+    const [open, setOpen] = useState(false);
+
+    // Reset form function
+    const resetForm = () => {
+        setName(null);
+        setTitle("");
+        setUrl(null);
+        setType("");
+        setImageFile(null);
+        setPreview(null);
+        setErrors({});
+        setCategoryToEdit(null);
+    };
+
     // Fill form when editing
     useEffect(() => {
         if (categoryToEdit) {
@@ -44,6 +66,7 @@ export default function CreateCategory() {
             setType(categoryToEdit.type || "");
             setPreview(categoryToEdit.image || null);
             setImageFile(null);
+            setOpen(true); // edit mode mai open karo
         }
     }, [categoryToEdit]);
 
@@ -52,7 +75,6 @@ export default function CreateCategory() {
         if (!name && !url) {
             newErrors.name = "Either Name or URL is required";
         }
-
         if (name && url) {
             newErrors.name = "You cannot provide both Name and URL";
             newErrors.url = "You cannot provide both Name and URL";
@@ -85,15 +107,13 @@ export default function CreateCategory() {
 
             const formData = new FormData();
             if (name !== null) formData.append("name", name);
-            // formData.append("name", name);
             formData.append("title", title);
             formData.append("type", type);
             if (url !== null) formData.append("url", url);
+
             if (categoryToEdit?._id) {
                 formData.append("id", categoryToEdit._id);
-                if (imageFile) {
-                    formData.append("image", imageFile);
-                }
+                if (imageFile) formData.append("image", imageFile);
             } else {
                 if (imageFile) formData.append("image", imageFile);
                 else throw new Error("Image is required for new category");
@@ -112,19 +132,11 @@ export default function CreateCategory() {
             if (!res.ok || !data.success)
                 throw new Error(data.message || "Failed to save category");
 
-            console.log("haiurhdsfiufd", data)
             toast.success(categoryToEdit ? "Category updated!" : "Category created!");
 
-            // Reset form
-            setName(null);
-            setTitle("");
-            setUrl(null);
-            setType("");
-            setImageFile(null);
-            setPreview(null);
-            setCategoryToEdit(null);
-
             triggerRefresh();
+            setOpen(false);
+            resetForm(); // ✅ close hone ke baad reset
         } catch (err) {
             toast.error(err.message || "Something went wrong");
         } finally {
@@ -133,100 +145,126 @@ export default function CreateCategory() {
     };
 
     return (
-        <Card className="w-full">
-            <CardHeader>
-                <CardTitle className="text-xl font-bold text-primary">
-                    {categoryToEdit ? "Edit Category" : "Create New Category"}
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <Label htmlFor="name">Name</Label>
-                        <Input
-                            id="name"
-                            placeholder="Enter Name"
-                            // value={name}
-                            value={name || ""}
-                            // onChange={(e) => setName(e.target.value)}
-                            onChange={(e) => {
-                                const val = e.target.value.trim();
-                                setName(val === "" ? null : val); // convert empty string to null
-                            }}
-                        />
-                        {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+        <div>
+            <Dialog
+                open={open}
+                onOpenChange={(o) => {
+                    setOpen(o);
+                    if (!o) resetForm(); // ✅ jab modal close hoga, reset form
+                }}
+            >
+                <DialogTrigger asChild>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <p className="text-primary font-semibold text-2xl">Create & Manage Categories</p>
+                        <Button onClick={() => setOpen(true)}>+ Add Category</Button>
                     </div>
-                    <div>
-                        <Label htmlFor="title">Title</Label>
-                        <Input
-                            id="title"
-                            placeholder="Enter Title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        {errors.title && <p className="text-sm text-red-600">{errors.title}</p>}
-                    </div>
-                    <div>
-                        <Label htmlFor="url">URL (optional)</Label>
-                        <Input
-                            id="url"
-                            placeholder="Enter URL"
-                            value={url || ""} // input needs a string, so use empty string for null
-                            onChange={(e) => {
-                                const val = e.target.value.trim();
-                                setUrl(val === "" ? null : val); // convert empty string to null
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor="type">Type</Label>
-                        <Select value={type} onValueChange={(v) => setType(v)}>
-                            <SelectTrigger id="type" className="w-full cursor-pointer">
-                                <SelectValue placeholder="Select Type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="Wiqi Plus">Wiqi Plus</SelectItem>
-                                <SelectItem value="Tv">Tv</SelectItem>
-                                <SelectItem value="Radio">Radio</SelectItem>
-                                <SelectItem value="Shops">Shops</SelectItem>
-                                <SelectItem value="Reads">Reads</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
-                    </div>
-                </div>
+                </DialogTrigger>
 
-                <div className="flex flex-col gap-2">
-                    <Label>Image</Label>
-                    {preview ? (
-                        <div className="relative w-32 h-32">
-                            <img src={preview} alt="Preview" className="w-32 h-32 rounded object-cover border" />
-                            <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 rounded opacity-0 hover:opacity-100 transition">
-                                <label className="cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100">
-                                    <Pencil className="w-4 h-4 text-blue-600" />
-                                    <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
-                                </label>
-                                <button type="button" onClick={() => { setImageFile(null); setPreview(null); }} className="bg-white p-2 cursor-pointer rounded-full shadow hover:bg-gray-100">
-                                    <Trash2 className="w-4 h-4 text-red-600" />
-                                </button>
-                            </div>
-                        </div>
-                    ) : (
-                        <label className="flex items-center justify-center border border-dashed border-gray-400 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-                            <Upload className="w-5 h-5 mr-2 text-gray-500" />
-                            <span className="text-gray-600">Choose Image</span>
-                            <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
-                        </label>
-                    )}
-                    {errors.image && <p className="text-sm text-red-600">{errors.image}</p>}
-                </div>
-            </CardContent>
-            <CardFooter className="flex justify-end">
-                <Button onClick={handleSubmit} disabled={loading}>
-                    {loading ? "Saving..." : categoryToEdit ? "Update" : "Create"}
-                </Button>
-                <Toaster position="top-right" />
-            </CardFooter>
-        </Card>
+                <DialogContent className="w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5">
+                    <DialogHeader>
+                        <DialogTitle>
+                            {categoryToEdit ? "Edit Category" : "Create New Category"}
+                        </DialogTitle>
+                    </DialogHeader>
+                    <div className="overflow-y-auto max-h-[75vh] pr-2">
+                        <Card className="w-full shadow-none border-none">
+                            <CardContent className="space-y-5">
+                                {/* --- Inputs --- */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <Label htmlFor="name">Name</Label>
+                                        <Input
+                                            id="name"
+                                            placeholder="Enter Name"
+                                            value={name || ""}
+                                            onChange={(e) => {
+                                                const val = e.target.value.trim();
+                                                setName(val === "" ? null : val);
+                                            }}
+                                        />
+                                        {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+                                    </div>
+                                    <div>
+                                        <Label htmlFor="title">Title</Label>
+                                        <Input
+                                            id="title"
+                                            placeholder="Enter Title"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        />
+                                        {errors.title && <p className="text-sm text-red-600">{errors.title}</p>}
+                                    </div>
+                                    <div>
+                                        <Label htmlFor="url">URL (optional)</Label>
+                                        <Input
+                                            id="url"
+                                            placeholder="Enter URL"
+                                            value={url || ""}
+                                            onChange={(e) => {
+                                                const val = e.target.value.trim();
+                                                setUrl(val === "" ? null : val);
+                                            }}
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label htmlFor="type">Type</Label>
+                                        <Select value={type} onValueChange={(v) => setType(v)}>
+                                            <SelectTrigger id="type" className="w-full cursor-pointer">
+                                                <SelectValue placeholder="Select Type" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="Wiqi Plus">Wiqi Plus</SelectItem>
+                                                <SelectItem value="Tv">Tv</SelectItem>
+                                                <SelectItem value="Radio">Radio</SelectItem>
+                                                <SelectItem value="Shops">Shops</SelectItem>
+                                                <SelectItem value="Reads">Reads</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                        {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
+                                    </div>
+                                </div>
+
+                                {/* --- Image Upload --- */}
+                                <div className="flex flex-col gap-2">
+                                    <Label>Image</Label>
+                                    {preview ? (
+                                        <div className="relative w-32 h-32">
+                                            <img src={preview} alt="Preview" className="w-32 h-32 rounded object-cover border" />
+                                            <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 rounded opacity-0 hover:opacity-100 transition">
+                                                <label className="cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100">
+                                                    <Pencil className="w-4 h-4 text-blue-600" />
+                                                    <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
+                                                </label>
+                                                <button type="button" onClick={() => { setImageFile(null); setPreview(null); }} className="bg-white p-2 cursor-pointer rounded-full shadow hover:bg-gray-100">
+                                                    <Trash2 className="w-4 h-4 text-red-600" />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <label className="flex items-center justify-center border border-dashed border-gray-400 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+                                            <Upload className="w-5 h-5 mr-2 text-gray-500" />
+                                            <span className="text-gray-600">Choose Image</span>
+                                            <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageChange(e.target.files[0])} />
+                                        </label>
+                                    )}
+                                    {errors.image && <p className="text-sm text-red-600">{errors.image}</p>}
+                                </div>
+                            </CardContent>
+
+                            <CardFooter className="flex justify-end gap-3">
+                                {/* Cancel Button */}
+                                <Button variant="outline" onClick={() => { setOpen(false); resetForm(); }}>
+                                    Cancel
+                                </Button>
+                                <Button onClick={handleSubmit} disabled={loading}>
+                                    {loading ? "Saving..." : categoryToEdit ? "Update" : "Create"}
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    </div>
+                    <Toaster position="top-right" />
+                </DialogContent>
+            </Dialog>
+        </div>
     );
 }
