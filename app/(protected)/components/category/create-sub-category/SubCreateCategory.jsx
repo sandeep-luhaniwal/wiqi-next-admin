@@ -79,7 +79,7 @@ export default function SubCreateCategory() {
             setUrl(subCategoryToEdit.url || "");
             setType(subCategoryToEdit.type || "");
             setPreview(subCategoryToEdit.image || null);
-            setcategoryId(subCategoryToEdit.categoryId || "");
+            setcategoryId(subCategoryToEdit.categoryId?._id || "");
             setImageFile(null);
             setOpen(true); // ✅ edit mode mai open
         }

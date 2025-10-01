@@ -43,10 +43,10 @@ export default function Page() {
   const form = useForm({
     resolver: zodResolver(getSigninSchema()),
     defaultValues: {
-      // email: '',
-      // password: '',
-      email: 'wiqiadmin@gmail.com',
-      password: 'wiqiadmin@gmail.com',
+      email: '',
+      password: '',
+      // email: 'wiqiadmin@gmail.com',
+      // password: 'wiqiadmin@gmail.com',
     },
   });
 
