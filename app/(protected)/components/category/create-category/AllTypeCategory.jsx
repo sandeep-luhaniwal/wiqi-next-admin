@@ -13,6 +13,7 @@ import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import Link from "next/link";
+import { getCategories } from "@/app/api/categories/categories";
 
 export default function AllTypeCategory() {
     const { categories, setCategories, setCategoryToEdit, refreshFlag } = useCategory();
@@ -21,20 +22,13 @@ export default function AllTypeCategory() {
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
     const [sorting, setSorting] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-
     useEffect(() => {
         const fetchCategories = async () => {
             try {
                 setLoading(true);
                 const token = localStorage.getItem("token");
-                if (!token) throw new Error("Token not found");
-
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory?limit===10000000", {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-                const data = await res.json();
-                if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
-                setCategories(data.data.data || []);
+                const data = await getCategories(token);
+                setCategories(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -86,7 +80,7 @@ export default function AllTypeCategory() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <span className="truncate block max-w-[350px] cursor-help">{row.original.title}</span>
+                            <span className="truncate block max-w-max cursor-help">{row.original.title}</span>
                         </TooltipTrigger>
                         <TooltipContent side="top" className="max-w-xs">{row.original.title}</TooltipContent>
                     </Tooltip>

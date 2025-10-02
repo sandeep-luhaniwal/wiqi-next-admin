@@ -28,6 +28,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { createCategory, updateCategory } from "@/app/api/categories/categories";
 
 export default function CreateCategory() {
     const { categoryToEdit, setCategoryToEdit, triggerRefresh } = useCategory();
@@ -110,39 +111,26 @@ export default function CreateCategory() {
             formData.append("title", title);
             formData.append("type", type);
             if (url !== null) formData.append("url", url);
+            if (categoryToEdit?._id) formData.append("id", categoryToEdit._id);
+            if (imageFile) formData.append("image", imageFile);
 
-            if (categoryToEdit?._id) {
-                formData.append("id", categoryToEdit._id);
-                if (imageFile) formData.append("image", imageFile);
-            } else {
-                if (imageFile) formData.append("image", imageFile);
-                else throw new Error("Image is required for new category");
-            }
-
-            const urlEndpoint = categoryToEdit?._id
-                ? "https://wiqiapi.testenvapp.com/api/admin/updateCategory"
-                : "https://wiqiapi.testenvapp.com/api/admin/createCategory";
-
-            const res = await fetch(urlEndpoint, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
-            });
-            const data = await res.json();
-            if (!res.ok || !data.success)
-                throw new Error(data.message || "Failed to save category");
+            // Use API functions
+            const data = categoryToEdit
+                ? await updateCategory(token, formData)
+                : await createCategory(token, formData);
 
             toast.success(categoryToEdit ? "Category updated!" : "Category created!");
-
             triggerRefresh();
             setOpen(false);
-            resetForm(); // ✅ close hone ke baad reset
+            resetForm();
+
         } catch (err) {
             toast.error(err.message || "Something went wrong");
         } finally {
             setLoading(false);
         }
     };
+
 
     return (
         <div>
@@ -262,9 +250,9 @@ export default function CreateCategory() {
                             </CardFooter>
                         </Card>
                     </div>
-                    <Toaster position="top-right" />
                 </DialogContent>
             </Dialog>
+            <Toaster position="top-right" />
         </div>
     );
 }

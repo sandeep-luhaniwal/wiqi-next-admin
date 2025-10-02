@@ -136,7 +136,7 @@ const GetUserTable = () => {
                 cell: ({ row }) =>
                     row.original.image ? (
                         <img
-                            src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${row.original.image}`}
+                            src={`${row.original.image}`}
                             alt={`${row.original.firstName} ${row.original.lastName}`}
                             className="w-8 h-8 rounded-full object-cover object-center border"
                         />

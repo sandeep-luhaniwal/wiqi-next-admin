@@ -136,7 +136,7 @@ const CreateStreamCategory = ()=>{
     const [name, setName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const { streamCategoryToEdit, triggerRefresh, setStreamCategoryToEdit } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"])();
+    const { streamCategoryToEdit, triggerRefresh } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"])();
     // 🔹 Populate form if editing
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CreateStreamCategory.useEffect": ()=>{
@@ -158,7 +158,6 @@ const CreateStreamCategory = ()=>{
     const resetForm = ()=>{
         setName("");
         setError("");
-        setStreamCategoryToEdit(null); // ✅ context reset
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -168,191 +167,193 @@ const CreateStreamCategory = ()=>{
         }
         try {
             const token = localStorage.getItem("token");
-            let data;
-            if (streamCategoryToEdit) {
-                data = await updateStreamCategory(token, streamCategoryToEdit._id, name);
+            if (!token) throw new Error("Token not found");
+            const url = streamCategoryToEdit ? `https://wiqiapi.testenvapp.com/api/admin/updateStreamCategory/${streamCategoryToEdit._id}` : "https://wiqiapi.testenvapp.com/api/admin/streamCategory";
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name
+                })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(data.message || "Stream category saved successfully!");
+                triggerRefresh();
+                resetForm();
+                setOpen(false);
             } else {
-                data = await createStreamCategory(token, name);
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(data.message || "Failed to save category.");
             }
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(data.message || "Stream category saved successfully!");
-            triggerRefresh();
-            resetForm();
-            setOpen(false);
         } catch (err) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(err.message || "Something went wrong!");
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error("Something went wrong!");
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
-                open: open,
-                onOpenChange: (o)=>{
-                    setOpen(o);
-                    if (!o) resetForm();
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTrigger"], {
-                        asChild: true,
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-primary font-semibold text-2xl",
-                                    children: "Create & Manage Stream Categories"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 88,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    onClick: ()=>setOpen(true),
-                                    children: "+ Add Stream Category"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 91,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                            lineNumber: 87,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                        lineNumber: 86,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
-                        className: "w-[95%] max-w-[500px] !px-0 md:!p-5",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
+            open: open,
+            onOpenChange: (o)=>{
+                setOpen(o);
+                if (!o) resetForm();
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTrigger"], {
+                    asChild: true,
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTitle"], {
-                                    children: streamCategoryToEdit ? "Edit Stream Category" : "Create Stream Category"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 97,
-                                    columnNumber: 13
-                                }, this)
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-primary font-semibold text-2xl",
+                                children: "Create & Manage Stream Categories"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                lineNumber: 96,
-                                columnNumber: 11
+                                lineNumber: 99,
+                                columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                className: "w-full shadow-none border-none",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                    onSubmit: handleSubmit,
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                            className: "space-y-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                                        htmlFor: "name",
-                                                        children: "Category Name"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 108,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                        id: "name",
-                                                        placeholder: "Enter category name",
-                                                        value: name,
-                                                        onChange: handleChange
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 109,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-red-500 text-sm mt-1",
-                                                        children: error
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 116,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                lineNumber: 107,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                            lineNumber: 106,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
-                                            className: "flex justify-end gap-3",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    type: "button",
-                                                    variant: "outline",
-                                                    onClick: ()=>{
-                                                        setOpen(false);
-                                                        resetForm();
-                                                    },
-                                                    children: "Cancel"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                    lineNumber: 121,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    type: "submit",
-                                                    children: streamCategoryToEdit ? "Update" : "Create"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                    lineNumber: 131,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                            lineNumber: 120,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 105,
-                                    columnNumber: 13
-                                }, this)
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                onClick: ()=>setOpen(true),
+                                children: "+ Add Stream Category"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                lineNumber: 104,
-                                columnNumber: 11
+                                lineNumber: 102,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                        lineNumber: 95,
-                        columnNumber: 9
+                        lineNumber: 98,
+                        columnNumber: 11
                     }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                lineNumber: 79,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Toaster"], {
-                position: "top-right"
-            }, void 0, false, {
-                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                lineNumber: 139,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                    lineNumber: 97,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
+                    className: "w-[95%] max-w-[500px] !px-0 md:!p-5",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTitle"], {
+                                children: streamCategoryToEdit ? "Edit Stream Category" : "Create Stream Category"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                lineNumber: 108,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                            lineNumber: 107,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                            className: "w-full shadow-none border-none",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                                onSubmit: handleSubmit,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                                        className: "space-y-4",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                    htmlFor: "name",
+                                                    children: "Category Name"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                                    lineNumber: 117,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                    id: "name",
+                                                    placeholder: "Enter category name",
+                                                    value: name,
+                                                    onChange: handleChange
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                                    lineNumber: 118,
+                                                    columnNumber: 19
+                                                }, this),
+                                                error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-red-500 text-sm mt-1",
+                                                    children: error
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                                    lineNumber: 124,
+                                                    columnNumber: 29
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                            lineNumber: 116,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                        lineNumber: 115,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
+                                        className: "flex justify-end gap-3",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                type: "button",
+                                                variant: "outline",
+                                                onClick: ()=>{
+                                                    setOpen(false);
+                                                    resetForm();
+                                                },
+                                                children: "Cancel"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                                lineNumber: 128,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                type: "submit",
+                                                children: streamCategoryToEdit ? "Update" : "Create"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                                lineNumber: 138,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                        lineNumber: 127,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                                lineNumber: 114,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                            lineNumber: 113,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+                    lineNumber: 106,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
+            lineNumber: 90,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-        lineNumber: 78,
+        lineNumber: 89,
         columnNumber: 5
     }, this);
 };
-_s(CreateStreamCategory, "lVwqEf1kux9EoDOiNFRxqaLUFuc=", false, function() {
+_s(CreateStreamCategory, "RHKhKusZvlDJstR1zmLGewYPPVQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"]
     ];
@@ -1523,6 +1524,70 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
+"[project]/app/api/categories/streamcategories.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "createStreamCategory": (()=>createStreamCategory),
+    "deleteStreamCategory": (()=>deleteStreamCategory),
+    "getStreamCategories": (()=>getStreamCategories),
+    "updateStreamCategory": (()=>updateStreamCategory)
+});
+async function getStreamCategories(token, limit = 1000000) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`https://wiqiapi.testenvapp.com/api/admin/getStreamCategory?limit=${limit}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch stream categories");
+    return data.data.data || [];
+}
+async function deleteStreamCategory(token, id) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`https://wiqiapi.testenvapp.com/api/admin/deleteStreamCategory/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to delete stream category");
+    return data;
+}
+async function createStreamCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/createStreamCategory", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to create stream category");
+    return data;
+}
+async function updateStreamCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/updateStreamCategory", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to update stream category");
+    return data;
+}
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
 "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -1548,9 +1613,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-table.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-pagination.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/(protected)/components/stream-category/stream-category-context.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$categories$2f$streamcategories$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/api/categories/streamcategories.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1581,15 +1648,8 @@ const StreamCategoryTable = ()=>{
                     try {
                         setLoading(true);
                         const token = localStorage.getItem("token");
-                        if (!token) throw new Error("Token not found");
-                        const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getStreamCategory?limit=1000", {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
-                        });
-                        const data = await res.json();
-                        if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
-                        setStreamCategories(data.data.data || []);
+                        const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$categories$2f$streamcategories$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getStreamCategories"])(token);
+                        setStreamCategories(data);
                     } catch (err) {
                         setError(err.message);
                     } finally{
@@ -1627,7 +1687,7 @@ const StreamCategoryTable = ()=>{
                                 children: "Name"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 86,
+                                lineNumber: 77,
                                 columnNumber: 31
                             }, this)
                     }["StreamCategoryTable.useMemo[columns]"],
@@ -1638,7 +1698,7 @@ const StreamCategoryTable = ()=>{
                                 children: row.original.name
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 88,
+                                lineNumber: 79,
                                 columnNumber: 21
                             }, this)
                     }["StreamCategoryTable.useMemo[columns]"],
@@ -1655,7 +1715,7 @@ const StreamCategoryTable = ()=>{
                                 children: "Created At"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 100,
+                                lineNumber: 91,
                                 columnNumber: 31
                             }, this)
                     }["StreamCategoryTable.useMemo[columns]"],
@@ -1676,7 +1736,7 @@ const StreamCategoryTable = ()=>{
                                 children: "Actions"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 111,
+                                lineNumber: 102,
                                 columnNumber: 31
                             }, this)
                     }["StreamCategoryTable.useMemo[columns]"],
@@ -1698,35 +1758,35 @@ const StreamCategoryTable = ()=>{
                                                             size: 18
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                            lineNumber: 121,
+                                                            lineNumber: 112,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                        lineNumber: 117,
+                                                        lineNumber: 108,
                                                         columnNumber: 37
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 116,
+                                                    lineNumber: 107,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Edit"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 124,
+                                                    lineNumber: 115,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                            lineNumber: 115,
+                                            lineNumber: 106,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 114,
+                                        lineNumber: 105,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -1740,41 +1800,41 @@ const StreamCategoryTable = ()=>{
                                                             size: 18
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                            lineNumber: 131,
+                                                            lineNumber: 122,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                        lineNumber: 130,
+                                                        lineNumber: 121,
                                                         columnNumber: 37
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 129,
+                                                    lineNumber: 120,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Delete"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 134,
+                                                    lineNumber: 125,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                            lineNumber: 128,
+                                            lineNumber: 119,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 127,
+                                        lineNumber: 118,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 113,
+                                lineNumber: 104,
                                 columnNumber: 21
                             }, this)
                     }["StreamCategoryTable.useMemo[columns]"],
@@ -1808,7 +1868,7 @@ const StreamCategoryTable = ()=>{
         children: "Loading categories..."
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 162,
+        lineNumber: 153,
         columnNumber: 13
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1816,7 +1876,7 @@ const StreamCategoryTable = ()=>{
         children: error
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 167,
+        lineNumber: 158,
         columnNumber: 16
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGrid"], {
@@ -1831,7 +1891,7 @@ const StreamCategoryTable = ()=>{
                             children: "Stream Categories"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                            lineNumber: 173,
+                            lineNumber: 164,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardToolbar"], {
@@ -1841,7 +1901,7 @@ const StreamCategoryTable = ()=>{
                                     className: "absolute start-2 text-primary duration-300 top-1/2 -translate-y-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 175,
+                                    lineNumber: 166,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1851,7 +1911,7 @@ const StreamCategoryTable = ()=>{
                                     className: "ps-9 max-w-[300px] w-full"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 176,
+                                    lineNumber: 167,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1860,24 +1920,24 @@ const StreamCategoryTable = ()=>{
                                     onClick: ()=>setSearchQuery(""),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 188,
+                                        lineNumber: 179,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 183,
+                                    lineNumber: 174,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                            lineNumber: 174,
+                            lineNumber: 165,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 172,
+                    lineNumber: 163,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTable"], {
@@ -1885,47 +1945,47 @@ const StreamCategoryTable = ()=>{
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 195,
+                                lineNumber: 186,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 196,
+                                lineNumber: 187,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                        lineNumber: 194,
+                        lineNumber: 185,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 193,
+                    lineNumber: 184,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
                         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                        lineNumber: 200,
+                        lineNumber: 191,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 199,
+                    lineNumber: 190,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-            lineNumber: 171,
+            lineNumber: 162,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 170,
+        lineNumber: 161,
         columnNumber: 9
     }, this);
 };
@@ -1945,4 +2005,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }}),
 }]);
 
-//# sourceMappingURL=_3e05f404._.js.map
+//# sourceMappingURL=_fbc56f10._.js.map

@@ -30,6 +30,7 @@ import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import { useStreamCategory } from "./stream-category-context";
+import { getStreamCategories } from "@/app/api/categories/streamcategories";
 
 const StreamCategoryTable = () => {
     const {
@@ -50,18 +51,9 @@ const StreamCategoryTable = () => {
             try {
                 setLoading(true);
                 const token = localStorage.getItem("token");
-                if (!token) throw new Error("Token not found");
-
-                const res = await fetch(
-                    "https://wiqiapi.testenvapp.com/api/admin/getStreamCategory?limit=1000",
-                    {
-                        headers: { Authorization: `Bearer ${token}` },
-                    }
-                );
-                const data = await res.json();
-                if (!res.ok || !data.success)
-                    throw new Error(data.message || "Failed to fetch");
-                setStreamCategories(data.data.data || []);
+                const data = await getStreamCategories(token);
+                setStreamCategories(data);
+                setError(null);
             } catch (err) {
                 setError(err.message);
             } finally {

@@ -1884,7 +1884,7 @@ const GetUserTable = ()=>{
                     }["GetUserTable.useMemo[columns]"],
                     cell: {
                         "GetUserTable.useMemo[columns]": ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: `${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}/uploads/${row.original.image}`,
+                                src: `${row.original.image}`,
                                 alt: `${row.original.firstName} ${row.original.lastName}`,
                                 className: "w-8 h-8 rounded-full object-cover object-center border"
                             }, void 0, false, {

@@ -307,9 +307,9 @@ export default function SubCreateCategory() {
                             </CardFooter>
                         </Card>
                     </div>
-                    <Toaster position="top-right" />
                 </DialogContent>
             </Dialog>
+            <Toaster position="top-right" />
         </div>
     );
 }

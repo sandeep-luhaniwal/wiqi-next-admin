@@ -1908,9 +1908,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-table.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-pagination.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '../../../../api/categories/'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1935,6 +1941,26 @@ function AllTypeCategory() {
     });
     const [sorting, setSorting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    // useEffect(() => {
+    //     const fetchCategories = async () => {
+    //         try {
+    //             setLoading(true);
+    //             const token = localStorage.getItem("token");
+    //             if (!token) throw new Error("Token not found");
+    //             const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory?limit===10000000", {
+    //                 headers: { Authorization: `Bearer ${token}` },
+    //             });
+    //             const data = await res.json();
+    //             if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
+    //             setCategories(data.data.data || []);
+    //         } catch (err) {
+    //             setError(err.message);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
+    //     fetchCategories();
+    // }, [refreshFlag]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AllTypeCategory.useEffect": ()=>{
             const fetchCategories = {
@@ -1942,15 +1968,8 @@ function AllTypeCategory() {
                     try {
                         setLoading(true);
                         const token = localStorage.getItem("token");
-                        if (!token) throw new Error("Token not found");
-                        const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory?limit===10000000", {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
-                        });
-                        const data = await res.json();
-                        if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
-                        setCategories(data.data.data || []);
+                        const data = await getCategories(token);
+                        setCategories(data);
                     } catch (err) {
                         setError(err.message);
                     } finally{
@@ -1987,7 +2006,7 @@ function AllTypeCategory() {
                                 children: "Image"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 60,
+                                lineNumber: 76,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -1998,14 +2017,14 @@ function AllTypeCategory() {
                                 className: "w-12 h-12 rounded object-cover border"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 61,
+                                lineNumber: 77,
                                 columnNumber: 53
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-gray-400 text-sm",
                                 children: "No Image"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 61,
+                                lineNumber: 77,
                                 columnNumber: 162
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2022,7 +2041,7 @@ function AllTypeCategory() {
                                 children: "Name"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 67,
+                                lineNumber: 83,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2033,14 +2052,14 @@ function AllTypeCategory() {
                                 children: row.original.name
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 70,
+                                lineNumber: 86,
                                 columnNumber: 21
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-gray-400",
                                 children: "Null"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 77,
+                                lineNumber: 93,
                                 columnNumber: 21
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2057,7 +2076,7 @@ function AllTypeCategory() {
                                 children: "Title"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 84,
+                                lineNumber: 100,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2068,16 +2087,16 @@ function AllTypeCategory() {
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipTrigger"], {
                                             asChild: true,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "truncate block max-w-[350px] cursor-help",
+                                                className: "truncate block max-w-max cursor-help",
                                                 children: row.original.title
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                lineNumber: 89,
+                                                lineNumber: 105,
                                                 columnNumber: 29
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                            lineNumber: 88,
+                                            lineNumber: 104,
                                             columnNumber: 25
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
@@ -2086,18 +2105,18 @@ function AllTypeCategory() {
                                             children: row.original.title
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                            lineNumber: 91,
+                                            lineNumber: 107,
                                             columnNumber: 25
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                    lineNumber: 87,
+                                    lineNumber: 103,
                                     columnNumber: 21
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 86,
+                                lineNumber: 102,
                                 columnNumber: 17
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2114,7 +2133,7 @@ function AllTypeCategory() {
                                 children: "Type"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 100,
+                                lineNumber: 116,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2125,7 +2144,7 @@ function AllTypeCategory() {
                                 children: row.original.type
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 101,
+                                lineNumber: 117,
                                 columnNumber: 32
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2142,7 +2161,7 @@ function AllTypeCategory() {
                                 children: "URL"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 107,
+                                lineNumber: 123,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2164,31 +2183,31 @@ function AllTypeCategory() {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                        lineNumber: 119,
+                                                        lineNumber: 135,
                                                         columnNumber: 37
                                                     }, this),
                                                     " Visit"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                lineNumber: 113,
+                                                lineNumber: 129,
                                                 columnNumber: 33
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-gray-400",
                                                 children: "Null"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                lineNumber: 122,
+                                                lineNumber: 138,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                            lineNumber: 111,
+                                            lineNumber: 127,
                                             columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                        lineNumber: 110,
+                                        lineNumber: 126,
                                         columnNumber: 21
                                     }, this),
                                     row.original.url && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
@@ -2197,13 +2216,13 @@ function AllTypeCategory() {
                                         children: row.original.url
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                        lineNumber: 127,
+                                        lineNumber: 143,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 109,
+                                lineNumber: 125,
                                 columnNumber: 17
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2217,7 +2236,7 @@ function AllTypeCategory() {
                                 children: "Actions"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 137,
+                                lineNumber: 153,
                                 columnNumber: 27
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2245,35 +2264,35 @@ function AllTypeCategory() {
                                                             size: 18
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                            lineNumber: 148,
+                                                            lineNumber: 164,
                                                             columnNumber: 110
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                        lineNumber: 144,
+                                                        lineNumber: 160,
                                                         columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                    lineNumber: 143,
+                                                    lineNumber: 159,
                                                     columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Edit"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                    lineNumber: 150,
+                                                    lineNumber: 166,
                                                     columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                            lineNumber: 142,
+                                            lineNumber: 158,
                                             columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                        lineNumber: 141,
+                                        lineNumber: 157,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -2287,41 +2306,41 @@ function AllTypeCategory() {
                                                             size: 18
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                            lineNumber: 156,
+                                                            lineNumber: 172,
                                                             columnNumber: 100
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                        lineNumber: 156,
+                                                        lineNumber: 172,
                                                         columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                    lineNumber: 155,
+                                                    lineNumber: 171,
                                                     columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Delete"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 174,
                                                     columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                            lineNumber: 154,
+                                            lineNumber: 170,
                                             columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                        lineNumber: 153,
+                                        lineNumber: 169,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 139,
+                                lineNumber: 155,
                                 columnNumber: 17
                             }, this)
                     }["AllTypeCategory.useMemo[columns]"],
@@ -2355,7 +2374,7 @@ function AllTypeCategory() {
         children: "Loading categories..."
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-        lineNumber: 182,
+        lineNumber: 198,
         columnNumber: 25
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2363,7 +2382,7 @@ function AllTypeCategory() {
         children: error
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-        lineNumber: 183,
+        lineNumber: 199,
         columnNumber: 23
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGrid"], {
@@ -2378,7 +2397,7 @@ function AllTypeCategory() {
                             children: "Categories"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                            lineNumber: 189,
+                            lineNumber: 205,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardToolbar"], {
@@ -2388,7 +2407,7 @@ function AllTypeCategory() {
                                     className: "absolute start-2 text-primary top-1/2 -translate-y-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                    lineNumber: 191,
+                                    lineNumber: 207,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2398,7 +2417,7 @@ function AllTypeCategory() {
                                     className: "ps-9 max-w-[300px] w-full"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                    lineNumber: 192,
+                                    lineNumber: 208,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2407,24 +2426,24 @@ function AllTypeCategory() {
                                     onClick: ()=>setSearchQuery(""),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                        lineNumber: 198,
+                                        lineNumber: 214,
                                         columnNumber: 162
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                    lineNumber: 198,
+                                    lineNumber: 214,
                                     columnNumber: 41
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                            lineNumber: 190,
+                            lineNumber: 206,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                    lineNumber: 188,
+                    lineNumber: 204,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTable"], {
@@ -2432,47 +2451,47 @@ function AllTypeCategory() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 203,
+                                lineNumber: 219,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                                lineNumber: 204,
+                                lineNumber: 220,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                        lineNumber: 202,
+                        lineNumber: 218,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                    lineNumber: 201,
+                    lineNumber: 217,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                        lineNumber: 208,
+                        lineNumber: 224,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-                    lineNumber: 207,
+                    lineNumber: 223,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-            lineNumber: 187,
+            lineNumber: 203,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
-        lineNumber: 186,
+        lineNumber: 202,
         columnNumber: 9
     }, this);
 }

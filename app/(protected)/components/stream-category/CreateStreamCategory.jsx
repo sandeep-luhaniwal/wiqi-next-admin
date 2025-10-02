@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useStreamCategory } from "./stream-category-context";
 
 // ✅ Shadcn Dialog import
@@ -16,13 +16,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { createStreamCategory, updateStreamCategory } from "@/app/api/categories/streamcategories";
 
 const CreateStreamCategory = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { streamCategoryToEdit, triggerRefresh } = useStreamCategory();
+  const { streamCategoryToEdit, triggerRefresh, setStreamCategoryToEdit } =
+    useStreamCategory();
 
   // 🔹 Populate form if editing
   useEffect(() => {
@@ -44,6 +46,7 @@ const CreateStreamCategory = () => {
   const resetForm = () => {
     setName("");
     setError("");
+    setStreamCategoryToEdit(null); // ✅ context reset
   };
 
   const handleSubmit = async (e) => {
@@ -55,33 +58,20 @@ const CreateStreamCategory = () => {
 
     try {
       const token = localStorage.getItem("token");
-      if (!token) throw new Error("Token not found");
+      let data;
 
-      const url = streamCategoryToEdit
-        ? `https://wiqiapi.testenvapp.com/api/admin/updateStreamCategory/${streamCategoryToEdit._id}`
-        : "https://wiqiapi.testenvapp.com/api/admin/streamCategory";
-
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        toast.success(data.message || "Stream category saved successfully!");
-        triggerRefresh();
-        resetForm();
-        setOpen(false);
+      if (streamCategoryToEdit) {
+        data = await updateStreamCategory(token, streamCategoryToEdit._id, name);
       } else {
-        toast.error(data.message || "Failed to save category.");
+        data = await createStreamCategory(token, name);
       }
+
+      toast.success(data.message || "Stream category saved successfully!");
+      triggerRefresh();
+      resetForm();
+      setOpen(false);
     } catch (err) {
-      toast.error("Something went wrong!");
+      toast.error(err.message || "Something went wrong!");
     }
   };
 
@@ -106,7 +96,9 @@ const CreateStreamCategory = () => {
         <DialogContent className="w-[95%] max-w-[500px] !px-0 md:!p-5">
           <DialogHeader>
             <DialogTitle>
-              {streamCategoryToEdit ? "Edit Stream Category" : "Create Stream Category"}
+              {streamCategoryToEdit
+                ? "Edit Stream Category"
+                : "Create Stream Category"}
             </DialogTitle>
           </DialogHeader>
 
@@ -121,7 +113,9 @@ const CreateStreamCategory = () => {
                     value={name}
                     onChange={handleChange}
                   />
-                  {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+                  {error && (
+                    <p className="text-red-500 text-sm mt-1">{error}</p>
+                  )}
                 </div>
               </CardContent>
               <CardFooter className="flex justify-end gap-3">
@@ -143,6 +137,7 @@ const CreateStreamCategory = () => {
           </Card>
         </DialogContent>
       </Dialog>
+      <Toaster position="top-right" />
     </div>
   );
 };

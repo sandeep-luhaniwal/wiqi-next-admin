@@ -51,14 +51,14 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/app/(protected)/components/stream-category/stream-category-context.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"[project]/app/(protected)/components/category/create-category/category-context.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "StreamCategoryProvider": (()=>StreamCategoryProvider),
-    "useStreamCategory": (()=>useStreamCategory)
+    "CategoryProvider": (()=>CategoryProvider),
+    "useCategory": (()=>useCategory)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
@@ -66,59 +66,63 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 "use client";
 ;
-const StreamCategoryContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])();
-const StreamCategoryProvider = ({ children })=>{
+const CategoryContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])();
+const CategoryProvider = ({ children })=>{
     _s();
-    const [streamCategories, setStreamCategories] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [streamCategoryToEdit, setStreamCategoryToEdit] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [categories, setCategories] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [categoryToEdit, setCategoryToEdit] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [refreshFlag, setRefreshFlag] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const triggerRefresh = ()=>setRefreshFlag((prev)=>!prev);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StreamCategoryContext.Provider, {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CategoryContext.Provider, {
         value: {
-            streamCategories,
-            setStreamCategories,
-            streamCategoryToEdit,
-            setStreamCategoryToEdit,
+            categories,
+            setCategories,
+            categoryToEdit,
+            setCategoryToEdit,
             refreshFlag,
             triggerRefresh
         },
         children: children
     }, void 0, false, {
-        fileName: "[project]/app/(protected)/components/stream-category/stream-category-context.js",
+        fileName: "[project]/app/(protected)/components/category/create-category/category-context.js",
         lineNumber: 15,
         columnNumber: 9
     }, this);
 };
-_s(StreamCategoryProvider, "xeWEWC9qX61FflVnhg/pGV2hYKY=");
-_c = StreamCategoryProvider;
-const useStreamCategory = ()=>{
+_s(CategoryProvider, "xP1EFq1xrwEY9VcP8vcqpWIadc0=");
+_c = CategoryProvider;
+const useCategory = ()=>{
     _s1();
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(StreamCategoryContext);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(CategoryContext);
 };
-_s1(useStreamCategory, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
+_s1(useCategory, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
 var _c;
-__turbopack_context__.k.register(_c, "StreamCategoryProvider");
+__turbopack_context__.k.register(_c, "CategoryProvider");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"[project]/app/(protected)/components/category/create-category/CreateCategory.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": (()=>CreateCategory)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/label.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/(protected)/components/stream-category/stream-category-context.js [app-client] (ecmascript)");
-// ✅ Shadcn Dialog import
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/select.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pencil$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pencil$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/pencil.js [app-client] (ecmascript) <export default as Pencil>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/upload.js [app-client] (ecmascript) <export default as Upload>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/(protected)/components/category/create-category/category-context.js [app-client] (ecmascript)");
+// Shadcn dialog
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/dialog.jsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -131,55 +135,96 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const CreateStreamCategory = ()=>{
+;
+;
+function CreateCategory() {
     _s();
-    const [name, setName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const { categoryToEdit, setCategoryToEdit, triggerRefresh } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCategory"])();
+    const [name, setName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [url, setUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [type, setType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [imageFile, setImageFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [preview, setPreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [errors, setErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Dialog open state
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const { streamCategoryToEdit, triggerRefresh, setStreamCategoryToEdit } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"])();
-    // 🔹 Populate form if editing
+    // Reset form function
+    const resetForm = ()=>{
+        setName(null);
+        setTitle("");
+        setUrl(null);
+        setType("");
+        setImageFile(null);
+        setPreview(null);
+        setErrors({});
+        setCategoryToEdit(null);
+    };
+    // Fill form when editing
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "CreateStreamCategory.useEffect": ()=>{
-            if (streamCategoryToEdit) {
-                setName(streamCategoryToEdit.name || "");
-                setError("");
-                setOpen(true); // edit ke time pe dialog khul jaye
+        "CreateCategory.useEffect": ()=>{
+            if (categoryToEdit) {
+                setName(categoryToEdit.name || null);
+                setTitle(categoryToEdit.title || "");
+                setUrl(categoryToEdit.url || null);
+                setType(categoryToEdit.type || "");
+                setPreview(categoryToEdit.image || null);
+                setImageFile(null);
+                setOpen(true); // edit mode mai open karo
             }
         }
-    }["CreateStreamCategory.useEffect"], [
-        streamCategoryToEdit
+    }["CreateCategory.useEffect"], [
+        categoryToEdit
     ]);
-    const handleChange = (e)=>{
-        const value = e.target.value;
-        const capitalized = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-        setName(capitalized);
-        if (capitalized.trim() !== "") setError("");
+    const validate = ()=>{
+        const newErrors = {};
+        if (!name && !url) {
+            newErrors.name = "Either Name or URL is required";
+        }
+        if (name && url) {
+            newErrors.name = "You cannot provide both Name and URL";
+            newErrors.url = "You cannot provide both Name and URL";
+        }
+        if (!title.trim()) newErrors.title = "Title is required";
+        if (!type.trim()) newErrors.type = "Type is required";
+        if (!imageFile && !preview) newErrors.image = "Image is required";
+        return newErrors;
     };
-    const resetForm = ()=>{
-        setName("");
-        setError("");
-        setStreamCategoryToEdit(null); // ✅ context reset
+    const handleImageChange = (file)=>{
+        if (file) {
+            setImageFile(file);
+            setPreview(URL.createObjectURL(file));
+        }
     };
-    const handleSubmit = async (e)=>{
-        e.preventDefault();
-        if (!name.trim()) {
-            setError("Category name is required.");
+    const handleSubmit = async ()=>{
+        setErrors({});
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
             return;
         }
+        setLoading(true);
         try {
             const token = localStorage.getItem("token");
-            let data;
-            if (streamCategoryToEdit) {
-                data = await updateStreamCategory(token, streamCategoryToEdit._id, name);
-            } else {
-                data = await createStreamCategory(token, name);
-            }
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(data.message || "Stream category saved successfully!");
+            if (!token) throw new Error("Token not found");
+            const formData = new FormData();
+            if (name !== null) formData.append("name", name);
+            formData.append("title", title);
+            formData.append("type", type);
+            if (url !== null) formData.append("url", url);
+            if (categoryToEdit?._id) formData.append("id", categoryToEdit._id);
+            if (imageFile) formData.append("image", imageFile);
+            // Use API functions
+            const data = categoryToEdit ? await updateCategory(token, formData) : await createCategory(token, formData);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(categoryToEdit ? "Category updated!" : "Category created!");
             triggerRefresh();
-            resetForm();
             setOpen(false);
+            resetForm();
         } catch (err) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(err.message || "Something went wrong!");
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(err.message || "Something went wrong");
+        } finally{
+            setLoading(false);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -188,7 +233,7 @@ const CreateStreamCategory = ()=>{
                 open: open,
                 onOpenChange: (o)=>{
                     setOpen(o);
-                    if (!o) resetForm();
+                    if (!o) resetForm(); // ✅ jab modal close hoga, reset form
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTrigger"], {
@@ -198,98 +243,400 @@ const CreateStreamCategory = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-primary font-semibold text-2xl",
-                                    children: "Create & Manage Stream Categories"
+                                    children: "Create & Manage Categories"
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 88,
-                                    columnNumber: 13
+                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                    lineNumber: 145,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     onClick: ()=>setOpen(true),
-                                    children: "+ Add Stream Category"
+                                    children: "+ Add Category"
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 91,
-                                    columnNumber: 13
+                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                    lineNumber: 146,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                            lineNumber: 87,
-                            columnNumber: 11
+                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                            lineNumber: 144,
+                            columnNumber: 21
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                        lineNumber: 86,
-                        columnNumber: 9
+                        fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                        lineNumber: 143,
+                        columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
-                        className: "w-[95%] max-w-[500px] !px-0 md:!p-5",
+                        className: "w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTitle"], {
-                                    children: streamCategoryToEdit ? "Edit Stream Category" : "Create Stream Category"
+                                    children: categoryToEdit ? "Edit Category" : "Create New Category"
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 97,
-                                    columnNumber: 13
+                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                    lineNumber: 152,
+                                    columnNumber: 25
                                 }, this)
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                lineNumber: 96,
-                                columnNumber: 11
+                                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                lineNumber: 151,
+                                columnNumber: 21
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                className: "w-full shadow-none border-none",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                    onSubmit: handleSubmit,
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "overflow-y-auto max-h-[75vh] pr-2",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                                    className: "w-full shadow-none border-none",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                            className: "space-y-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                                        htmlFor: "name",
-                                                        children: "Category Name"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 108,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                        id: "name",
-                                                        placeholder: "Enter category name",
-                                                        value: name,
-                                                        onChange: handleChange
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 109,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-red-500 text-sm mt-1",
-                                                        children: error
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                        lineNumber: 116,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                lineNumber: 107,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                            lineNumber: 106,
-                                            columnNumber: 15
+                                            className: "space-y-5",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "grid grid-cols-1 md:grid-cols-2 gap-5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                    htmlFor: "name",
+                                                                    children: "Name"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 162,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    id: "name",
+                                                                    placeholder: "Enter Name",
+                                                                    value: name || "",
+                                                                    onChange: (e)=>{
+                                                                        const val = e.target.value.trim();
+                                                                        setName(val === "" ? null : val);
+                                                                    }
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 163,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                    className: "text-sm text-red-600",
+                                                                    children: errors.name
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 172,
+                                                                    columnNumber: 57
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 161,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                    htmlFor: "title",
+                                                                    children: "Title"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 175,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    id: "title",
+                                                                    placeholder: "Enter Title",
+                                                                    value: title,
+                                                                    onChange: (e)=>setTitle(e.target.value)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 176,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                    className: "text-sm text-red-600",
+                                                                    children: errors.title
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 182,
+                                                                    columnNumber: 58
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 174,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                    htmlFor: "url",
+                                                                    children: "URL (optional)"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 185,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    id: "url",
+                                                                    placeholder: "Enter URL",
+                                                                    value: url || "",
+                                                                    onChange: (e)=>{
+                                                                        const val = e.target.value.trim();
+                                                                        setUrl(val === "" ? null : val);
+                                                                    }
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 186,
+                                                                    columnNumber: 41
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 184,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                    htmlFor: "type",
+                                                                    children: "Type"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 197,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                                    value: type,
+                                                                    onValueChange: (v)=>setType(v),
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                            id: "type",
+                                                                            className: "w-full cursor-pointer",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                                placeholder: "Select Type"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                lineNumber: 200,
+                                                                                columnNumber: 49
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                            lineNumber: 199,
+                                                                            columnNumber: 45
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                    value: "Wiqi Plus",
+                                                                                    children: "Wiqi Plus"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 203,
+                                                                                    columnNumber: 49
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                    value: "Tv",
+                                                                                    children: "Tv"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 204,
+                                                                                    columnNumber: 49
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                    value: "Radio",
+                                                                                    children: "Radio"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 205,
+                                                                                    columnNumber: 49
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                    value: "Shops",
+                                                                                    children: "Shops"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 206,
+                                                                                    columnNumber: 49
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                    value: "Reads",
+                                                                                    children: "Reads"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 207,
+                                                                                    columnNumber: 49
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                            lineNumber: 202,
+                                                                            columnNumber: 45
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 198,
+                                                                    columnNumber: 41
+                                                                }, this),
+                                                                errors.type && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                    className: "text-sm text-red-600",
+                                                                    children: errors.type
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 210,
+                                                                    columnNumber: 57
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 196,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                    lineNumber: 160,
+                                                    columnNumber: 33
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex flex-col gap-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                            children: "Image"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 216,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        preview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "relative w-32 h-32",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                    src: preview,
+                                                                    alt: "Preview",
+                                                                    className: "w-32 h-32 rounded object-cover border"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 219,
+                                                                    columnNumber: 45
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "absolute inset-0 flex items-center justify-center gap-2 bg-black/40 rounded opacity-0 hover:opacity-100 transition",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                            className: "cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pencil$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pencil$3e$__["Pencil"], {
+                                                                                    className: "w-4 h-4 text-blue-600"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 222,
+                                                                                    columnNumber: 53
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                                    type: "file",
+                                                                                    className: "hidden",
+                                                                                    accept: "image/*",
+                                                                                    onChange: (e)=>handleImageChange(e.target.files[0])
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                    lineNumber: 223,
+                                                                                    columnNumber: 53
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                            lineNumber: 221,
+                                                                            columnNumber: 49
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                            type: "button",
+                                                                            onClick: ()=>{
+                                                                                setImageFile(null);
+                                                                                setPreview(null);
+                                                                            },
+                                                                            className: "bg-white p-2 cursor-pointer rounded-full shadow hover:bg-gray-100",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
+                                                                                className: "w-4 h-4 text-red-600"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                                lineNumber: 226,
+                                                                                columnNumber: 53
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                            lineNumber: 225,
+                                                                            columnNumber: 49
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 220,
+                                                                    columnNumber: 45
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 218,
+                                                            columnNumber: 41
+                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "flex items-center justify-center border border-dashed border-gray-400 rounded-lg p-6 cursor-pointer hover:bg-gray-50",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
+                                                                    className: "w-5 h-5 mr-2 text-gray-500"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 232,
+                                                                    columnNumber: 45
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-gray-600",
+                                                                    children: "Choose Image"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 233,
+                                                                    columnNumber: 45
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                    type: "file",
+                                                                    className: "hidden",
+                                                                    accept: "image/*",
+                                                                    onChange: (e)=>handleImageChange(e.target.files[0])
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                                    lineNumber: 234,
+                                                                    columnNumber: 45
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 231,
+                                                            columnNumber: 41
+                                                        }, this),
+                                                        errors.image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-red-600",
+                                                            children: errors.image
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                            lineNumber: 237,
+                                                            columnNumber: 54
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                    lineNumber: 215,
+                                                    columnNumber: 33
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                            lineNumber: 158,
+                                            columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                                             className: "flex justify-end gap-3",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    type: "button",
                                                     variant: "outline",
                                                     onClick: ()=>{
                                                         setOpen(false);
@@ -297,70 +644,70 @@ const CreateStreamCategory = ()=>{
                                                     },
                                                     children: "Cancel"
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                    lineNumber: 121,
-                                                    columnNumber: 17
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                    lineNumber: 243,
+                                                    columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    type: "submit",
-                                                    children: streamCategoryToEdit ? "Update" : "Create"
+                                                    onClick: handleSubmit,
+                                                    disabled: loading,
+                                                    children: loading ? "Saving..." : categoryToEdit ? "Update" : "Create"
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                                    lineNumber: 131,
-                                                    columnNumber: 17
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                                    lineNumber: 246,
+                                                    columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                            lineNumber: 120,
-                                            columnNumber: 15
+                                            fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                            lineNumber: 241,
+                                            columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                    lineNumber: 105,
-                                    columnNumber: 13
+                                    fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                    lineNumber: 157,
+                                    columnNumber: 25
                                 }, this)
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                                lineNumber: 104,
-                                columnNumber: 11
+                                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                                lineNumber: 156,
+                                columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                        lineNumber: 95,
-                        columnNumber: 9
+                        fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                        lineNumber: 150,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                lineNumber: 79,
-                columnNumber: 7
+                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                lineNumber: 136,
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Toaster"], {
                 position: "top-right"
             }, void 0, false, {
-                fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-                lineNumber: 139,
-                columnNumber: 7
+                fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+                lineNumber: 254,
+                columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx",
-        lineNumber: 78,
-        columnNumber: 5
+        fileName: "[project]/app/(protected)/components/category/create-category/CreateCategory.jsx",
+        lineNumber: 135,
+        columnNumber: 9
     }, this);
-};
-_s(CreateStreamCategory, "lVwqEf1kux9EoDOiNFRxqaLUFuc=", false, function() {
+}
+_s(CreateCategory, "TaQ2FkiaRxBTZM5dJ2d6P5Atz58=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCategory"]
     ];
 });
-_c = CreateStreamCategory;
-const __TURBOPACK__default__export__ = CreateStreamCategory;
+_c = CreateCategory;
 var _c;
-__turbopack_context__.k.register(_c, "CreateStreamCategory");
+__turbopack_context__.k.register(_c, "CreateCategory");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
@@ -1523,13 +1870,64 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"[project]/app/api/categories/categories.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "createCategory": (()=>createCategory),
+    "getCategories": (()=>getCategories),
+    "updateCategory": (()=>updateCategory)
+});
+async function getCategories(token) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getCategory?limit=10000000", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
+    return data.data.data || [];
+}
+async function createCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/createCategory", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to create category");
+    return data;
+}
+async function updateCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/updateCategory", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to update category");
+    return data;
+}
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>AllTypeCategory)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
@@ -1539,15 +1937,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$link$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Link2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/link-2.js [app-client] (ecmascript) <export default as Link2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/scroll-area.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/tooltip.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/(protected)/components/category/create-category/category-context.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-table.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-pagination.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/(protected)/components/stream-category/stream-category-context.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$categories$2f$categories$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/api/categories/categories.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -1563,9 +1964,11 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const StreamCategoryTable = ()=>{
+;
+;
+function AllTypeCategory() {
     _s();
-    const { streamCategories, setStreamCategories, refreshFlag, setStreamCategoryToEdit } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"])();
+    const { categories, setCategories, setCategoryToEdit, refreshFlag } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCategory"])();
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [pagination, setPagination] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
@@ -1575,113 +1978,286 @@ const StreamCategoryTable = ()=>{
     const [sorting, setSorting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "StreamCategoryTable.useEffect": ()=>{
+        "AllTypeCategory.useEffect": ()=>{
             const fetchCategories = {
-                "StreamCategoryTable.useEffect.fetchCategories": async ()=>{
+                "AllTypeCategory.useEffect.fetchCategories": async ()=>{
                     try {
                         setLoading(true);
                         const token = localStorage.getItem("token");
-                        if (!token) throw new Error("Token not found");
-                        const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getStreamCategory?limit=1000", {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
-                        });
-                        const data = await res.json();
-                        if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
-                        setStreamCategories(data.data.data || []);
+                        const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$categories$2f$categories$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCategories"])(token);
+                        setCategories(data);
                     } catch (err) {
                         setError(err.message);
                     } finally{
                         setLoading(false);
                     }
                 }
-            }["StreamCategoryTable.useEffect.fetchCategories"];
+            }["AllTypeCategory.useEffect.fetchCategories"];
             fetchCategories();
         }
-    }["StreamCategoryTable.useEffect"], [
-        refreshFlag,
-        setStreamCategories
+    }["AllTypeCategory.useEffect"], [
+        refreshFlag
     ]);
     const filteredData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "StreamCategoryTable.useMemo[filteredData]": ()=>{
-            if (!searchQuery) return streamCategories;
-            return streamCategories.filter({
-                "StreamCategoryTable.useMemo[filteredData]": (cat)=>cat.name?.toLowerCase().includes(searchQuery.toLowerCase())
-            }["StreamCategoryTable.useMemo[filteredData]"]);
+        "AllTypeCategory.useMemo[filteredData]": ()=>{
+            if (!searchQuery) return categories;
+            return categories.filter({
+                "AllTypeCategory.useMemo[filteredData]": (cat)=>cat.name?.toLowerCase().includes(searchQuery.toLowerCase()) || cat.title?.toLowerCase().includes(searchQuery.toLowerCase()) || cat.type?.toLowerCase().includes(searchQuery.toLowerCase())
+            }["AllTypeCategory.useMemo[filteredData]"]);
         }
-    }["StreamCategoryTable.useMemo[filteredData]"], [
+    }["AllTypeCategory.useMemo[filteredData]"], [
         searchQuery,
-        streamCategories
+        categories
     ]);
     const columns = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "StreamCategoryTable.useMemo[columns]": ()=>[
+        "AllTypeCategory.useMemo[columns]": ()=>[
+                {
+                    id: "image",
+                    accessorFn: {
+                        "AllTypeCategory.useMemo[columns]": (row)=>row.image
+                    }["AllTypeCategory.useMemo[columns]"],
+                    header: {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "font-bold",
+                                children: "Image"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 54,
+                                columnNumber: 27
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    cell: {
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: row.original.image,
+                                alt: row.original.name,
+                                className: "w-12 h-12 rounded object-cover border"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 55,
+                                columnNumber: 53
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-gray-400 text-sm",
+                                children: "No Image"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 55,
+                                columnNumber: 162
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    size: 100
+                },
                 {
                     id: "name",
                     accessorFn: {
-                        "StreamCategoryTable.useMemo[columns]": (row)=>row.name
-                    }["StreamCategoryTable.useMemo[columns]"],
+                        "AllTypeCategory.useMemo[columns]": (row)=>row.name
+                    }["AllTypeCategory.useMemo[columns]"],
                     header: {
-                        "StreamCategoryTable.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold",
                                 children: "Name"
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 86,
-                                columnNumber: 31
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 61,
+                                columnNumber: 27
                             }, this)
-                    }["StreamCategoryTable.useMemo[columns]"],
+                    }["AllTypeCategory.useMemo[columns]"],
                     cell: {
-                        "StreamCategoryTable.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>row.original.name ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold truncate block max-w-[150px]",
                                 title: row.original.name,
                                 children: row.original.name
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 88,
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 64,
+                                columnNumber: 21
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-gray-400",
+                                children: "Null"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 71,
                                 columnNumber: 21
                             }, this)
-                    }["StreamCategoryTable.useMemo[columns]"],
+                    }["AllTypeCategory.useMemo[columns]"],
                     size: 150
                 },
                 {
-                    id: "createdAt",
+                    id: "title",
                     accessorFn: {
-                        "StreamCategoryTable.useMemo[columns]": (row)=>row.createdAt
-                    }["StreamCategoryTable.useMemo[columns]"],
+                        "AllTypeCategory.useMemo[columns]": (row)=>row.title
+                    }["AllTypeCategory.useMemo[columns]"],
                     header: {
-                        "StreamCategoryTable.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold",
-                                children: "Created At"
+                                children: "Title"
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 100,
-                                columnNumber: 31
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 78,
+                                columnNumber: 27
                             }, this)
-                    }["StreamCategoryTable.useMemo[columns]"],
+                    }["AllTypeCategory.useMemo[columns]"],
                     cell: {
-                        "StreamCategoryTable.useMemo[columns]": ({ row })=>new Date(row.original.createdAt).toLocaleDateString("en-GB", {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric"
-                            })
-                    }["StreamCategoryTable.useMemo[columns]"],
-                    size: 150
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipTrigger"], {
+                                            asChild: true,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "truncate block max-w-max cursor-help",
+                                                children: row.original.title
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                lineNumber: 83,
+                                                columnNumber: 29
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                            lineNumber: 82,
+                                            columnNumber: 25
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
+                                            side: "top",
+                                            className: "max-w-xs",
+                                            children: row.original.title
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                            lineNumber: 85,
+                                            columnNumber: 25
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                    lineNumber: 81,
+                                    columnNumber: 21
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 80,
+                                columnNumber: 17
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    size: 350
+                },
+                {
+                    id: "type",
+                    accessorFn: {
+                        "AllTypeCategory.useMemo[columns]": (row)=>row.type
+                    }["AllTypeCategory.useMemo[columns]"],
+                    header: {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "font-bold",
+                                children: "Type"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 94,
+                                columnNumber: 27
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    cell: {
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "capitalize truncate block max-w-[150px]",
+                                title: row.original.type,
+                                children: row.original.type
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 95,
+                                columnNumber: 32
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    size: 100
+                },
+                {
+                    id: "URL",
+                    accessorFn: {
+                        "AllTypeCategory.useMemo[columns]": (row)=>row.type
+                    }["AllTypeCategory.useMemo[columns]"],
+                    header: {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "font-bold",
+                                children: "URL"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 101,
+                                columnNumber: 27
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    cell: {
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipTrigger"], {
+                                        asChild: true,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "capitalize truncate block max-w-[150px] cursor-pointer",
+                                            children: row.original.url ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                href: row.original.url,
+                                                target: "_blank",
+                                                rel: "noopener noreferrer",
+                                                className: "text-primary duration-300 hover:text-blue-800 flex items-center gap-1 text-sm",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$link$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Link2$3e$__["Link2"], {
+                                                        size: 16,
+                                                        className: "w-4 h-4"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                        lineNumber: 113,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    " Visit"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                lineNumber: 107,
+                                                columnNumber: 33
+                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-gray-400",
+                                                children: "Null"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                lineNumber: 116,
+                                                columnNumber: 33
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                            lineNumber: 105,
+                                            columnNumber: 25
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                        lineNumber: 104,
+                                        columnNumber: 21
+                                    }, this),
+                                    row.original.url && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
+                                        side: "top",
+                                        className: "max-w-xs break-words",
+                                        children: row.original.url
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                        lineNumber: 121,
+                                        columnNumber: 25
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 103,
+                                columnNumber: 17
+                            }, this)
+                    }["AllTypeCategory.useMemo[columns]"],
+                    size: 90
                 },
                 {
                     id: "actions",
                     header: {
-                        "StreamCategoryTable.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        "AllTypeCategory.useMemo[columns]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold block text-right",
                                 children: "Actions"
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 111,
-                                columnNumber: 31
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 131,
+                                columnNumber: 27
                             }, this)
-                    }["StreamCategoryTable.useMemo[columns]"],
+                    }["AllTypeCategory.useMemo[columns]"],
                     cell: {
-                        "StreamCategoryTable.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        "AllTypeCategory.useMemo[columns]": ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex justify-end gap-3 items-center",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -1691,43 +2267,49 @@ const StreamCategoryTable = ()=>{
                                                     asChild: true,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: {
-                                                            "StreamCategoryTable.useMemo[columns]": ()=>setStreamCategoryToEdit(row.original)
-                                                        }["StreamCategoryTable.useMemo[columns]"],
+                                                            "AllTypeCategory.useMemo[columns]": ()=>{
+                                                                setCategoryToEdit(row.original);
+                                                                window.scrollTo({
+                                                                    top: 0,
+                                                                    behavior: "smooth"
+                                                                });
+                                                            }
+                                                        }["AllTypeCategory.useMemo[columns]"],
                                                         className: "text-primary duration-300 cursor-pointer hover:text-blue-800",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pencil$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pencil$3e$__["Pencil"], {
                                                             size: 18
                                                         }, void 0, false, {
-                                                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                            lineNumber: 121,
-                                                            columnNumber: 41
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                            lineNumber: 142,
+                                                            columnNumber: 110
                                                         }, this)
                                                     }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                        lineNumber: 117,
-                                                        columnNumber: 37
+                                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                        lineNumber: 138,
+                                                        columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 116,
-                                                    columnNumber: 33
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                    lineNumber: 137,
+                                                    columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Edit"
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 124,
-                                                    columnNumber: 33
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                    lineNumber: 144,
+                                                    columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                            lineNumber: 115,
-                                            columnNumber: 29
+                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                            lineNumber: 136,
+                                            columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
-                                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 114,
-                                        columnNumber: 25
+                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                        lineNumber: 135,
+                                        columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
@@ -1739,58 +2321,58 @@ const StreamCategoryTable = ()=>{
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
                                                             size: 18
                                                         }, void 0, false, {
-                                                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                            lineNumber: 131,
-                                                            columnNumber: 41
+                                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                            lineNumber: 150,
+                                                            columnNumber: 100
                                                         }, this)
                                                     }, void 0, false, {
-                                                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                        lineNumber: 130,
-                                                        columnNumber: 37
+                                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                        lineNumber: 150,
+                                                        columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 129,
-                                                    columnNumber: 33
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                    lineNumber: 149,
+                                                    columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Delete"
                                                 }, void 0, false, {
-                                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                                    lineNumber: 134,
-                                                    columnNumber: 33
+                                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                                    lineNumber: 152,
+                                                    columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
-                                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                            lineNumber: 128,
-                                            columnNumber: 29
+                                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                            lineNumber: 148,
+                                            columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
-                                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 127,
-                                        columnNumber: 25
+                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                        lineNumber: 147,
+                                        columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 113,
-                                columnNumber: 21
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 133,
+                                columnNumber: 17
                             }, this)
-                    }["StreamCategoryTable.useMemo[columns]"],
+                    }["AllTypeCategory.useMemo[columns]"],
                     size: 90
                 }
             ]
-    }["StreamCategoryTable.useMemo[columns]"], [
-        setStreamCategoryToEdit
+    }["AllTypeCategory.useMemo[columns]"], [
+        setCategoryToEdit
     ]);
     const table = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$table$2f$build$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["useReactTable"])({
         columns,
         data: filteredData,
         pageCount: Math.ceil(filteredData?.length / pagination.pageSize),
         getRowId: {
-            "StreamCategoryTable.useReactTable[table]": (row)=>String(row._id)
-        }["StreamCategoryTable.useReactTable[table]"],
+            "AllTypeCategory.useReactTable[table]": (row)=>String(row._id)
+        }["AllTypeCategory.useReactTable[table]"],
         state: {
             pagination,
             sorting
@@ -1807,17 +2389,17 @@ const StreamCategoryTable = ()=>{
         className: "flex justify-center items-center min-h-[200px]",
         children: "Loading categories..."
     }, void 0, false, {
-        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 162,
-        columnNumber: 13
+        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+        lineNumber: 176,
+        columnNumber: 25
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-4 bg-red-100 text-red-700 rounded",
         children: error
     }, void 0, false, {
-        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 167,
-        columnNumber: 16
+        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+        lineNumber: 177,
+        columnNumber: 23
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGrid"], {
         table: table,
@@ -1828,20 +2410,20 @@ const StreamCategoryTable = ()=>{
                     className: "py-3.5",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                            children: "Stream Categories"
+                            children: "Categories"
                         }, void 0, false, {
-                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                            lineNumber: 173,
+                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                            lineNumber: 183,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardToolbar"], {
                             className: "relative",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__["Search"], {
-                                    className: "absolute start-2 text-primary duration-300 top-1/2 -translate-y-1/2"
+                                    className: "absolute start-2 text-primary top-1/2 -translate-y-1/2"
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 175,
+                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                    lineNumber: 185,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1850,8 +2432,8 @@ const StreamCategoryTable = ()=>{
                                     onChange: (e)=>setSearchQuery(e.target.value),
                                     className: "ps-9 max-w-[300px] w-full"
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 176,
+                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                    lineNumber: 186,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1859,90 +2441,89 @@ const StreamCategoryTable = ()=>{
                                     className: "absolute end-1.5 top-1/2 -translate-y-1/2 h-6 w-6",
                                     onClick: ()=>setSearchQuery(""),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
-                                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                        lineNumber: 188,
-                                        columnNumber: 33
+                                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                        lineNumber: 192,
+                                        columnNumber: 162
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                    lineNumber: 183,
-                                    columnNumber: 29
+                                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                    lineNumber: 192,
+                                    columnNumber: 41
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                            lineNumber: 174,
+                            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                            lineNumber: 184,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 172,
+                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                    lineNumber: 182,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTable"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollArea"], {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 195,
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 197,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
-                                fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                                lineNumber: 196,
+                                fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                                lineNumber: 198,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                        lineNumber: 194,
+                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                        lineNumber: 196,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
-                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 193,
+                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                    lineNumber: 195,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
-                        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                        lineNumber: 200,
+                        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                        lineNumber: 202,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
-                    fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-                    lineNumber: 199,
+                    fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+                    lineNumber: 201,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-            lineNumber: 171,
+            fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+            lineNumber: 181,
             columnNumber: 13
         }, this)
     }, void 0, false, {
-        fileName: "[project]/app/(protected)/components/stream-category/StreamCategoryTabel.jsx",
-        lineNumber: 170,
+        fileName: "[project]/app/(protected)/components/category/create-category/AllTypeCategory.jsx",
+        lineNumber: 180,
         columnNumber: 9
     }, this);
-};
-_s(StreamCategoryTable, "n72gsM18njOMlxwLr5IKwPpxYDY=", false, function() {
+}
+_s(AllTypeCategory, "Rhv8d1jI2zlMuZxBOuVPLtWMkfQ=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$stream$2d$category$2f$stream$2d$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStreamCategory"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$components$2f$category$2f$create$2d$category$2f$category$2d$context$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCategory"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$table$2f$build$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["useReactTable"]
     ];
 });
-_c = StreamCategoryTable;
-const __TURBOPACK__default__export__ = StreamCategoryTable;
+_c = AllTypeCategory;
 var _c;
-__turbopack_context__.k.register(_c, "StreamCategoryTable");
+__turbopack_context__.k.register(_c, "AllTypeCategory");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
 }]);
 
-//# sourceMappingURL=_3e05f404._.js.map
+//# sourceMappingURL=_a29e28a7._.js.map
