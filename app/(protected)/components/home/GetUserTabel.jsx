@@ -152,7 +152,7 @@ const GetUserTable = () => {
                 header: () => <span className="font-bold">Details</span>,
                 cell: ({ row }) => (
                     <button
-                        onClick={() => router.push(`/admin/user/${row.original.id}`)}
+                        onClick={() => router.push(`/user/${row.original.id}`)}
                         className="flex justify-center w-full cursor-pointer text-primary hover:underline"
                     >
                         <Eye className="h-4 w-4" />
