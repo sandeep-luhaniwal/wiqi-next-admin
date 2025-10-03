@@ -26,6 +26,7 @@ import { DataGridTable } from '@/components/ui/data-grid-table';
 import { Input } from '@/components/ui/input';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Skeleton } from '@/components/ui/skeleton';
+import Image from 'next/image';
 
 const GetUserTable = () => {
     const router = useRouter();
@@ -135,13 +136,14 @@ const GetUserTable = () => {
                 header: () => <span className="font-bold">Image</span>,
                 cell: ({ row }) =>
                     row.original.image ? (
-                        <img
+                        <Image width={48} height={48}
                             src={`${row.original.image}`}
                             alt={`${row.original.firstName} ${row.original.lastName}`}
-                            className="w-8 h-8 rounded-full object-cover object-center border"
+                            className="w-12 h-12 rounded-full object-cover object-center border border-primary"
                         />
                     ) : (
-                        <span className="text-gray-400 text-sm">No Image</span>
+                        // <span className="text-gray-400 text-sm">No Image</span>
+                        <Image src={'/media/images/svg/userprofile.svg'} className='border rounded-full border-primary' width={48} height={48} alt='no img found' />
                     ),
                 size: 100,
             },

@@ -3512,7 +3512,7 @@ function StoreClientWrapper({ children }) {
         ]
     }, void 0, true);
 }
-_s(StoreClientWrapper, "WMZ8AIwopQZwleVQ2mkrjMk7FrU=", false, function() {
+_s(StoreClientWrapper, "TLpbtEo5BQTSbUzMLjA7z7FK9xo=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$protected$292f$store$2d$client$2f$components$2f$context$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStoreClient"]
     ];

@@ -13,6 +13,7 @@ import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SubCategoryTable() {
     const { subCategories, setSubCategories, setSubCategoryToEdit, refreshFlag } = useSubCategory();
@@ -62,8 +63,8 @@ export default function SubCategoryTable() {
             accessorFn: row => row.image,
             header: () => <span className="font-bold">Image</span>,
             cell: ({ row }) => row.original.image ? (
-                <img src={row.original.image} alt={row.original.title} className="w-12 h-12 rounded object-cover border" />
-            ) : <span className="text-gray-400 text-sm">No Image</span>,
+                <Image width={48} height={48} src={row.original.image} alt={row.original.title} className="w-12 h-12 rounded object-cover border" />
+            ) : <Image src={'/media/images/svg/userprofile.svg'} width={48} height={48} alt='no img found' />,
             size: 100,
         },
         {

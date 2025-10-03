@@ -116,7 +116,7 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 async function createStreamCategory(token, name) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/streamCategory`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://9ea028d19b92.ngrok-free.app/")}api/admin/streamCategory`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -132,7 +132,7 @@ async function createStreamCategory(token, name) {
 }
 async function updateStreamCategory(token, id, name) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/updateStreamCategory`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://9ea028d19b92.ngrok-free.app/")}api/admin/updateStreamCategory`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -149,7 +149,7 @@ async function updateStreamCategory(token, id, name) {
 }
 async function getStreamCategories(token, limit = 100000) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getStreamCategory?limit=${limit}`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://9ea028d19b92.ngrok-free.app/")}api/admin/getStreamCategory?limit=${limit}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

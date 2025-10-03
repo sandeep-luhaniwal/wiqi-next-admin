@@ -79,6 +79,14 @@ export const MENU_SIDEBAR = [
      
     ]
   },
+  {
+    title: 'Get Post Details',
+    icon: Users2,
+    children: [
+      { title: 'Stream Create', path: '/post' },
+     
+    ]
+  },
   // {
   //   title: 'Public Profile',
   //   icon: UserCircle,
