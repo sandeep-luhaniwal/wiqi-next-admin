@@ -1844,6 +1844,7 @@ function SubCategoryTable() {
                     }
                 });
                 const data = await res.json();
+                console.log("uisdyadfsiuy", data);
                 if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
                 setSubCategories(data.data.data || []);
             } catch (err) {
@@ -1874,7 +1875,7 @@ function SubCategoryTable() {
                         children: "Image"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 64,
+                        lineNumber: 65,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1885,7 +1886,7 @@ function SubCategoryTable() {
                         className: "w-12 h-12 rounded object-cover border"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 66,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         src: '/media/images/svg/userprofile.svg',
@@ -1894,7 +1895,7 @@ function SubCategoryTable() {
                         alt: "no img found"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 67,
+                        lineNumber: 68,
                         columnNumber: 17
                     }, this),
                 size: 100
@@ -1907,7 +1908,7 @@ function SubCategoryTable() {
                         children: "Title"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 73,
+                        lineNumber: 74,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -1920,12 +1921,12 @@ function SubCategoryTable() {
                                         children: row.original.title
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                        lineNumber: 78,
+                                        lineNumber: 79,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipContent"], {
@@ -1934,18 +1935,18 @@ function SubCategoryTable() {
                                     children: row.original.title
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 80,
+                                    lineNumber: 81,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                            lineNumber: 76,
+                            lineNumber: 77,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 75,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, this),
                 size: 300
@@ -1958,7 +1959,7 @@ function SubCategoryTable() {
                         children: "Parent Category"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 89,
+                        lineNumber: 90,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1966,7 +1967,7 @@ function SubCategoryTable() {
                         children: row.original.categoryId?.name || "Null"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 90,
+                        lineNumber: 91,
                         columnNumber: 32
                     }, this),
                 size: 150
@@ -1979,7 +1980,7 @@ function SubCategoryTable() {
                         children: "Type"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 96,
+                        lineNumber: 97,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1987,7 +1988,7 @@ function SubCategoryTable() {
                         children: row.original.type
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 97,
+                        lineNumber: 98,
                         columnNumber: 32
                     }, this),
                 size: 100
@@ -2000,7 +2001,7 @@ function SubCategoryTable() {
                         children: "URL"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 103,
+                        lineNumber: 104,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>row.original.url ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -2017,19 +2018,19 @@ function SubCategoryTable() {
                                                 size: 16
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                                lineNumber: 114,
+                                                lineNumber: 115,
                                                 columnNumber: 37
                                             }, this),
                                             " Visit"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                        lineNumber: 109,
+                                        lineNumber: 110,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 108,
+                                    lineNumber: 109,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipContent"], {
@@ -2037,23 +2038,23 @@ function SubCategoryTable() {
                                         children: row.original.url
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                        lineNumber: 118,
+                                        lineNumber: 119,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 117,
+                                    lineNumber: 118,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                            lineNumber: 107,
+                            lineNumber: 108,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 106,
+                        lineNumber: 107,
                         columnNumber: 21
                     }, this) : "Null",
                 size: 85
@@ -2065,7 +2066,7 @@ function SubCategoryTable() {
                         children: "Actions"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 128,
+                        lineNumber: 129,
                         columnNumber: 27
                     }, this),
                 cell: ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2089,35 +2090,35 @@ function SubCategoryTable() {
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                                    lineNumber: 137,
+                                                    lineNumber: 138,
                                                     columnNumber: 109
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                                lineNumber: 134,
+                                                lineNumber: 135,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                            lineNumber: 133,
+                                            lineNumber: 134,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                             children: "Edit"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                            lineNumber: 139,
+                                            lineNumber: 140,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 132,
+                                    lineNumber: 133,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                lineNumber: 131,
+                                lineNumber: 132,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -2131,41 +2132,41 @@ function SubCategoryTable() {
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                                    lineNumber: 145,
+                                                    lineNumber: 146,
                                                     columnNumber: 100
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                                lineNumber: 145,
+                                                lineNumber: 146,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                            lineNumber: 144,
+                                            lineNumber: 145,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                             children: "Delete"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                            lineNumber: 147,
+                                            lineNumber: 148,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 143,
+                                    lineNumber: 144,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                lineNumber: 142,
+                                lineNumber: 143,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 130,
+                        lineNumber: 131,
                         columnNumber: 17
                     }, this),
                 size: 90
@@ -2195,7 +2196,7 @@ function SubCategoryTable() {
         children: "Loading subcategories..."
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-        lineNumber: 171,
+        lineNumber: 172,
         columnNumber: 25
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2203,7 +2204,7 @@ function SubCategoryTable() {
         children: error
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-        lineNumber: 172,
+        lineNumber: 173,
         columnNumber: 23
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataGrid"], {
@@ -2218,7 +2219,7 @@ function SubCategoryTable() {
                             children: "SubCategories"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                            lineNumber: 178,
+                            lineNumber: 179,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardToolbar"], {
@@ -2228,7 +2229,7 @@ function SubCategoryTable() {
                                     className: "absolute start-2 text-primary duration-300 top-1/2 -translate-y-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 180,
+                                    lineNumber: 181,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2238,7 +2239,7 @@ function SubCategoryTable() {
                                     className: "ps-9 max-w-[300px] w-full"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 181,
+                                    lineNumber: 182,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2247,24 +2248,24 @@ function SubCategoryTable() {
                                     onClick: ()=>setSearchQuery(""),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                        lineNumber: 187,
+                                        lineNumber: 188,
                                         columnNumber: 162
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                    lineNumber: 187,
+                                    lineNumber: 188,
                                     columnNumber: 41
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                            lineNumber: 179,
+                            lineNumber: 180,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                    lineNumber: 177,
+                    lineNumber: 178,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTable"], {
@@ -2272,47 +2273,47 @@ function SubCategoryTable() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                lineNumber: 192,
+                                lineNumber: 193,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                                lineNumber: 193,
+                                lineNumber: 194,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 191,
+                        lineNumber: 192,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                    lineNumber: 190,
+                    lineNumber: 191,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
                         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                        lineNumber: 197,
+                        lineNumber: 198,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-                    lineNumber: 196,
+                    lineNumber: 197,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-            lineNumber: 176,
+            lineNumber: 177,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/category/create-sub-category/SubCategoryTabel.jsx",
-        lineNumber: 175,
+        lineNumber: 176,
         columnNumber: 9
     }, this);
 }

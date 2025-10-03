@@ -29,6 +29,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { createCategory, updateCategory } from "@/app/api/categories/categories";
+import Image from "next/image";
 
 export default function CreateCategory() {
     const { categoryToEdit, setCategoryToEdit, triggerRefresh } = useCategory();
@@ -217,7 +218,7 @@ export default function CreateCategory() {
                                     <Label>Image</Label>
                                     {preview ? (
                                         <div className="relative w-32 h-32">
-                                            <img src={preview} alt="Preview" className="w-32 h-32 rounded object-cover border" />
+                                            <Image width={32} height={32} src={preview} alt="Preview" className="w-32 h-32 rounded object-cover border" />
                                             <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 rounded opacity-0 hover:opacity-100 transition">
                                                 <label className="cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100">
                                                     <Pencil className="w-4 h-4 text-blue-600" />

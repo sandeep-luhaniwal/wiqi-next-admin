@@ -53,7 +53,7 @@ export default function AllTypeCategory() {
             id: "image",
             accessorFn: (row) => row.image,
             header: () => <span className="font-bold">Image</span>,
-            cell: ({ row }) => row.original.image ? <Image width={32} height={32} src={row.original.image} alt={row.original.name} className="w-12 h-12 rounded object-cover border" /> :  <Image src={'/media/images/svg/userprofile.svg'} width={32} height={32} alt='no img found' />,
+            cell: ({ row }) => row.original.image ? <Image width={32} height={32} src={row.original.image} alt="user-img" className="w-12 h-12 rounded object-cover border" /> :  <Image src={'/media/images/svg/userprofile.svg'} width={32} height={32} alt='no img found' />,
             size: 100,
         },
         {
