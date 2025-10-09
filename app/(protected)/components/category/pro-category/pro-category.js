@@ -1,29 +1,32 @@
 "use client";
+
 import React, { createContext, useContext, useState } from "react";
 
-const ProductContext = createContext();
+const ProCategoryContext = createContext();
 
-export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-  const [productToEdit, setProductToEdit] = useState(null);
-  const [refreshFlag, setRefreshFlag] = useState(false);
-
+export const ProCategoryProvider = ({ children }) => {
+  const [proCategories, setProCategories] = useState([]); // list
+  const [proCategoryToEdit, setProCategoryToEdit] = useState(null); // edit state
+  const [refreshFlag, setRefreshFlag] = useState(false); // trigger refresh
+  const [open, setOpen] = useState(false);
   const triggerRefresh = () => setRefreshFlag(prev => !prev);
 
   return (
-    <ProductContext.Provider
+    <ProCategoryContext.Provider
       value={{
-        products,
-        setProducts,
-        productToEdit,
-        setProductToEdit,
+        proCategories,
+        setProCategories,
+        proCategoryToEdit,
+        setProCategoryToEdit,
+        open,
+        setOpen,
         refreshFlag,
         triggerRefresh,
       }}
     >
       {children}
-    </ProductContext.Provider>
+    </ProCategoryContext.Provider>
   );
 };
 
-export const useProduct = () => useContext(ProductContext);
+export const useProCategory = () => useContext(ProCategoryContext);

@@ -181,12 +181,12 @@ export default function SubCreateCategory() {
                     if (!o) resetForm();
                 }}
             >
-                <DialogTrigger asChild>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <p className="text-primary font-semibold text-2xl">Create & Manage SubCategories</p>
+                <DialogHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <p className="text-primary font-semibold text-2xl">Create & Manage SubCategories</p>
+                    <DialogTrigger asChild>
                         <Button onClick={() => setOpen(true)}>+ Add SubCategory</Button>
-                    </div>
-                </DialogTrigger>
+                    </DialogTrigger>
+                </DialogHeader>
 
                 <DialogContent className="w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5">
                     <DialogHeader>

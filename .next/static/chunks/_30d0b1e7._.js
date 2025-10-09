@@ -1207,9 +1207,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-table.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/data-grid-pagination.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$getpost$2f$getpost$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/api/getpost/getpost.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -1279,25 +1281,29 @@ function PostTable() {
                                 children: "Image"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 57,
+                                lineNumber: 58,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
                     cell: {
-                        "PostTable.useMemo[columns]": ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        "PostTable.useMemo[columns]": ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                width: 48,
+                                height: 48,
                                 src: row.original.image,
                                 alt: row.original.title,
                                 className: "w-12 h-12 rounded object-cover border"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 60,
+                                lineNumber: 61,
                                 columnNumber: 21
-                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-gray-400 text-sm",
-                                children: "No Image"
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                src: '/media/images/svg/userprofile.svg',
+                                width: 48,
+                                height: 48,
+                                alt: "no img found"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 62,
+                                lineNumber: 63,
                                 columnNumber: 21
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1314,7 +1320,7 @@ function PostTable() {
                                 children: "Title"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 69,
+                                lineNumber: 70,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1334,7 +1340,7 @@ function PostTable() {
                                 children: "Type"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1344,7 +1350,7 @@ function PostTable() {
                                 children: row.original.type
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 77,
+                                lineNumber: 78,
                                 columnNumber: 32
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1361,7 +1367,7 @@ function PostTable() {
                                 children: "Views"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 83,
+                                lineNumber: 84,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1381,7 +1387,7 @@ function PostTable() {
                                 children: "User"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 90,
+                                lineNumber: 91,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1401,7 +1407,7 @@ function PostTable() {
                                 children: "Created At"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 97,
+                                lineNumber: 98,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1418,7 +1424,7 @@ function PostTable() {
                                 children: "Actions"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 103,
+                                lineNumber: 104,
                                 columnNumber: 27
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1437,35 +1443,35 @@ function PostTable() {
                                                             size: 16
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                            lineNumber: 110,
+                                                            lineNumber: 111,
                                                             columnNumber: 37
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 110,
                                                         columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                    lineNumber: 108,
+                                                    lineNumber: 109,
                                                     columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "View Post"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                    lineNumber: 113,
+                                                    lineNumber: 114,
                                                     columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                            lineNumber: 107,
+                                            lineNumber: 108,
                                             columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                        lineNumber: 106,
+                                        lineNumber: 107,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
@@ -1479,41 +1485,41 @@ function PostTable() {
                                                             size: 16
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                            lineNumber: 120,
+                                                            lineNumber: 121,
                                                             columnNumber: 37
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                        lineNumber: 119,
+                                                        lineNumber: 120,
                                                         columnNumber: 33
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                    lineNumber: 118,
+                                                    lineNumber: 119,
                                                     columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                     children: "Delete Post"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                                    lineNumber: 123,
+                                                    lineNumber: 124,
                                                     columnNumber: 29
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                            lineNumber: 117,
+                                            lineNumber: 118,
                                             columnNumber: 25
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                        lineNumber: 116,
+                                        lineNumber: 117,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 105,
+                                lineNumber: 106,
                                 columnNumber: 17
                             }, this)
                     }["PostTable.useMemo[columns]"],
@@ -1545,7 +1551,7 @@ function PostTable() {
         children: "Loading posts..."
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-        lineNumber: 147,
+        lineNumber: 148,
         columnNumber: 25
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1553,7 +1559,7 @@ function PostTable() {
         children: error
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-        lineNumber: 148,
+        lineNumber: 149,
         columnNumber: 23
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGrid"], {
@@ -1568,7 +1574,7 @@ function PostTable() {
                             children: "Posts"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                            lineNumber: 154,
+                            lineNumber: 155,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardToolbar"], {
@@ -1578,7 +1584,7 @@ function PostTable() {
                                     className: "absolute start-2 top-1/2 -translate-y-1/2 text-primary"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                    lineNumber: 156,
+                                    lineNumber: 157,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1588,7 +1594,7 @@ function PostTable() {
                                     className: "ps-9 max-w-[300px] w-full"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                    lineNumber: 157,
+                                    lineNumber: 158,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1597,24 +1603,24 @@ function PostTable() {
                                     onClick: ()=>setSearchQuery(""),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                        lineNumber: 165,
+                                        lineNumber: 166,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                    lineNumber: 164,
+                                    lineNumber: 165,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                            lineNumber: 155,
+                            lineNumber: 156,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                    lineNumber: 153,
+                    lineNumber: 154,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTable"], {
@@ -1622,47 +1628,47 @@ function PostTable() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 172,
+                                lineNumber: 173,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                                lineNumber: 173,
+                                lineNumber: 174,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                        lineNumber: 171,
+                        lineNumber: 172,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                    lineNumber: 170,
+                    lineNumber: 171,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
                         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                        lineNumber: 177,
+                        lineNumber: 178,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-                    lineNumber: 176,
+                    lineNumber: 177,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-            lineNumber: 152,
+            lineNumber: 153,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/post/PostTable.jsx",
-        lineNumber: 151,
+        lineNumber: 152,
         columnNumber: 9
     }, this);
 }

@@ -1,14 +1,15 @@
 import { Container } from "@/components/common/container";
-import { ProductProvider } from "../../components/category/pro-category/pro-category";
 import ProCreateCategory from "../../components/category/pro-category/ProCreateCategory";
+import ProCategoryTabel from "../../components/category/pro-category/ProCategoryTabel";
+import { ProCategoryProvider } from "../../components/category/pro-category/pro-category";
 
 export default function Page() {
     return (
-        <ProductProvider>
+        <ProCategoryProvider>
             <Container className="flex flex-col gap-6">
                 <ProCreateCategory />
-
+                <ProCategoryTabel />
             </Container>
-        </ProductProvider>
+        </ProCategoryProvider>
     );
 }

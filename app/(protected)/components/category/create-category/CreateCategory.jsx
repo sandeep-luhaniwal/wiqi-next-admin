@@ -142,12 +142,13 @@ export default function CreateCategory() {
                     if (!o) resetForm(); // ✅ jab modal close hoga, reset form
                 }}
             >
-                <DialogTrigger asChild>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <p className="text-primary font-semibold text-2xl">Create & Manage Categories</p>
+                <DialogHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <p className="text-primary font-semibold text-2xl">Create & Manage Categories</p>
+                    <DialogTrigger asChild>
                         <Button onClick={() => setOpen(true)}>+ Add Category</Button>
-                    </div>
-                </DialogTrigger>
+                    </DialogTrigger>
+                </DialogHeader>
+
 
                 <DialogContent className="w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5">
                     <DialogHeader>

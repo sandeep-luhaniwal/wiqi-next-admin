@@ -69,7 +69,7 @@ export default function AllTypeCategory() {
                         {row.original.name}
                     </span>
                 ) : (
-                    <span className="text-gray-400">Null</span>
+                    <span className="text-gray-400">N/A</span>
                 ),
             size: 150,
         },
@@ -114,7 +114,7 @@ export default function AllTypeCategory() {
                                     <Link2 size={16} className="w-4 h-4" /> Visit
                                 </Link>
                             ) : (
-                                <span className="text-gray-400">Null</span>
+                                <span className="text-gray-400">N/A</span>
                             )}
                         </span>
                     </TooltipTrigger>

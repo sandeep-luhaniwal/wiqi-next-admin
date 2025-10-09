@@ -31,7 +31,7 @@ export default function SubCategoryTable() {
                 const token = localStorage.getItem("token");
                 if (!token) throw new Error("Token not found");
 
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getSubCategory", {
+                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getSubCategory?limit=100000", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await res.json();
@@ -67,6 +67,23 @@ export default function SubCategoryTable() {
                 <Image width={48} height={48} src={row.original.image} alt={row.original.title} className="w-12 h-12 rounded object-cover border" />
             ) : <Image src={'/media/images/svg/userprofile.svg'} width={48} height={48} alt='no img found' />,
             size: 100,
+        },
+        {
+            id: "name",
+            accessorFn: (row) => row.name,
+            header: () => <span className="font-bold">Name</span>,
+            cell: ({ row }) =>
+                row.original.name ? (
+                    <span
+                        className="font-bold truncate block max-w-[150px]"
+                        title={row.original.name}
+                    >
+                        {row.original.name}
+                    </span>
+                ) : (
+                    <span className="text-gray-400">N/A</span>
+                ),
+            size: 150,
         },
         {
             id: "title",
@@ -120,7 +137,7 @@ export default function SubCategoryTable() {
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
-                ) : "Null"
+                ) : <span className="text-gray-400">N/A</span>
             ),
             size: 85,
         },

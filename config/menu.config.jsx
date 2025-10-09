@@ -14,6 +14,7 @@ import {
   Code,
   Codepen,
   Coffee,
+  Database,
   File as DocumentIcon,
   Euro,
   Eye,
@@ -63,27 +64,27 @@ export const MENU_SIDEBAR = [
     ],
   },
   {
-    title: 'Category',
+    title: 'Categories',
     icon: UserCircle,
     children: [
-      { title: 'Category Create', path: '/category/all-category' },
-      { title: 'Sub Category', path: '/category/sub-category' },
-      { title: 'Pro Sub Category', path: '/category/pro-sub-category' },
+      { title: 'Manage Categories', path: '/category/all-category' },
+      { title: 'Sub Categories', path: '/category/sub-category' },
+      { title: 'Pro Sub Categories', path: '/category/pro-sub-category' },
     ]
   },
   {
-    title: 'Stream Category',
+    title: 'Stream Categories',
     icon: Users2,
     children: [
-      { title: 'Stream Create', path: '/stream-category/all-category' },
+      { title: 'Manage Stream', path: '/stream-category/all-category' },
      
     ]
   },
   {
-    title: 'Get Post Details',
-    icon: Users2,
+    title: 'User Post Details',
+    icon: Database,
     children: [
-      { title: 'Stream Create', path: '/post' },
+      { title: 'User Post', path: '/post' },
      
     ]
   },
