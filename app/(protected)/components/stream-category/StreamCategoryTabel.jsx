@@ -30,7 +30,7 @@ import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import { useStreamCategory } from "./stream-category-context";
-import { getStreamCategories } from "@/app/api/categories/streamcategories";
+import { getStreamCategories } from "@/app/api/categories/categories";
 
 const StreamCategoryTable = () => {
     const {

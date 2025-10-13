@@ -13,9 +13,11 @@ import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import { getPosts } from "@/app/api/getuserdetails/userdetails";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 
 export default function PostTable() {
+    const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -107,7 +109,7 @@ export default function PostTable() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <button className="text-primary hover:text-blue-800">
+                                <button onClick={() => router.push(`/user/${row.original.user?._id}`)} className="text-primary cursor-pointer hover:text-blue-800">
                                     <Eye size={16} />
                                 </button>
                             </TooltipTrigger>
@@ -117,7 +119,7 @@ export default function PostTable() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <button className="text-red-600 hover:text-red-800">
+                                <button className="text-red-600 hover:text-red-800 cursor-pointer">
                                     <Trash2 size={16} />
                                 </button>
                             </TooltipTrigger>

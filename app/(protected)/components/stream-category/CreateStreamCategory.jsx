@@ -16,7 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { createStreamCategory, updateStreamCategory } from "@/app/api/categories/streamcategories";
+import { createStreamCategory, updateStreamCategory, } from "@/app/api/categories/categories";
 
 const CreateStreamCategory = () => {
   const [name, setName] = useState("");

@@ -73,7 +73,7 @@ export default function UserProfilePage() {
     return (
         <div className="p-4 md:p-5 lg:p-6 mx-auto">
             {/* User Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:items-center gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 sm:items-center gap-6 mb-6">
                 <Avatar className="w-[240px] h-[240px] mx-auto">
                     <AvatarImage src={user.image || '/avatar.png'} alt={user.firstName} />
                     <AvatarFallback>{user.firstName?.charAt(0)}</AvatarFallback>

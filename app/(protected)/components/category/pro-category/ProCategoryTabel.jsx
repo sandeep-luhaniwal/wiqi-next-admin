@@ -14,6 +14,7 @@ import Image from "next/image";
 import { useProCategory } from "./pro-category";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
+import { fetchProCategories } from "@/app/api/categories/categories";
 
 export default function ProCategoryTable() {
     const { proCategories, setProCategories, setProCategoryToEdit, refreshFlag, setOpen } = useProCategory();
@@ -22,25 +23,15 @@ export default function ProCategoryTable() {
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
 
     // Fetch data
-    useEffect(() => {
-        const fetchProCategories = async () => {
-            try {
-                setLoading(true);
-                const token = localStorage.getItem("token");
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getProSubCategory?limit=100000", {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-                const data = await res.json();
-                console.log('kjajshfhdfskj', data)
-                if (data.success) setProCategories(data.data.data || []);
-            } catch (err) {
-                console.error(err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchProCategories();
-    }, [refreshFlag]);
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const data = await fetchProCategories();
+      setProCategories(data);
+      setLoading(false);
+    };
+    getData();
+  }, [refreshFlag, setProCategories]);
 
     const filteredData = useMemo(() => {
         if (!searchQuery) return proCategories;

@@ -20,6 +20,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Pencil, Trash2, Upload } from "lucide-react";
 import { useProCategory } from "./pro-category";
+import { createProSubCategory, getCategoriesName, getSubCategories, updateProSubCategory } from "@/app/api/categories/categories";
 
 export default function ProCreateCategory() {
     const { triggerRefresh, proCategoryToEdit, setProCategoryToEdit, open, setOpen } = useProCategory();
@@ -43,35 +44,43 @@ export default function ProCreateCategory() {
         const fetchCategories = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/categoryName", { headers: { Authorization: `Bearer ${token}` } });
-                const data = await res.json();
-                if (data.success) setCategoryList(data.data || []);
+                const data = await getCategoriesName(token);
+                setCategoryList(data);
             } catch (err) {
                 toast.error(err.message);
             }
         };
         fetchCategories();
     }, []);
+    // useEffect(() => {
+    //     const fetchCategories = async () => {
+    //         try {
+    //             const token = localStorage.getItem("token");
+    //             const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/categoryName", { headers: { Authorization: `Bearer ${token}` } });
+    //             const data = await res.json();
+    //             if (data.success) setCategoryList(data.data || []);
+    //         } catch (err) {
+    //             toast.error(err.message);
+    //         }
+    //     };
+    //     fetchCategories();
+    // }, []);
 
     // Fetch subcategories when category changes
+
     useEffect(() => {
         if (!categoryId) {
             setSubCategoryList([]);
             setSubCategoryId("");
             return;
         }
+
         const fetchSubCategories = async () => {
             try {
                 setSubLoading(true);
                 const token = localStorage.getItem("token");
-                const res = await fetch(`https://wiqiapi.testenvapp.com/api/admin/subCategoryName?id=${categoryId}`,
-                    { headers: { Authorization: `Bearer ${token}` } });
-                const data = await res.json();
-                if (data.success && data.data?.length > 0) {
-                    setSubCategoryList(data.data);
-                } else {
-                    setSubCategoryList([{ _id: "notfound", name: "Not Found" }]);
-                }
+                const data = await getSubCategories(token, categoryId);
+                setSubCategoryList(data);
             } catch (err) {
                 toast.error(err.message);
             } finally {
@@ -80,7 +89,6 @@ export default function ProCreateCategory() {
         };
         fetchSubCategories();
     }, [categoryId]);
-
     // Prefill form if editing
     useEffect(() => {
         if (proCategoryToEdit) {
@@ -150,30 +158,18 @@ export default function ProCreateCategory() {
             formData.append("categoryId", categoryId);
             formData.append("subCategoryId", subCategoryId);
             if (url !== null) formData.append("url", url);
-            // if (imageFile) formData.append("image", imageFile);
             if (proCategoryToEdit?._id) {
                 formData.append("id", proCategoryToEdit._id);
                 if (imageFile) formData.append("image", imageFile);
+                await updateProSubCategory(token, formData);
+                toast.success("Pro SubCategory updated!");
             } else {
                 if (imageFile) formData.append("image", imageFile);
-                else throw new Error("Image is required for new subcategory");
+                else throw new Error("Image is required for new Pro SubCategory");
+                await createProSubCategory(token, formData);
+                toast.success("Pro SubCategory created!");
             }
 
-
-            const endpoint = proCategoryToEdit?._id
-                ? "https://wiqiapi.testenvapp.com/api/admin/updateProSubCategory"
-                : "https://wiqiapi.testenvapp.com/api/admin/proSubCategory";
-
-            const res = await fetch(endpoint, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.success) throw new Error(data.message || "Failed");
-
-            toast.success(proCategoryToEdit ? "Product updated!" : "Product created!");
             triggerRefresh && triggerRefresh();
             setOpen(false);
             resetForm();
@@ -183,7 +179,6 @@ export default function ProCreateCategory() {
             setLoading(false);
         }
     };
-
 
     return (
         <div>

@@ -28,6 +28,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { createSubCategory, getCategoriesName, updateSubCategory } from "@/app/api/categories/categories";
 
 export default function SubCreateCategory() {
     const { subCategoryToEdit, setSubCategoryToEdit, triggerRefresh } = useSubCategory();
@@ -51,19 +52,8 @@ export default function SubCreateCategory() {
         const fetchCategories = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await fetch(
-                    "https://wiqiapi.testenvapp.com/api/admin/categoryName",
-                    {
-                        method: "GET",
-                        headers: { Authorization: `Bearer ${token}` },
-                    }
-                );
-                const data = await res.json();
-                if (data.success) {
-                    setCategoryList(data.data || []);
-                } else {
-                    throw new Error(data.message || "Failed to fetch categories");
-                }
+                const data = await getCategoriesName(token);
+                setCategoryList(data);
             } catch (err) {
                 toast.error(err.message);
             }
@@ -141,26 +131,14 @@ export default function SubCreateCategory() {
             if (subCategoryToEdit?._id) {
                 formData.append("id", subCategoryToEdit._id);
                 if (imageFile) formData.append("image", imageFile);
+                await updateSubCategory(token, formData);
+                toast.success("SubCategory updated!");
             } else {
                 if (imageFile) formData.append("image", imageFile);
                 else throw new Error("Image is required for new subcategory");
+                await createSubCategory(token, formData);
+                toast.success("SubCategory created!");
             }
-
-            const urlEndpoint = subCategoryToEdit?._id
-                ? "https://wiqiapi.testenvapp.com/api/admin/updateSubCategory"
-                : "https://wiqiapi.testenvapp.com/api/admin/createSubCategory";
-
-            const res = await fetch(urlEndpoint, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.success)
-                throw new Error(data.message || "Failed to save subcategory");
-
-            toast.success(subCategoryToEdit ? "SubCategory updated!" : "SubCategory created!");
 
             triggerRefresh();
             setOpen(false);

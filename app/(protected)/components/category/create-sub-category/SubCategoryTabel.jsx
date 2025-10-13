@@ -14,6 +14,7 @@ import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
 import Link from "next/link";
 import Image from "next/image";
+import { fetchSubCategories } from "@/app/api/categories/categories";
 
 export default function SubCategoryTable() {
     const { subCategories, setSubCategories, setSubCategoryToEdit, refreshFlag } = useSubCategory();
@@ -25,28 +26,21 @@ export default function SubCategoryTable() {
 
     // Fetch subcategories
     useEffect(() => {
-        const fetchSubCategories = async () => {
+        const getSubCategories = async () => {
+            setLoading(true);
+            setError(null);
             try {
-                setLoading(true);
                 const token = localStorage.getItem("token");
-                if (!token) throw new Error("Token not found");
-
-                const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getSubCategory?limit=100000", {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-                const data = await res.json();
-                console.log("uisdyadfsiuy", data)
-                if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch");
-                setSubCategories(data.data.data || []);
+                const data = await fetchSubCategories(token);
+                setSubCategories(data);
             } catch (err) {
-                setError(err.message);
+                setError(err.message || "Failed to fetch subcategories");
             } finally {
                 setLoading(false);
             }
         };
-        fetchSubCategories();
-    }, [refreshFlag]);
-
+        getSubCategories();
+    }, [refreshFlag, setSubCategories]);
     // Filter by search
     const filteredData = useMemo(() => {
         if (!searchQuery) return subCategories;
