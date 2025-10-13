@@ -93,28 +93,16 @@ function UserProfilePage() {
     const [posts, setPosts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [activePost, setActivePost] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null); // modal preview
+    const [activePost, setActivePost] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchUserData = async ()=>{
             try {
                 setLoading(true);
                 const token = localStorage.getItem('token');
-                if (!token) {
-                    setError('Token missing');
-                    return;
-                }
-                const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUserAllPost?userId=${userId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                const data = await res.json();
-                if (data.success) {
-                    setUser(data.data.userData);
-                    setPosts(data.data.posts || []);
-                } else {
-                    setError(data.message || 'Failed to fetch user data');
-                }
+                if (!token) throw new Error('Token missing');
+                const { user, posts } = await getUserWithPosts(userId, token);
+                setUser(user);
+                setPosts(posts);
             } catch (err) {
                 setError(err.message);
             } finally{
@@ -136,7 +124,7 @@ function UserProfilePage() {
                             className: "w-20 h-20 rounded-full"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 58,
+                            lineNumber: 46,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -146,38 +134,38 @@ function UserProfilePage() {
                                     className: "h-4 w-40"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 48,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$skeleton$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skeleton"], {
                                     className: "h-4 w-24"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 61,
+                                    lineNumber: 49,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$skeleton$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skeleton"], {
                                     className: "h-3 w-32"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 62,
+                                    lineNumber: 50,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 59,
+                            lineNumber: 47,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                    lineNumber: 57,
+                    lineNumber: 45,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$separator$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                    lineNumber: 65,
+                    lineNumber: 53,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -188,18 +176,18 @@ function UserProfilePage() {
                             className: "w-full h-40 rounded-lg"
                         }, i, false, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 68,
+                            lineNumber: 56,
                             columnNumber: 25
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                    lineNumber: 66,
+                    lineNumber: 54,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-            lineNumber: 56,
+            lineNumber: 44,
             columnNumber: 13
         }, this);
     }
@@ -208,7 +196,7 @@ function UserProfilePage() {
         children: error
     }, void 0, false, {
         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-        lineNumber: 75,
+        lineNumber: 63,
         columnNumber: 23
     }, this);
     const mediaPosts = posts.map((post)=>({
@@ -231,20 +219,20 @@ function UserProfilePage() {
                                 alt: user.firstName
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 89,
+                                lineNumber: 77,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                 children: user.firstName?.charAt(0)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 90,
+                                lineNumber: 78,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 88,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -259,7 +247,7 @@ function UserProfilePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 93,
+                                lineNumber: 81,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -270,7 +258,7 @@ function UserProfilePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 94,
+                                lineNumber: 82,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -278,7 +266,7 @@ function UserProfilePage() {
                                 children: user.bio || "No bio available"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 95,
+                                lineNumber: 83,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -290,14 +278,14 @@ function UserProfilePage() {
                                                 children: posts.length
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 97,
+                                                lineNumber: 85,
                                                 columnNumber: 31
                                             }, this),
                                             " posts"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 97,
+                                        lineNumber: 85,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -306,14 +294,14 @@ function UserProfilePage() {
                                                 children: user.followers || 0
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 98,
+                                                lineNumber: 86,
                                                 columnNumber: 31
                                             }, this),
                                             " followers"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 98,
+                                        lineNumber: 86,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -322,20 +310,20 @@ function UserProfilePage() {
                                                 children: user.following || 0
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 99,
+                                                lineNumber: 87,
                                                 columnNumber: 31
                                             }, this),
                                             " following"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 99,
+                                        lineNumber: 87,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 96,
+                                lineNumber: 84,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -349,13 +337,13 @@ function UserProfilePage() {
                                                 children: user.email
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 102,
+                                                lineNumber: 90,
                                                 columnNumber: 35
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 102,
+                                        lineNumber: 90,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -366,13 +354,13 @@ function UserProfilePage() {
                                                 children: user.selectCountry
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 103,
+                                                lineNumber: 91,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 103,
+                                        lineNumber: 91,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -387,38 +375,38 @@ function UserProfilePage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 104,
+                                                lineNumber: 92,
                                                 columnNumber: 35
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                        lineNumber: 104,
+                                        lineNumber: 92,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 101,
+                                lineNumber: 89,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 92,
+                        lineNumber: 80,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                lineNumber: 87,
+                lineNumber: 75,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$separator$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {
                 className: "mb-6"
             }, void 0, false, {
                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                lineNumber: 109,
+                lineNumber: 97,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tabs"], {
@@ -434,7 +422,7 @@ function UserProfilePage() {
                                 children: "All"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 114,
+                                lineNumber: 102,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -443,7 +431,7 @@ function UserProfilePage() {
                                 children: "Image"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 115,
+                                lineNumber: 103,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -452,13 +440,13 @@ function UserProfilePage() {
                                 children: "Videos"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                lineNumber: 116,
+                                lineNumber: 104,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 113,
+                        lineNumber: 101,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -481,14 +469,14 @@ function UserProfilePage() {
                                                         className: "w-full h-full object-cover group-hover:scale-105 transition-transform"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                        lineNumber: 130,
+                                                        lineNumber: 118,
                                                         columnNumber: 45
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "text-gray-400",
                                                         children: "No Media"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                        lineNumber: 132,
+                                                        lineNumber: 120,
                                                         columnNumber: 45
                                                     }, this),
                                                     post.isVideo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -506,28 +494,28 @@ function UserProfilePage() {
                                                                 d: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h16M4 18h16"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                lineNumber: 137,
+                                                                lineNumber: 125,
                                                                 columnNumber: 53
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 136,
+                                                            lineNumber: 124,
                                                             columnNumber: 49
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                        lineNumber: 135,
+                                                        lineNumber: 123,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 125,
+                                                lineNumber: 113,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 124,
+                                            lineNumber: 112,
                                             columnNumber: 33
                                         }, this),
                                         activePost && activePost._id === post._id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -538,7 +526,7 @@ function UserProfilePage() {
                                                     children: post.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 146,
+                                                    lineNumber: 134,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -547,10 +535,10 @@ function UserProfilePage() {
                                                         post.isVideo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                                                             controls: true,
                                                             src: post.video,
-                                                            className: "w-full max-h-[60vh] object-contain bg-black"
+                                                            className: "w-full h-[10vh] object-contain bg-black"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 149,
+                                                            lineNumber: 137,
                                                             columnNumber: 49
                                                         }, this) : post.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                             width: 400,
@@ -560,14 +548,14 @@ function UserProfilePage() {
                                                             className: "w-full max-w-full h-auto object-contain"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 143,
                                                             columnNumber: 49
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-full h-64 flex items-center justify-center",
                                                             children: "No Media"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 161,
+                                                            lineNumber: 149,
                                                             columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -578,7 +566,7 @@ function UserProfilePage() {
                                                                     children: post.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 166,
+                                                                    lineNumber: 154,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -586,7 +574,7 @@ function UserProfilePage() {
                                                                     children: post.type
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 167,
+                                                                    lineNumber: 155,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -597,41 +585,41 @@ function UserProfilePage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 168,
+                                                                    lineNumber: 156,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 153,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 147,
+                                                    lineNumber: 135,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 145,
+                                            lineNumber: 133,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, post._id, true, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 123,
+                                    lineNumber: 111,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 121,
+                            lineNumber: 109,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 120,
+                        lineNumber: 108,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -653,17 +641,17 @@ function UserProfilePage() {
                                                     className: "w-full h-full object-cover group-hover:scale-105 transition-transform"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 189,
+                                                    lineNumber: 177,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 185,
+                                                lineNumber: 173,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 184,
+                                            lineNumber: 172,
                                             columnNumber: 33
                                         }, this),
                                         activePost && activePost._id === post._id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -674,7 +662,7 @@ function UserProfilePage() {
                                                     children: post.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 195,
+                                                    lineNumber: 183,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -688,7 +676,7 @@ function UserProfilePage() {
                                                             className: "w-full h-auto object-contain"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 186,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -699,7 +687,7 @@ function UserProfilePage() {
                                                                     children: post.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 205,
+                                                                    lineNumber: 193,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -707,7 +695,7 @@ function UserProfilePage() {
                                                                     children: post.type
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 206,
+                                                                    lineNumber: 194,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -718,41 +706,41 @@ function UserProfilePage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                    lineNumber: 207,
+                                                                    lineNumber: 195,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 204,
+                                                            lineNumber: 192,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 185,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 194,
+                                            lineNumber: 182,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, post._id, true, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 183,
+                                    lineNumber: 171,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 181,
+                            lineNumber: 169,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 180,
+                        lineNumber: 168,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -773,7 +761,7 @@ function UserProfilePage() {
                                                         className: "w-full h-full object-cover group-hover:scale-105 transition-transform"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                        lineNumber: 228,
+                                                        lineNumber: 216,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -791,28 +779,28 @@ function UserProfilePage() {
                                                                 d: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h16M4 18h16"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                                lineNumber: 231,
+                                                                lineNumber: 219,
                                                                 columnNumber: 49
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 230,
+                                                            lineNumber: 218,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                        lineNumber: 229,
+                                                        lineNumber: 217,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                lineNumber: 224,
+                                                lineNumber: 212,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 223,
+                                            lineNumber: 211,
                                             columnNumber: 33
                                         }, this),
                                         activePost && activePost._id === post._id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -823,7 +811,7 @@ function UserProfilePage() {
                                                     children: post.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 227,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
@@ -832,7 +820,7 @@ function UserProfilePage() {
                                                     className: "w-full h-auto"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 240,
+                                                    lineNumber: 228,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -843,7 +831,7 @@ function UserProfilePage() {
                                                             children: post.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 242,
+                                                            lineNumber: 230,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -851,7 +839,7 @@ function UserProfilePage() {
                                                             children: post.type
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 243,
+                                                            lineNumber: 231,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -862,47 +850,47 @@ function UserProfilePage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 232,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                                    lineNumber: 241,
+                                                    lineNumber: 229,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                            lineNumber: 238,
+                                            lineNumber: 226,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, post._id, true, {
                                     fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                                    lineNumber: 222,
+                                    lineNumber: 210,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                            lineNumber: 220,
+                            lineNumber: 208,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                        lineNumber: 219,
+                        lineNumber: 207,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-                lineNumber: 112,
+                lineNumber: 100,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(protected)/user/[id]/page.jsx",
-        lineNumber: 85,
+        lineNumber: 73,
         columnNumber: 9
     }, this);
 }

@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
 import { DataGridPagination } from "@/components/ui/data-grid-pagination";
-import { getPosts } from "@/app/api/getpost/getpost";
+import { getPosts } from "@/app/api/getuserdetails/userdetails";
 import Image from "next/image";
 
 

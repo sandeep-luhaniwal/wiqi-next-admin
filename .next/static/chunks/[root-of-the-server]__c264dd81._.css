@@ -2248,6 +2248,10 @@
     height: 70px;
   }
 
+  .h-\[70vh\] {
+    height: 70vh;
+  }
+
   .h-\[100px\] {
     height: 100px;
   }
@@ -2350,10 +2354,6 @@
 
   .max-h-\[55px\] {
     max-height: 55px;
-  }
-
-  .max-h-\[60vh\] {
-    max-height: 60vh;
   }
 
   .max-h-\[75vh\] {

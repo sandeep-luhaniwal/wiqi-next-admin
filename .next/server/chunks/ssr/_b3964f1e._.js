@@ -1536,36 +1536,19 @@ const GetUserTable = ()=>{
         }
     ]);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
-    // ✅ Fetch users
+    // ✅ Fetch users using API helper
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const fetchUsers = async ()=>{
+        const fetchData = async ()=>{
             try {
                 const token = localStorage.getItem('token');
                 if (!token) return;
-                const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUser?limit=10000`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                const data = await res.json();
-                if (data.success) {
-                    const cleanUsers = data.data.users.map((u)=>({
-                            id: u._id,
-                            firstName: u.firstName,
-                            lastName: u.lastName,
-                            userName: u.userName,
-                            email: u.email,
-                            phone: u.phone,
-                            image: u.image,
-                            block: u.block ?? false
-                        }));
-                    setUsers(cleanUsers);
-                }
+                const userData = await getUsers(token);
+                setUsers(userData);
             } catch (error) {
                 console.error('Error fetching users:', error);
             }
         };
-        fetchUsers();
+        fetchData();
     }, []);
     // ✅ Search filter
     const filteredData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
@@ -1584,7 +1567,7 @@ const GetUserTable = ()=>{
                         children: "First Name"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 96,
+                        lineNumber: 75,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.firstName,
@@ -1599,7 +1582,7 @@ const GetUserTable = ()=>{
                         children: "Last Name"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 104,
+                        lineNumber: 83,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.lastName,
@@ -1614,7 +1597,7 @@ const GetUserTable = ()=>{
                         children: "Username"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 112,
+                        lineNumber: 91,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.userName,
@@ -1629,7 +1612,7 @@ const GetUserTable = ()=>{
                         children: "Email"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 120,
+                        lineNumber: 99,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.email,
@@ -1644,7 +1627,7 @@ const GetUserTable = ()=>{
                         children: "Phone"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 128,
+                        lineNumber: 107,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.phone || 'N/A',
@@ -1659,7 +1642,7 @@ const GetUserTable = ()=>{
                         children: "Image"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 136,
+                        lineNumber: 115,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>row.original.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1670,7 +1653,7 @@ const GetUserTable = ()=>{
                         className: "w-12 h-12 rounded-full object-cover object-center border border-primary"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 139,
+                        lineNumber: 118,
                         columnNumber: 25
                     }, this) : // <span className="text-gray-400 text-sm">No Image</span>
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1681,7 +1664,7 @@ const GetUserTable = ()=>{
                         alt: "no img found"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 146,
+                        lineNumber: 125,
                         columnNumber: 25
                     }, this),
                 size: 100
@@ -1693,7 +1676,7 @@ const GetUserTable = ()=>{
                         children: "Details"
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 152,
+                        lineNumber: 131,
                         columnNumber: 31
                     }, this),
                 cell: ({ row })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1703,12 +1686,12 @@ const GetUserTable = ()=>{
                             className: "h-4 w-4"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                            lineNumber: 158,
+                            lineNumber: 137,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 154,
+                        lineNumber: 133,
                         columnNumber: 21
                     }, this),
                 size: 80
@@ -1751,7 +1734,7 @@ const GetUserTable = ()=>{
                             children: "Users"
                         }, void 0, false, {
                             fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                            lineNumber: 200,
+                            lineNumber: 179,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardToolbar"], {
@@ -1761,7 +1744,7 @@ const GetUserTable = ()=>{
                                     className: "size-4 text-muted-foreground absolute start-3 top-1/2 -translate-y-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                    lineNumber: 202,
+                                    lineNumber: 181,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1771,7 +1754,7 @@ const GetUserTable = ()=>{
                                     className: "ps-9 max-w-[200px] w-full"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                    lineNumber: 203,
+                                    lineNumber: 182,
                                     columnNumber: 25
                                 }, this),
                                 searchQuery.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1781,24 +1764,24 @@ const GetUserTable = ()=>{
                                     onClick: ()=>setSearchQuery(''),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {}, void 0, false, {
                                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                        lineNumber: 216,
+                                        lineNumber: 195,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                    lineNumber: 210,
+                                    lineNumber: 189,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                            lineNumber: 201,
+                            lineNumber: 180,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                    lineNumber: 199,
+                    lineNumber: 178,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTable"], {
@@ -1806,47 +1789,47 @@ const GetUserTable = ()=>{
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataGridTable"], {}, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                lineNumber: 223,
+                                lineNumber: 202,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$scroll$2d$area$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ScrollBar"], {
                                 orientation: "horizontal"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                                lineNumber: 224,
+                                lineNumber: 203,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 222,
+                        lineNumber: 201,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                    lineNumber: 221,
+                    lineNumber: 200,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardFooter"], {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$data$2d$grid$2d$pagination$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataGridPagination"], {}, void 0, false, {
                         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                        lineNumber: 228,
+                        lineNumber: 207,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-                    lineNumber: 227,
+                    lineNumber: 206,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-            lineNumber: 198,
+            lineNumber: 177,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(protected)/components/home/GetUserTabel.jsx",
-        lineNumber: 188,
+        lineNumber: 167,
         columnNumber: 9
     }, this);
 };

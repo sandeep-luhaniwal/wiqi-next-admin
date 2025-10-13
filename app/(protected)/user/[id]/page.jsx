@@ -8,6 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog';
 import Image from 'next/image';
+import { getUserWithPosts } from '@/app/api/getuserdetails/userdetails';
 
 export default function UserProfilePage() {
     const params = useParams();
@@ -17,30 +18,18 @@ export default function UserProfilePage() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [activePost, setActivePost] = useState(null); // modal preview
+    const [activePost, setActivePost] = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 setLoading(true);
                 const token = localStorage.getItem('token');
-                if (!token) {
-                    setError('Token missing');
-                    return;
-                }
+                if (!token) throw new Error('Token missing');
 
-                const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}api/admin/getUserAllPost?userId=${userId}`,
-                    { headers: { Authorization: `Bearer ${token}` } }
-                );
-
-                const data = await res.json();
-                if (data.success) {
-                    setUser(data.data.userData);
-                    setPosts(data.data.posts || []);
-                } else {
-                    setError(data.message || 'Failed to fetch user data');
-                }
+                const { user, posts } = await getUserWithPosts(userId, token);
+                setUser(user);
+                setPosts(posts);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -149,13 +138,13 @@ export default function UserProfilePage() {
                                                 <video
                                                     controls
                                                     src={post.video}
-                                                    className="w-full max-h-[60vh] object-contain bg-black"
+                                                    className="w-full h-[70vh] object-contain bg-black"
                                                 />
                                             ) : post.image ? (
                                                 <Image width={400} height={500}
                                                     src={post.image}
                                                     alt={post.title}
-                                                    className="w-full max-w-full h-auto object-contain"
+                                                    className="w-full max-w-full h-[70vh] object-contain"
                                                 />
                                             ) : (
                                                 <div className="w-full h-64 flex items-center justify-center">No Media</div>

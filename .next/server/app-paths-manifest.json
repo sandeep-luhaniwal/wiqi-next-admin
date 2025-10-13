@@ -1,5 +1,7 @@
 {
   "/(auth)/signin/page": "app/(auth)/signin/page.js",
   "/(protected)/page": "app/(protected)/page.js",
+  "/(protected)/post/page": "app/(protected)/post/page.js",
+  "/(protected)/user/[id]/page": "app/(protected)/user/[id]/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }

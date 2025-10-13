@@ -1,15 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import {
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-} from '@tanstack/react-table';
-import { Eye, Search, X } from 'lucide-react';
+import { getUsers } from '@/app/api/getuserdetails/userdetails';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -20,13 +11,21 @@ import {
     CardToolbar,
 } from '@/components/ui/card';
 import { DataGrid } from '@/components/ui/data-grid';
-import { DataGridColumnHeader } from '@/components/ui/data-grid-column-header';
 import { DataGridPagination } from '@/components/ui/data-grid-pagination';
 import { DataGridTable } from '@/components/ui/data-grid-table';
 import { Input } from '@/components/ui/input';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { Skeleton } from '@/components/ui/skeleton';
+import {
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    useReactTable,
+} from '@tanstack/react-table';
+import { Eye, Search, X } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 
 const GetUserTable = () => {
     const router = useRouter();
@@ -39,41 +38,20 @@ const GetUserTable = () => {
     const [sorting, setSorting] = useState([{ id: 'firstName', desc: false }]);
     const [searchQuery, setSearchQuery] = useState('');
 
-    // ✅ Fetch users
+    // ✅ Fetch users using API helper
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
                 if (!token) return;
 
-                const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}api/admin/getUser?limit=10000`,
-                    {
-                        headers: { Authorization: `Bearer ${token}` },
-                    }
-                );
-
-                const data = await res.json();
-
-                if (data.success) {
-                    const cleanUsers = data.data.users.map((u) => ({
-                        id: u._id,
-                        firstName: u.firstName,
-                        lastName: u.lastName,
-                        userName: u.userName,
-                        email: u.email,
-                        phone: u.phone,
-                        image: u.image,
-                        block: u.block ?? false,
-                    }));
-                    setUsers(cleanUsers);
-                }
+                const userData = await getUsers(token);
+                setUsers(userData);
             } catch (error) {
                 console.error('Error fetching users:', error);
             }
         };
-
-        fetchUsers();
+        fetchData();
     }, []);
 
     // ✅ Search filter
