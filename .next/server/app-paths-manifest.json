@@ -1,12 +1,8 @@
 {
   "/(auth)/signin/page": "app/(auth)/signin/page.js",
-  "/(protected)/category/all-category/page": "app/(protected)/category/all-category/page.js",
-  "/(protected)/category/pro-sub-category/page": "app/(protected)/category/pro-sub-category/page.js",
-  "/(protected)/category/sub-category/page": "app/(protected)/category/sub-category/page.js",
   "/(protected)/page": "app/(protected)/page.js",
-  "/(protected)/post/page": "app/(protected)/post/page.js",
-  "/(protected)/stream-category/all-category/page": "app/(protected)/stream-category/all-category/page.js",
-  "/(protected)/user/[id]/page": "app/(protected)/user/[id]/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/terms-and-condtion/page": "app/terms-and-condtion/page.js"
 }
