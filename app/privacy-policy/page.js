@@ -1,7 +1,4 @@
 "use client";
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const Section = ({ title, children }) => (
   <section className="space-y-3">
@@ -10,12 +7,6 @@ const Section = ({ title, children }) => (
   </section>
 );
 
-const Subsection = ({ subtitle, children }) => (
-  <div className="space-y-2">
-    <h3 className="text-purple-800 font-medium">{subtitle}</h3>
-    <p>{children}</p>
-  </div>
-);
 
 export default function PrivacyPolicy() {
   return (
