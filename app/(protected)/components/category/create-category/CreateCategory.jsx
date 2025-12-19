@@ -143,7 +143,7 @@ export default function CreateCategory() {
                 }}
             >
                 <DialogHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <p className="text-primary font-semibold text-2xl">Create & Manage Categories</p>
+                    <p className="text-primary font-semibold text-2xl">Create Categories</p>
                     <DialogTrigger asChild>
                         <Button onClick={() => setOpen(true)}>+ Add Category</Button>
                     </DialogTrigger>
@@ -204,7 +204,7 @@ export default function CreateCategory() {
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="Wiqi Plus">Wiqi Plus</SelectItem>
-                                                <SelectItem value="Tv">Tv</SelectItem>
+                                                <SelectItem value="TV">TV</SelectItem>
                                                 <SelectItem value="Radio">Radio</SelectItem>
                                                 <SelectItem value="Shops">Shops</SelectItem>
                                                 <SelectItem value="Reads">Reads</SelectItem>

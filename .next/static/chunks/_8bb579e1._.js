@@ -336,6 +336,7 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 __turbopack_context__.s({
     "default": (()=>ProCreateCategory)
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
@@ -380,23 +381,37 @@ function ProCreateCategory() {
     const [subLoading, setSubLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [errors, setErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Fetch categories
+    // Fetch categories by type
+    const fetchCategoriesByType = async (selectedType)=>{
+        if (!selectedType) {
+            setCategoryList([]);
+            return;
+        }
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/categoryGetByType?type=${selectedType}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const result = await response.json();
+            if (result.success) {
+                setCategoryList(result.data);
+            } else {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(result.message || "Failed to fetch categories");
+            }
+        } catch (err) {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(err.message || "Failed to fetch categories");
+        }
+    };
+    // Fetch categories when type changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ProCreateCategory.useEffect": ()=>{
-            const fetchCategories = {
-                "ProCreateCategory.useEffect.fetchCategories": async ()=>{
-                    try {
-                        const token = localStorage.getItem("token");
-                        const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$categories$2f$categories$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCategoriesName"])(token);
-                        setCategoryList(data);
-                    } catch (err) {
-                        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error(err.message);
-                    }
-                }
-            }["ProCreateCategory.useEffect.fetchCategories"];
-            fetchCategories();
+            fetchCategoriesByType(type);
         }
-    }["ProCreateCategory.useEffect"], []);
+    }["ProCreateCategory.useEffect"], [
+        type
+    ]);
     // useEffect(() => {
     //     const fetchCategories = async () => {
     //         try {
@@ -530,7 +545,7 @@ function ProCreateCategory() {
                 position: "top-right"
             }, void 0, false, {
                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                lineNumber: 185,
+                lineNumber: 200,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -545,10 +560,10 @@ function ProCreateCategory() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-primary font-semibold text-2xl",
-                                children: "Create & Manage Pro SubCategories"
+                                children: "Create Pro SubCategories"
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                lineNumber: 188,
+                                lineNumber: 203,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTrigger"], {
@@ -558,18 +573,18 @@ function ProCreateCategory() {
                                     children: "+ Add Pro Sub Category"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                    lineNumber: 190,
+                                    lineNumber: 205,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                lineNumber: 189,
+                                lineNumber: 204,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                        lineNumber: 187,
+                        lineNumber: 202,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -580,12 +595,12 @@ function ProCreateCategory() {
                                     children: proCategoryToEdit ? "Edit Product" : "Create New Product"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                    lineNumber: 195,
+                                    lineNumber: 210,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                lineNumber: 194,
+                                lineNumber: 209,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -605,7 +620,7 @@ function ProCreateCategory() {
                                                                 children: "Name"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 204,
+                                                                lineNumber: 219,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -618,7 +633,7 @@ function ProCreateCategory() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 205,
+                                                                lineNumber: 220,
                                                                 columnNumber: 41
                                                             }, this),
                                                             errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -626,42 +641,8 @@ function ProCreateCategory() {
                                                                 children: errors.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 214,
+                                                                lineNumber: 229,
                                                                 columnNumber: 57
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                        lineNumber: 203,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                                                htmlFor: "title",
-                                                                children: "Title"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 219,
-                                                                columnNumber: 41
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                                id: "title",
-                                                                placeholder: "Enter Title",
-                                                                value: title,
-                                                                onChange: (e)=>setTitle(e.target.value)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 220,
-                                                                columnNumber: 41
-                                                            }, this),
-                                                            errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-sm text-red-600",
-                                                                children: errors.title
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 226,
-                                                                columnNumber: 58
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
@@ -672,11 +653,45 @@ function ProCreateCategory() {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                htmlFor: "title",
+                                                                children: "Title"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 234,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                id: "title",
+                                                                placeholder: "Enter Title",
+                                                                value: title,
+                                                                onChange: (e)=>setTitle(e.target.value)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 235,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-sm text-red-600",
+                                                                children: errors.title
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 241,
+                                                                columnNumber: 58
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                        lineNumber: 233,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
                                                                 htmlFor: "url",
                                                                 children: "URL (optional)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 231,
+                                                                lineNumber: 246,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -689,7 +704,7 @@ function ProCreateCategory() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 232,
+                                                                lineNumber: 247,
                                                                 columnNumber: 41
                                                             }, this),
                                                             errors.url && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -697,105 +712,8 @@ function ProCreateCategory() {
                                                                 children: errors.url
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 241,
+                                                                lineNumber: 256,
                                                                 columnNumber: 56
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                        lineNumber: 230,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                                                htmlFor: "type",
-                                                                children: "Type"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 246,
-                                                                columnNumber: 41
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                                                value: type,
-                                                                onValueChange: (v)=>setType(v),
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                                        id: "type",
-                                                                        className: "w-full cursor-pointer",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                                            placeholder: "Select Type"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                            lineNumber: 249,
-                                                                            columnNumber: 49
-                                                                        }, this)
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 248,
-                                                                        columnNumber: 45
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                                value: "Wiqi Plus",
-                                                                                children: "Wiqi Plus"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 252,
-                                                                                columnNumber: 49
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                                value: "Tv",
-                                                                                children: "Tv"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 253,
-                                                                                columnNumber: 49
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                                value: "Radio",
-                                                                                children: "Radio"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 254,
-                                                                                columnNumber: 49
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                                value: "Shops",
-                                                                                children: "Shops"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 255,
-                                                                                columnNumber: 49
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                                value: "Reads",
-                                                                                children: "Reads"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 256,
-                                                                                columnNumber: 49
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 251,
-                                                                        columnNumber: 45
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 247,
-                                                                columnNumber: 41
-                                                            }, this),
-                                                            errors.type && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-sm text-red-600",
-                                                                children: errors.type
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 259,
-                                                                columnNumber: 57
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
@@ -806,30 +724,135 @@ function ProCreateCategory() {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                                                htmlFor: "type",
+                                                                children: "Type"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 261,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                                value: type,
+                                                                onValueChange: (v)=>{
+                                                                    setType(v);
+                                                                    setCategoryId(""); // Reset category when type changes
+                                                                    setSubCategoryId(""); // Reset subcategory when type changes
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                        id: "type",
+                                                                        className: "w-full cursor-pointer",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                            placeholder: "Select Type"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                            lineNumber: 268,
+                                                                            columnNumber: 49
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                        lineNumber: 267,
+                                                                        columnNumber: 45
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                value: "Wiqi Plus",
+                                                                                children: "Wiqi Plus"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                                lineNumber: 271,
+                                                                                columnNumber: 49
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                value: "TV",
+                                                                                children: "TV"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                                lineNumber: 272,
+                                                                                columnNumber: 49
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                value: "Radio",
+                                                                                children: "Radio"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                                lineNumber: 273,
+                                                                                columnNumber: 49
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                value: "Shops",
+                                                                                children: "Shops"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                                lineNumber: 274,
+                                                                                columnNumber: 49
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                                value: "Reads",
+                                                                                children: "Reads"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                                lineNumber: 275,
+                                                                                columnNumber: 49
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                        lineNumber: 270,
+                                                                        columnNumber: 45
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 262,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            errors.type && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-sm text-red-600",
+                                                                children: errors.type
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                                lineNumber: 278,
+                                                                columnNumber: 57
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
+                                                        lineNumber: 260,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
                                                                 htmlFor: "category",
                                                                 children: "Category"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 264,
+                                                                lineNumber: 283,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
                                                                 value: categoryId,
-                                                                onValueChange: (v)=>setCategoryId(v),
+                                                                onValueChange: (v)=>{
+                                                                    setCategoryId(v);
+                                                                    setSubCategoryId(""); // Reset subcategory when category changes
+                                                                },
+                                                                disabled: !type,
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
                                                                         id: "category",
                                                                         className: "w-full cursor-pointer",
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                                            placeholder: "Select Category"
+                                                                            placeholder: !type ? "Select Type first" : "Select Category"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                            lineNumber: 267,
+                                                                            lineNumber: 289,
                                                                             columnNumber: 49
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 266,
+                                                                        lineNumber: 288,
                                                                         columnNumber: 45
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -838,18 +861,18 @@ function ProCreateCategory() {
                                                                                 children: cat.name
                                                                             }, cat._id, false, {
                                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 271,
+                                                                                lineNumber: 293,
                                                                                 columnNumber: 53
                                                                             }, this))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 269,
+                                                                        lineNumber: 291,
                                                                         columnNumber: 45
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 265,
+                                                                lineNumber: 284,
                                                                 columnNumber: 41
                                                             }, this),
                                                             errors.categoryId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -857,13 +880,13 @@ function ProCreateCategory() {
                                                                 children: errors.categoryId
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 275,
+                                                                lineNumber: 297,
                                                                 columnNumber: 63
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                        lineNumber: 263,
+                                                        lineNumber: 282,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -873,7 +896,7 @@ function ProCreateCategory() {
                                                                 children: "SubCategory"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 280,
+                                                                lineNumber: 302,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -888,12 +911,12 @@ function ProCreateCategory() {
                                                                             placeholder: subLoading ? "Loading..." : "Select SubCategory"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                            lineNumber: 283,
+                                                                            lineNumber: 305,
                                                                             columnNumber: 49
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 282,
+                                                                        lineNumber: 304,
                                                                         columnNumber: 45
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -902,18 +925,18 @@ function ProCreateCategory() {
                                                                                 children: sub.name
                                                                             }, sub._id, false, {
                                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 287,
+                                                                                lineNumber: 309,
                                                                                 columnNumber: 53
                                                                             }, this))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 285,
+                                                                        lineNumber: 307,
                                                                         columnNumber: 45
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 281,
+                                                                lineNumber: 303,
                                                                 columnNumber: 41
                                                             }, this),
                                                             errors.subCategoryId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -921,13 +944,13 @@ function ProCreateCategory() {
                                                                 children: errors.subCategoryId
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 291,
+                                                                lineNumber: 313,
                                                                 columnNumber: 66
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                        lineNumber: 279,
+                                                        lineNumber: 301,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -938,7 +961,7 @@ function ProCreateCategory() {
                                                                 children: "Image"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 296,
+                                                                lineNumber: 318,
                                                                 columnNumber: 41
                                                             }, this),
                                                             preview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -950,7 +973,7 @@ function ProCreateCategory() {
                                                                         className: "w-32 h-32 rounded object-cover border"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 299,
+                                                                        lineNumber: 321,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -963,7 +986,7 @@ function ProCreateCategory() {
                                                                                         className: "w-4 h-4 text-blue-600"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                        lineNumber: 302,
+                                                                                        lineNumber: 324,
                                                                                         columnNumber: 57
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -973,13 +996,13 @@ function ProCreateCategory() {
                                                                                         onChange: (e)=>handleImageChange(e.target.files[0])
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                        lineNumber: 303,
+                                                                                        lineNumber: 325,
                                                                                         columnNumber: 57
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 301,
+                                                                                lineNumber: 323,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -993,24 +1016,24 @@ function ProCreateCategory() {
                                                                                     className: "w-4 h-4 text-red-600"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                    lineNumber: 306,
+                                                                                    lineNumber: 328,
                                                                                     columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                                lineNumber: 305,
+                                                                                lineNumber: 327,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 300,
+                                                                        lineNumber: 322,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 298,
+                                                                lineNumber: 320,
                                                                 columnNumber: 45
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                                 className: "flex items-center justify-center border border-dashed border-gray-400 rounded-lg p-6 cursor-pointer hover:bg-gray-50",
@@ -1019,7 +1042,7 @@ function ProCreateCategory() {
                                                                         className: "w-5 h-5 mr-2 text-gray-500"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 312,
+                                                                        lineNumber: 334,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1027,7 +1050,7 @@ function ProCreateCategory() {
                                                                         children: "Choose Image"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 313,
+                                                                        lineNumber: 335,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1037,13 +1060,13 @@ function ProCreateCategory() {
                                                                         onChange: (e)=>handleImageChange(e.target.files[0])
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                        lineNumber: 314,
+                                                                        lineNumber: 336,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 311,
+                                                                lineNumber: 333,
                                                                 columnNumber: 45
                                                             }, this),
                                                             errors.image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1051,24 +1074,24 @@ function ProCreateCategory() {
                                                                 children: errors.image
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                                lineNumber: 317,
+                                                                lineNumber: 339,
                                                                 columnNumber: 58
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 317,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                lineNumber: 201,
+                                                lineNumber: 216,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                            lineNumber: 200,
+                                            lineNumber: 215,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
@@ -1083,7 +1106,7 @@ function ProCreateCategory() {
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                    lineNumber: 323,
+                                                    lineNumber: 345,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1092,42 +1115,42 @@ function ProCreateCategory() {
                                                     children: loading ? "Saving..." : proCategoryToEdit ? "Update" : "Create"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                                    lineNumber: 324,
+                                                    lineNumber: 346,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                            lineNumber: 322,
+                                            lineNumber: 344,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                    lineNumber: 199,
+                                    lineNumber: 214,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                                lineNumber: 198,
+                                lineNumber: 213,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                        lineNumber: 193,
+                        lineNumber: 208,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-                lineNumber: 186,
+                lineNumber: 201,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(protected)/components/category/pro-category/ProCreateCategory.jsx",
-        lineNumber: 184,
+        lineNumber: 199,
         columnNumber: 9
     }, this);
 }

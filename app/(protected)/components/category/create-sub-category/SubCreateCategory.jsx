@@ -17,7 +17,12 @@ import {
     SelectContent,
     SelectItem,
 } from "@/components/ui/select";
-import { Pencil, Trash2, Upload } from "lucide-react";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { Pencil, Trash2, Upload, Search, Check, ChevronDown } from "lucide-react";
 import { useSubCategory } from "./sub-category-context";
 
 // ✅ Shadcn Dialog import
@@ -41,25 +46,42 @@ export default function SubCreateCategory() {
     const [preview, setPreview] = useState(null);
     const [categoryId, setcategoryId] = useState("");
     const [categoryList, setCategoryList] = useState([]);
+    const [categorySearch, setCategorySearch] = useState("");
+    const [categoryOpen, setCategoryOpen] = useState(false);
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
     const [open, setOpen] = useState(false); // ✅ dialog state
 
-    // Fetch category names
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                const data = await getCategoriesName(token);
-                setCategoryList(data);
-            } catch (err) {
-                toast.error(err.message);
+    // Fetch categories by type
+    const fetchCategoriesByType = async (selectedType) => {
+        if (!selectedType) {
+            setCategoryList([]);
+            return;
+        }
+        try {
+            const token = localStorage.getItem("token");
+             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/admin/categoryGetByType?type=${selectedType}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const result = await response.json();
+            if (result.success) {
+                setCategoryList(result.data);
+            } else {
+                toast.error(result.message || "Failed to fetch categories");
             }
-        };
-        fetchCategories();
-    }, []);
+        } catch (err) {
+            toast.error(err.message || "Failed to fetch categories");
+        }
+    };
+
+    // Fetch categories when type changes
+    useEffect(() => {
+        fetchCategoriesByType(type);
+    }, [type]);
 
     // Fill form when editing
     useEffect(() => {
@@ -85,6 +107,8 @@ export default function SubCreateCategory() {
         setPreview(null);
         setErrors({});
         setSubCategoryToEdit(null);
+        setCategorySearch("");
+        setCategoryOpen(false);
     };
 
     const validate = () => {
@@ -160,7 +184,7 @@ export default function SubCreateCategory() {
                 }}
             >
                 <DialogHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <p className="text-primary font-semibold text-2xl">Create & Manage SubCategories</p>
+                    <p className="text-primary font-semibold text-2xl">Create SubCategories</p>
                     <DialogTrigger asChild>
                         <Button onClick={() => setOpen(true)}>+ Add SubCategory</Button>
                     </DialogTrigger>
@@ -214,13 +238,16 @@ export default function SubCreateCategory() {
                                     </div>
                                     <div>
                                         <Label htmlFor="type">Type</Label>
-                                        <Select value={type} onValueChange={(v) => setType(v)}>
+                                        <Select value={type} onValueChange={(v) => {
+                                            setType(v);
+                                            setcategoryId(""); // Reset category selection when type changes
+                                        }}>
                                             <SelectTrigger id="type" className="w-full cursor-pointer">
                                                 <SelectValue placeholder="Select Type" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="Wiqi Plus">Wiqi Plus</SelectItem>
-                                                <SelectItem value="Tv">Tv</SelectItem>
+                                                <SelectItem value="TV">TV</SelectItem>
                                                 <SelectItem value="Radio">Radio</SelectItem>
                                                 <SelectItem value="Shops">Shops</SelectItem>
                                                 <SelectItem value="Reads">Reads</SelectItem>
@@ -229,21 +256,67 @@ export default function SubCreateCategory() {
                                         {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
                                     </div>
 
-                                    {/* Parent Category Dropdown */}
+                                    {/* Parent Category Dropdown with Search */}
                                     <div className="md:col-span-2">
                                         <Label htmlFor="categoryId">Parent Category</Label>
-                                        <Select value={categoryId} onValueChange={(v) => setcategoryId(v)}>
-                                            <SelectTrigger id="categoryId" className="w-full cursor-pointer">
-                                                <SelectValue placeholder="Select Parent Category" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {categoryList.map((cat) => (
-                                                    <SelectItem key={cat._id} value={cat._id}>
-                                                        {cat.name}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
+                                        <Popover open={categoryOpen} onOpenChange={setCategoryOpen}>
+                                            <PopoverTrigger asChild>
+                                                <Button
+                                                    variant="outline"
+                                                    role="combobox"
+                                                    aria-expanded={categoryOpen}
+                                                    className="w-full justify-between"
+                                                    disabled={!type}
+                                                >
+                                                    {categoryId
+                                                        ? categoryList.find((cat) => cat._id === categoryId)?.name
+                                                        : (!type ? "Select Type first" : "Select Parent Category")}
+                                                    <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                </Button>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-full p-0">
+                                                <div className="flex items-center border-b px-3">
+                                                    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+                                                    <Input
+                                                        placeholder="Search categories..."
+                                                        value={categorySearch}
+                                                        onChange={(e) => setCategorySearch(e.target.value)}
+                                                        className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                    />
+                                                </div>
+                                                <div className="max-h-60 overflow-auto">
+                                                    {categoryList
+                                                        .filter((cat) =>
+                                                            cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                        )
+                                                        .map((cat) => (
+                                                            <div
+                                                                key={cat._id}
+                                                                className="flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100"
+                                                                onClick={() => {
+                                                                    setcategoryId(cat._id);
+                                                                    setCategoryOpen(false);
+                                                                    setCategorySearch("");
+                                                                }}
+                                                            >
+                                                                <Check
+                                                                    className={`mr-2 h-4 w-4 ${
+                                                                        categoryId === cat._id ? "opacity-100" : "opacity-0"
+                                                                    }`}
+                                                                />
+                                                                {cat.name}
+                                                            </div>
+                                                        ))}
+                                                    {categoryList.filter((cat) =>
+                                                        cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                    ).length === 0 && (
+                                                        <div className="px-3 py-2 text-sm text-gray-500">
+                                                            No categories found.
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
                                         {errors.categoryId && <p className="text-sm text-red-600">{errors.categoryId}</p>}
                                     </div>
                                 </div>

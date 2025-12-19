@@ -90,11 +90,19 @@ var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
     "createCategory": (()=>createCategory),
+    "createProSubCategory": (()=>createProSubCategory),
     "createStreamCategory": (()=>createStreamCategory),
+    "createSubCategory": (()=>createSubCategory),
+    "fetchProCategories": (()=>fetchProCategories),
+    "fetchSubCategories": (()=>fetchSubCategories),
     "getCategories": (()=>getCategories),
+    "getCategoriesName": (()=>getCategoriesName),
     "getStreamCategories": (()=>getStreamCategories),
+    "getSubCategories": (()=>getSubCategories),
     "updateCategory": (()=>updateCategory),
-    "updateStreamCategory": (()=>updateStreamCategory)
+    "updateProSubCategory": (()=>updateProSubCategory),
+    "updateStreamCategory": (()=>updateStreamCategory),
+    "updateSubCategory": (()=>updateSubCategory)
 });
 async function getCategories(token) {
     if (!token) throw new Error("Token not found");
@@ -177,28 +185,122 @@ async function getStreamCategories(token, limit = 100000) {
     if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch stream categories");
     return data.data.data || [];
 }
-useEffect(()=>{
-    const fetchProCategories = async ()=>{
-        try {
-            setLoading(true);
-            const token = localStorage.getItem("token");
-            const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/getProSubCategory?limit=100000", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            const data = await res.json();
-            if (data.success) setProCategories(data.data.data || []);
-        } catch (err) {
-            console.error(err);
-        } finally{
-            setLoading(false);
+const fetchProCategories = async ()=>{
+    try {
+        const token = localStorage.getItem("token");
+        const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getProSubCategory?limit=100000`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        const data = await res.json();
+        if (data.success) {
+            return data.data.data || [];
+        } else {
+            console.error("API returned error:", data.message);
+            return [];
         }
-    };
-    fetchProCategories();
-}, [
-    refreshFlag
-]);
+    } catch (err) {
+        console.error("Error fetching Pro Categories:", err);
+        return [];
+    }
+};
+async function fetchSubCategories(token) {
+    if (!token) throw new Error("Token not found");
+    try {
+        const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getSubCategory?limit=100000`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch subcategories");
+        return data.data.data || [];
+    } catch (err) {
+        console.error("Error fetching subcategories:", err);
+        return [];
+    }
+}
+async function getCategoriesName(token) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/categoryName`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch categories");
+    return data.data || [];
+}
+async function createSubCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/createSubCategory`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to create subcategory");
+    return data;
+}
+async function updateSubCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/updateSubCategory`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to update subcategory");
+    return data;
+}
+async function getSubCategories(token, categoryId) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/subCategoryName?id=${categoryId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to fetch subcategories");
+    if (!data.data?.length) return [
+        {
+            _id: "notfound",
+            name: "Not Found"
+        }
+    ];
+    return data.data;
+}
+async function createProSubCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/proSubCategory`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to create Pro SubCategory");
+    return data;
+}
+async function updateProSubCategory(token, formData) {
+    if (!token) throw new Error("Token not found");
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/updateProSubCategory`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || "Failed to update Pro SubCategory");
+    return data;
+}
 }}),
 "[project]/app/(protected)/components/stream-category/CreateStreamCategory.jsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
