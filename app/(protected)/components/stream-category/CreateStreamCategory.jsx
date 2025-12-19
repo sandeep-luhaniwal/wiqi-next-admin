@@ -87,9 +87,11 @@ const CreateStreamCategory = () => {
         <DialogTrigger asChild>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <p className="text-primary font-semibold text-2xl">
-              Create & Manage Stream Categories
+              Create Stream Categories
             </p>
-            <Button onClick={() => setOpen(true)}>+ Add Stream Category</Button>
+            <div className="max-w-max">
+              <Button onClick={() => setOpen(true)}>+ Add Stream Category</Button>
+            </div>
           </div>
         </DialogTrigger>
 

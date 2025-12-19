@@ -67,7 +67,7 @@ export const MENU_SIDEBAR = [
     title: 'Categories',
     icon: UserCircle,
     children: [
-      { title: 'Manage Categories', path: '/category/all-category' },
+      { title: 'Category', path: '/category/all-category' },
       { title: 'Sub Categories', path: '/category/sub-category' },
       { title: 'Pro Sub Categories', path: '/category/pro-sub-category' },
     ]
@@ -76,7 +76,7 @@ export const MENU_SIDEBAR = [
     title: 'Stream Categories',
     icon: Users2,
     children: [
-      { title: 'Manage Stream', path: '/stream-category/all-category' },
+      { title: 'Stream', path: '/stream-category/all-category' },
      
     ]
   },
