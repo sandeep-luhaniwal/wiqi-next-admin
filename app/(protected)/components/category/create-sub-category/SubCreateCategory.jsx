@@ -208,7 +208,7 @@ export default function SubCreateCategory() {
                                             placeholder="Enter Name"
                                             value={name || ""}
                                             onChange={(e) => {
-                                                const val = e.target.value.trim();
+                                                const val = e.target.value;
                                                 setName(val === "" ? null : val);
                                             }}
                                         />

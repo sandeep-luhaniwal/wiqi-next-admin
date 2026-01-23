@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "wiqi-dev-bucket.s3.ap-south-1.amazonaws.com",
+                hostname: "wiqi-app-assets.s3.me-central-1.amazonaws.com",
             },
         ],
     },

@@ -1,3 +1,4 @@
+import { icon } from 'leaflet';
 import {
   AlertCircle,
   Award,
@@ -6,6 +7,7 @@ import {
   Bitcoin,
   Bolt,
   Book,
+  BookOpen,
   Briefcase,
   Building,
   CalendarCheck,
@@ -54,6 +56,7 @@ import {
   Briefcase as WorkIcon,
   Zap,
 } from 'lucide-react';
+import path from 'path';
 
 export const MENU_SIDEBAR = [
   {
@@ -87,6 +90,11 @@ export const MENU_SIDEBAR = [
       { title: 'User Post', path: '/post' },
      
     ]
+  },
+  {
+    title:'Banner',
+    icon: BookOpen,
+    path:"/banner"
   },
   // {
   //   title: 'Public Profile',
