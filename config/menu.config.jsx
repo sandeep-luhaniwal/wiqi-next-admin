@@ -1,4 +1,3 @@
-import { icon } from 'leaflet';
 import {
   AlertCircle,
   Award,
@@ -56,7 +55,6 @@ import {
   Briefcase as WorkIcon,
   Zap,
 } from 'lucide-react';
-import path from 'path';
 
 export const MENU_SIDEBAR = [
   {
