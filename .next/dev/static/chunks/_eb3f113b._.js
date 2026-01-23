@@ -13,7 +13,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 async function getPosts(token) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getPost?limit=10000000`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getPost?limit=10000000`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -24,7 +24,7 @@ async function getPosts(token) {
 }
 async function getUsers(token) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUser?limit=1000000`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getUser?limit=1000000`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -48,7 +48,7 @@ async function getUsers(token) {
 async function getUserWithPosts(userId, token) {
     if (!token) throw new Error("Token not found");
     if (!userId) throw new Error("User ID is required");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUserAllPost?userId=${userId}`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getUserAllPost?userId=${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

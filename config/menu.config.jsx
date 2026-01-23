@@ -92,9 +92,11 @@ export const MENU_SIDEBAR = [
     ]
   },
   {
-    title:'Banner',
+    title: 'Banner',
     icon: BookOpen,
-    path:"/banner"
+    children: [
+      { title: 'Banner', path: '/banner' },
+    ]
   },
   // {
   //   title: 'Public Profile',

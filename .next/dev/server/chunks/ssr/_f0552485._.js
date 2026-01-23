@@ -12,7 +12,7 @@ __turbopack_context__.s([
 ]);
 async function getPosts(token) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getPost?limit=10000000`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getPost?limit=10000000`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -23,7 +23,7 @@ async function getPosts(token) {
 }
 async function getUsers(token) {
     if (!token) throw new Error("Token not found");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUser?limit=1000000`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getUser?limit=1000000`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -47,7 +47,7 @@ async function getUsers(token) {
 async function getUserWithPosts(userId, token) {
     if (!token) throw new Error("Token not found");
     if (!userId) throw new Error("User ID is required");
-    const res = await fetch(`${("TURBOPACK compile-time value", "https://wiqiapi.testenvapp.com/")}api/admin/getUserAllPost?userId=${userId}`, {
+    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/getUserAllPost?userId=${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

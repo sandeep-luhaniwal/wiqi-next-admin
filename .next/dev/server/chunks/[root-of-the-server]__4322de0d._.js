@@ -129,7 +129,7 @@ const authOptions = {
                     throw new Error("Please provide email and password");
                 }
                 try {
-                    const res = await fetch("https://wiqiapi.testenvapp.com/api/admin/login", {
+                    const res = await fetch(`${("TURBOPACK compile-time value", "https://prodapi.wiqi.net/")}api/admin/login`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
