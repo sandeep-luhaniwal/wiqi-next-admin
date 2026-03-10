@@ -19,6 +19,13 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import { useBanner } from "./banner-context";
 import { DataGrid } from "@/components/ui/data-grid";
 import { DataGridTable } from "@/components/ui/data-grid-table";
@@ -92,9 +99,9 @@ export default function AllBanners() {
             accessorFn: (row) => row.image,
             header: () => <span className="font-bold">Image</span>,
             cell: ({ row }) => row.original.image ? 
-                <Image width={48} height={48} src={row.original.image} alt="banner" className="w-12 h-12 rounded object-cover border" /> :
-                <Image src={'/media/images/svg/userprofile.svg'} width={48} height={48} alt='no img found' />,
-            size: 100,
+                <Image width={100} height={50} src={row.original.image} alt="banner" className="w-[100px] h-[50px] rounded object-cover border" /> :
+                <Image src={'/media/images/svg/userprofile.svg'} width={100} height={50} alt='no img found' className="w-[100px] h-[50px]" />,
+            size: 120, 
         },
         {
             id: "title",
@@ -160,13 +167,12 @@ export default function AllBanners() {
                         <TooltipTrigger asChild>
                             <button
                                 onClick={() => handleStatusToggle(row.original._id, row.original.status)}
-                                className={`flex items-center gap-1 px-2 py-1 rounded text-sm font-medium ${
+                                className={`px-2 py-1 rounded text-sm font-medium cursor-pointer ${
                                     row.original.status === true || row.original.status === "active"
                                         ? "bg-green-100 text-green-800 hover:bg-green-200" 
                                         : "bg-red-100 text-red-800 hover:bg-red-200"
                                 }`}
                             >
-                                {row.original.status === true || row.original.status === "active" ? <Eye size={14} /> : <EyeOff size={14} />}
                                 {row.original.status === true || row.original.status === "active" ? "Active" : "Inactive"}
                             </button>
                         </TooltipTrigger>
@@ -174,13 +180,80 @@ export default function AllBanners() {
                     </Tooltip>
                 </TooltipProvider>
             ),
-            size: 120,
+            size: 100,
         },
         {
             id: "actions",
             header: () => <span className="font-bold block text-right">Actions</span>,
             cell: ({ row }) => (
                 <div className="flex justify-end gap-3 items-center">
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <button className="text-blue-600 cursor-pointer hover:text-blue-800">
+                                            <Eye size={18} />
+                                        </button>
+                                    </DialogTrigger>
+                                    <DialogContent className="max-w-2xl">
+                                        <DialogHeader>
+                                            <DialogTitle>Banner Details</DialogTitle>
+                                        </DialogHeader>
+                                        <div className="space-y-4">
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="font-semibold">Title:</label>
+                                                    <p>{row.original.title || row.original.name}</p>
+                                                </div>
+                                                <div>
+                                                    <label className="font-semibold">Type:</label>
+                                                    <p className="capitalize">{row.original.type}</p>
+                                                </div>
+                                                <div>
+                                                    <label className="font-semibold">Index:</label>
+                                                    <p>{row.original.index || "N/A"}</p>
+                                                </div>
+                                                <div>
+                                                    <label className="font-semibold">Status:</label>
+                                                    <span className={`px-2 py-1 rounded text-sm ${
+                                                        row.original.status === true || row.original.status === "active"
+                                                            ? "bg-green-100 text-green-800" 
+                                                            : "bg-red-100 text-red-800"
+                                                    }`}>
+                                                        {row.original.status === true || row.original.status === "active" ? "Active" : "Inactive"}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            {row.original.url && (
+                                                <div>
+                                                    <label className="font-semibold">URL:</label>
+                                                    <p className="break-all">{row.original.url}</p>
+                                                </div>
+                                            )}
+                                            {row.original.image && (
+                                                <div>
+                                                    <label className="font-semibold">Image:</label>
+                                                    <div className="mt-2">
+                                                        <Image 
+                                                            src={row.original.image} 
+                                                            alt="banner" 
+                                                            width={500} 
+                                                            height={120} 
+                                                            className="rounded border max-w-full h-auto"
+                                                            style={{minWidth: '490px', maxWidth: '510px', minHeight: '110px', maxHeight: '125px'}}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </DialogContent>
+                                </Dialog>
+                            </TooltipTrigger>
+                            <TooltipContent>View Details</TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                   
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
@@ -228,7 +301,7 @@ export default function AllBanners() {
                     </TooltipProvider>
                 </div>
             ),
-            size: 90,
+            size: 150,
         }
     ], [setBannerToEdit]);
 

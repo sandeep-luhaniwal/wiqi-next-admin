@@ -43,6 +43,7 @@ export default function CreateBanner() {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
+    const [imageError, setImageError] = useState("");
 
     const resetForm = () => {
         setTitle("");
@@ -52,6 +53,7 @@ export default function CreateBanner() {
         setImageFile(null);
         setPreview(null);
         setErrors({});
+        setImageError("");
         setBannerToEdit(null);
     };
 
@@ -77,8 +79,30 @@ export default function CreateBanner() {
 
     const handleImageChange = (file) => {
         if (file) {
-            setImageFile(file);
-            setPreview(URL.createObjectURL(file));
+            setImageError(""); // Clear previous errors
+            const img = document.createElement('img');
+            img.onload = function() {
+                const width = this.width;
+                const height = this.height;
+                
+                if (width < 490 || width > 510) {
+                    const errorMsg = `Image width must be between 490-510px. Current: ${width}px`;
+                    setImageError(errorMsg);
+                    toast.error(errorMsg);
+                    return;
+                }
+                
+                if (height < 105 || height > 120) {
+                    const errorMsg = `Image height must be between 105-120px. Current: ${height}px`;
+                    setImageError(errorMsg);
+                    toast.error(errorMsg);
+                    return;
+                }
+                
+                setImageFile(file);
+                setPreview(URL.createObjectURL(file));
+            };
+            img.src = URL.createObjectURL(file);
         }
     };
 
@@ -215,6 +239,7 @@ export default function CreateBanner() {
                                         </label>
                                     )}
                                     {errors.image && <p className="text-sm text-red-600">{errors.image}</p>}
+                                    {imageError && <p className="text-sm text-red-600">{imageError}</p>}
                                 </div>
                             </CardContent>
 

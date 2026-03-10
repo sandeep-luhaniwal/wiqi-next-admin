@@ -131,6 +131,7 @@ export default function Page() {
                 <FormLabel>Password</FormLabel>
                 <div className="relative">
                   <Input
+                    className={'pe-11'}
                     {...field}
                     type={passwordVisible ? 'text' : 'password'}
                     placeholder="Enter password"

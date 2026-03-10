@@ -36,9 +36,9 @@ export function BrandedLayout({ children }) {
               <h3 className="lg:text-4xl text-2xl md:text-3xl text-center text-destructive-foreground font-semibold">
                 Welcome to Wiqi
               </h3>
-              <div className="text-sm md:text-base text-center font-medium text-foreground">
+              <div className="text-sm md:text-base text-center font-medium text-white/70">
                 Securely access your personalized dashboard with Wiqi — {" "}
-                <span className="text-destructive-foreground font-semibold">
+                <span className="text-white font-semibold">
                   smart, fast, and reliable
                 </span>{" "}
                 control for managing your workflow, data, and insights.
