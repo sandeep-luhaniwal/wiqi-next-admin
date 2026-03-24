@@ -235,11 +235,11 @@ export default function ProCreateCategory() {
                                             placeholder="Enter Name"
                                             value={name || ""}
                                             onChange={(e) => {
-                                                const val = e.target.value;
+                                                const val = e?.target?.value;
                                                 setName(val === "" ? null : val);
                                             }}
                                         />
-                                        {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+                                        {errors?.name && <p className="text-sm text-red-600">{errors.name}</p>}
                                     </div>
 
                                     {/* Title */}
@@ -249,9 +249,9 @@ export default function ProCreateCategory() {
                                             id="title"
                                             placeholder="Enter Title"
                                             value={title}
-                                            onChange={(e) => setTitle(e.target.value)}
+                                            onChange={(e) => setTitle(e?.target?.value)}
                                         />
-                                        {errors.title && <p className="text-sm text-red-600">{errors.title}</p>}
+                                        {errors.title && <p className="text-sm text-red-600">{errors?.title}</p>}
                                     </div>
 
                                     {/* URL */}
@@ -262,7 +262,7 @@ export default function ProCreateCategory() {
                                             placeholder="Enter URL"
                                             value={url || ""}
                                             onChange={(e) => {
-                                                const val = e.target.value.trim();
+                                                const val = e?.target?.value.trim();
                                                 setUrl(val === "" ? null : val);
                                             }}
                                         />
@@ -309,7 +309,7 @@ export default function ProCreateCategory() {
                                                     <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                                 </Button>
                                             </PopoverTrigger>
-                                            <PopoverContent className="w-full p-0">
+                                            <PopoverContent align="start" side="bottom" className="w-full p-0">
                                                 <div className="flex items-center border-b px-3">
                                                     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
                                                     <Input
@@ -322,12 +322,12 @@ export default function ProCreateCategory() {
                                                 <div className="max-h-60 overflow-auto">
                                                     {categoryList
                                                         .filter((cat) =>
-                                                            cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                            cat?.name?.toLowerCase().includes(categorySearch.toLowerCase())
                                                         )
                                                         .map((cat) => (
                                                             <div
                                                                 key={cat._id}
-                                                                className="flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100"
+                                                                className="flex items-center text-sm px-3 py-2 cursor-pointer hover:bg-gray-100"
                                                                 onClick={() => {
                                                                     setCategoryId(cat._id);
                                                                     setSubCategoryId("");
@@ -344,7 +344,7 @@ export default function ProCreateCategory() {
                                                             </div>
                                                         ))}
                                                     {categoryList.filter((cat) =>
-                                                        cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                        cat?.name?.toLowerCase().includes(categorySearch.toLowerCase())
                                                     ).length === 0 && (
                                                         <div className="px-3 py-2 text-sm text-gray-500">
                                                             No categories found.
@@ -369,12 +369,12 @@ export default function ProCreateCategory() {
                                                     disabled={subLoading || !categoryId}
                                                 >
                                                     {subCategoryId
-                                                        ? subCategoryList.find((sub) => sub._id === subCategoryId)?.name
+                                                        ? subCategoryList?.find((sub) => sub?._id === subCategoryId)?.name
                                                         : (subLoading ? "Loading..." : !categoryId ? "Select Category first" : "Select SubCategory")}
                                                     <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                                 </Button>
                                             </PopoverTrigger>
-                                            <PopoverContent className="w-full p-0">
+                                            <PopoverContent align="start" side="bottom" className="w-full p-0">
                                                 <div className="flex items-center border-b px-3">
                                                     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
                                                     <Input
@@ -387,12 +387,12 @@ export default function ProCreateCategory() {
                                                 <div className="max-h-60 overflow-auto">
                                                     {subCategoryList
                                                         .filter((sub) =>
-                                                            sub.name.toLowerCase().includes(subCategorySearch.toLowerCase())
+                                                            sub?.name?.toLowerCase().includes(subCategorySearch.toLowerCase())
                                                         )
                                                         .map((sub) => (
                                                             <div
                                                                 key={sub._id}
-                                                                className="flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100"
+                                                                className="flex items-center text-sm px-3 py-2 cursor-pointer hover:bg-gray-100"
                                                                 onClick={() => {
                                                                     setSubCategoryId(sub._id);
                                                                     setSubCategoryOpen(false);
@@ -408,7 +408,7 @@ export default function ProCreateCategory() {
                                                             </div>
                                                         ))}
                                                     {subCategoryList.filter((sub) =>
-                                                        sub.name.toLowerCase().includes(subCategorySearch.toLowerCase())
+                                                        sub?.name?.toLowerCase().includes(subCategorySearch.toLowerCase())
                                                     ).length === 0 && (
                                                         <div className="px-3 py-2 text-sm text-gray-500">
                                                             No subcategories found.

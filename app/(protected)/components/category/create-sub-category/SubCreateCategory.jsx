@@ -62,7 +62,7 @@ export default function SubCreateCategory() {
         }
         try {
             const token = localStorage.getItem("token");
-             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/admin/categoryGetByType?type=${selectedType}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/admin/categoryGetByType?type=${selectedType}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -257,9 +257,9 @@ export default function SubCreateCategory() {
                                     </div>
 
                                     {/* Parent Category Dropdown with Search */}
-                                    <div className="md:col-span-2">
-                                        <Label htmlFor="categoryId">Parent Category</Label>
-                                        <Popover open={categoryOpen} onOpenChange={setCategoryOpen}>
+                                    <div className="md:col-span-2 w-full">
+                                        <Label htmlFor="categoryId">Parenssssst Category</Label>
+                                        <Popover className="!w-full" open={categoryOpen} onOpenChange={setCategoryOpen}>
                                             <PopoverTrigger asChild>
                                                 <Button
                                                     variant="outline"
@@ -274,8 +274,12 @@ export default function SubCreateCategory() {
                                                     <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                                 </Button>
                                             </PopoverTrigger>
-                                            <PopoverContent className="w-full p-0">
-                                                <div className="flex items-center border-b px-3">
+                                            <PopoverContent
+                                                align="start"
+                                                side="bottom"
+                                                className="!w-full p-0"
+                                            >
+                                                <div className="flex items-center w-full border-b px-3">
                                                     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
                                                     <Input
                                                         placeholder="Search categories..."
@@ -287,12 +291,12 @@ export default function SubCreateCategory() {
                                                 <div className="max-h-60 overflow-auto">
                                                     {categoryList
                                                         .filter((cat) =>
-                                                            cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                            cat?.name?.toLowerCase().includes(categorySearch.toLowerCase())
                                                         )
                                                         .map((cat) => (
                                                             <div
                                                                 key={cat._id}
-                                                                className="flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100"
+                                                                className="flex items-center text-sm px-3 py-2 cursor-pointer hover:bg-gray-100"
                                                                 onClick={() => {
                                                                     setcategoryId(cat._id);
                                                                     setCategoryOpen(false);
@@ -300,20 +304,19 @@ export default function SubCreateCategory() {
                                                                 }}
                                                             >
                                                                 <Check
-                                                                    className={`mr-2 h-4 w-4 ${
-                                                                        categoryId === cat._id ? "opacity-100" : "opacity-0"
-                                                                    }`}
+                                                                    className={`mr-2 h-4 w-4 ${categoryId === cat._id ? "opacity-100" : "opacity-0"
+                                                                        }`}
                                                                 />
                                                                 {cat.name}
                                                             </div>
                                                         ))}
                                                     {categoryList.filter((cat) =>
-                                                        cat.name.toLowerCase().includes(categorySearch.toLowerCase())
+                                                        cat?.name?.toLowerCase().includes(categorySearch.toLowerCase())
                                                     ).length === 0 && (
-                                                        <div className="px-3 py-2 text-sm text-gray-500">
-                                                            No categories found.
-                                                        </div>
-                                                    )}
+                                                            <div className="px-3 py-2 text-sm text-gray-500">
+                                                                No categories found.
+                                                            </div>
+                                                        )}
                                                 </div>
                                             </PopoverContent>
                                         </Popover>
