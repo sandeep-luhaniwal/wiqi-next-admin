@@ -36,7 +36,7 @@ export default function Terms() {
                     </Section>
 
                     <Section title="2. Description of Service">
-                        Wiqi helps users manage workflows efficiently with features such as:
+                        WiQi helps users manage workflows efficiently with features such as:
                         <ul className="list-disc list-inside mt-2 ml-4 space-y-1">
                             <li>Project and task management</li>
                             <li>Team collaboration tools</li>
@@ -58,10 +58,10 @@ export default function Terms() {
                     </Section>
 
                     <Section title="4. Usage Guidelines">
-                        You agree to use Wiqi lawfully and NOT to:
+                        You agree to use WiQi lawfully and NOT to:
                         <ul className="list-disc list-inside mt-2 ml-4 space-y-1">
                             <li>Violate any applicable laws or regulations</li>
-                            <li>Attempt unauthorized access to Wiqi systems</li>
+                            <li>Attempt unauthorized access to WiQi systems</li>
                             <li>Disrupt or interfere with the App’s functionality</li>
                             <li>Upload malicious code, viruses, or harmful content</li>
                             <li>Impersonate others or provide false information</li>
@@ -70,12 +70,12 @@ export default function Terms() {
 
                     <Section title="5. Intellectual Property">
                         <Subsection subtitle="5.1 Our Content">
-                            All intellectual property related to Wiqi (text, images, design,
-                            code, etc.) belongs to Wiqi and is protected by law.
+                            All intellectual property related to WiQi (text, images, design,
+                            code, etc.) belongs to WiQi and is protected by law.
                         </Subsection>
                         <Subsection subtitle="5.2 Your Content">
                             You retain rights to the content you upload. By uploading, you
-                            grant Wiqi a limited license to use it solely for providing
+                            grant WiQi a limited license to use it solely for providing
                             services.
                         </Subsection>
                     </Section>
@@ -83,17 +83,17 @@ export default function Terms() {
                     <Section title="6. Disclaimer">
                         <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
                             <strong className="text-purple-900 block mb-2">
-                                Important: Wiqi is a productivity tool, not a guarantee of
+                                Important: WiQi is a productivity tool, not a guarantee of
                                 performance.
                             </strong>
-                            Wiqi helps with task organization and reminders but does not
+                            WiQi helps with task organization and reminders but does not
                             assume responsibility for outcomes, losses, or delays caused by
                             user decisions.
                         </div>
                     </Section>
 
                     <Section title="7. Limitation of Liability">
-                        Wiqi is not liable for:
+                        WiQi is not liable for:
                         <ul className="list-disc list-inside mt-2 ml-4 space-y-1">
                             <li>Indirect, incidental, or consequential damages</li>
                             <li>Loss of profits, data, or productivity</li>
@@ -102,8 +102,8 @@ export default function Terms() {
                     </Section>
 
                     <Section title="8. Third-Party Services">
-                        Wiqi may include links or integrations with third-party platforms.
-                        Wiqi is not responsible for their content or data handling
+                        WiQi may include links or integrations with third-party platforms.
+                        WiQi is not responsible for their content or data handling
                         practices.
                     </Section>
 
@@ -114,7 +114,7 @@ export default function Terms() {
                     </Section>
 
                     <Section title="10. Termination">
-                        Wiqi may suspend or terminate accounts for policy violations or
+                        WiQi may suspend or terminate accounts for policy violations or
                         misuse. Upon termination, your access will be immediately revoked.
                     </Section>
 
@@ -128,14 +128,14 @@ export default function Terms() {
                         <div className="bg-purple-50 p-4 rounded-lg mt-4">
                             <p className="text-purple-900">Email: support@wiqi.app</p>
                             <p className="text-purple-900">
-                                Address: Wiqi HQ, 123 Innovation Street, San Francisco, CA
+                                Address: WiQi HQ, 123 Innovation Street, San Francisco, CA
                             </p>
                         </div>
                     </Section>
 
                     <Section title="13. Entire Agreement">
                         These Terms, along with our Privacy Policy, represent the complete
-                        agreement between you and Wiqi regarding use of the App.
+                        agreement between you and WiQi regarding use of the App.
                     </Section>
                 </div>
             </div>

@@ -14,7 +14,7 @@ export function Footer() {
             <p
               className="text-secondary-foreground hover:text-primary"
             >
-              Wiqi Application
+              WiQi Application
             </p>
           </div>
         </div>

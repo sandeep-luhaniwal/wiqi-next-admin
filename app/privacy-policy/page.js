@@ -89,7 +89,7 @@ export default function PrivacyPolicy() {
           <Section title="6. Security">
             We use encryption, secure servers, and regular audits to protect your
             personal information. However, no online service can guarantee
-            100% security, so please use Wiqi responsibly.
+            100% security, so please use WiQi responsibly.
           </Section>
 
           <Section title="7. Your Rights">
@@ -105,26 +105,26 @@ export default function PrivacyPolicy() {
           </Section>
 
           <Section title="8. Third-Party Services">
-            Wiqi may include links or integrations with third-party tools such as
+            WiQi may include links or integrations with third-party tools such as
             cloud storage or analytics platforms. We are not responsible for their
             privacy practices. Please review their privacy policies before use.
           </Section>
 
           <Section title="9. Cookies and Tracking">
-            Wiqi may use cookies or similar technologies to enhance user experience
+            WiQi may use cookies or similar technologies to enhance user experience
             and analyze app performance. You can manage or disable cookies through
             your browser settings.
           </Section>
 
           <Section title="10. Children's Privacy">
-            Wiqi is not intended for children under 13. We do not knowingly collect
+            WiQi is not intended for children under 13. We do not knowingly collect
             data from minors. If you believe a child has provided us data, contact
             us to remove it.
           </Section>
 
           <Section title="11. Changes to This Policy">
             We may update this Privacy Policy occasionally. Updates will be posted
-            on this page with a new “Last Updated” date. Continued use of Wiqi after
+            on this page with a new “Last Updated” date. Continued use of WiQi after
             changes means you accept the revised policy.
           </Section>
 
@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
             <div className="bg-purple-50 p-4 rounded-lg mt-4">
               <p className="text-purple-900">Email: support@wiqi.app</p>
               <p className="text-purple-900">
-                Address: Wiqi HQ, 123 Innovation Street, San Francisco, CA
+                Address: WiQi HQ, 123 Innovation Street, San Francisco, CA
               </p>
             </div>
           </Section>

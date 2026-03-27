@@ -37,7 +37,7 @@ export function BrandedLayout({ children }) {
                 Welcome to Wiqi
               </h3>
               <div className="text-sm md:text-base text-center font-medium text-white/70">
-                Securely access your personalized dashboard with Wiqi — {" "}
+                Securely access your personalized dashboard with WiQi — {" "}
                 <span className="text-white font-semibold">
                   smart, fast, and reliable
                 </span>{" "}
