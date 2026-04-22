@@ -44,6 +44,8 @@ export default function SubCreateCategory() {
     const [type, setType] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
+    const [pdfFile, setPdfFile] = useState(null);
+    const [pdfLink, setPdfLink] = useState(null);
     const [categoryId, setcategoryId] = useState("");
     const [categoryList, setCategoryList] = useState([]);
     const [categorySearch, setCategorySearch] = useState("");
@@ -91,8 +93,10 @@ export default function SubCreateCategory() {
             setUrl(subCategoryToEdit.url || "");
             setType(subCategoryToEdit.type || "");
             setPreview(subCategoryToEdit.image || null);
+            setPdfLink(subCategoryToEdit.pdf || null);
             setcategoryId(subCategoryToEdit.categoryId?._id || "");
             setImageFile(null);
+            setPdfFile(null);
             setOpen(true); // ✅ edit mode mai open
         }
     }, [subCategoryToEdit]);
@@ -105,6 +109,8 @@ export default function SubCreateCategory() {
         setcategoryId("");
         setImageFile(null);
         setPreview(null);
+        setPdfFile(null);
+        setPdfLink(null);
         setErrors({});
         setSubCategoryToEdit(null);
         setCategorySearch("");
@@ -113,11 +119,27 @@ export default function SubCreateCategory() {
 
     const validate = () => {
         const newErrors = {};
-        if (!name && !url) newErrors.name = "Either Name or URL is required";
-        if (name && url) {
-            newErrors.name = "You cannot provide both Name and URL";
-            newErrors.url = "You cannot provide both Name and URL";
+        let provided = 0;
+        if (name) provided++;
+        if (url) provided++;
+        if (pdfFile || pdfLink) provided++;
+
+        if (type === "Reads") {
+            if (provided === 0) {
+                newErrors.name = "Either Name, URL, or PDF is required";
+            } else if (provided > 1) {
+                newErrors.name = "Provide only one of Name, URL, or PDF";
+                newErrors.url = "Provide only one of Name, URL, or PDF";
+                newErrors.pdf = "Provide only one of Name, URL, or PDF";
+            }
+        } else {
+            if (!name && !url) newErrors.name = "Either Name or URL is required";
+            if (name && url) {
+                newErrors.name = "You cannot provide both Name and URL";
+                newErrors.url = "You cannot provide both Name and URL";
+            }
         }
+
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
         if (!categoryId) newErrors.categoryId = "Parent category is required";
@@ -151,6 +173,9 @@ export default function SubCreateCategory() {
             formData.append("type", type);
             formData.append("categoryId", categoryId);
             if (url !== null) formData.append("url", url);
+            if (type === "Reads" && pdfFile) {
+                formData.append("pdf", pdfFile);
+            }
 
             if (subCategoryToEdit?._id) {
                 formData.append("id", subCategoryToEdit._id);
@@ -255,6 +280,27 @@ export default function SubCreateCategory() {
                                         </Select>
                                         {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
                                     </div>
+                                    
+                                    {type === "Reads" && (
+                                        <div className="md:col-span-1 w-full">
+                                            <Label htmlFor="pdf">Upload PDF</Label>
+                                            <div className="flex items-center gap-3 mt-1">
+                                                <Input
+                                                    id="pdf"
+                                                    type="file"
+                                                    accept=".pdf"
+                                                    onChange={(e) => setPdfFile(e.target.files[0])}
+                                                    className="cursor-pointer"
+                                                />
+                                                {pdfLink && !pdfFile && (
+                                                    <a href={pdfLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm underline shrink-0">
+                                                        View Current PDF
+                                                    </a>
+                                                )}
+                                            </div>
+                                            {errors.pdf && <p className="text-sm text-red-600 mt-1">{errors.pdf}</p>}
+                                        </div>
+                                    )}
 
                                     {/* Parent Category Dropdown with Search */}
                                     <div className="md:col-span-2 w-full">

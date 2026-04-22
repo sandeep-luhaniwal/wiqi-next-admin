@@ -128,6 +128,35 @@ export default function AllTypeCategory() {
             size: 90,
         },
         {
+            id: "pdf",
+            accessorFn: (row) => row.pdf,
+            header: () => <span className="font-bold">PDF</span>,
+            cell: ({ row }) => (
+                row.original.pdf ? (
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Link
+                                    href={row.original.pdf?.startsWith('http') ? row.original.pdf : `https://wiqi-assets-mumbai.s3.ap-south-1.amazonaws.com/${row.original.pdf}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-primary duration-300 max-w-max hover:text-blue-800 flex items-center gap-1 text-sm"
+                                >
+                                    <Link2 size={16} className="w-4 h-4 text-nowrap" /> <span className="text-nowrap text-sm"> View PDF</span>
+                                </Link>
+                            </TooltipTrigger>
+                            <TooltipContent side="top" className="max-w-xs break-words">
+                                {row.original.pdf?.startsWith('http') ? row.original.pdf : `https://wiqi-assets-mumbai.s3.ap-south-1.amazonaws.com/${row.original.pdf}`}
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                ) : (
+                    <span className="text-gray-400">N/A</span>
+                )
+            ),
+            size: 90,
+        },
+        {
             id: "actions",
             header: () => <span className="font-bold block text-right">Actions</span>,
             cell: ({ row }) => (

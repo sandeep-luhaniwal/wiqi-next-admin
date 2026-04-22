@@ -90,7 +90,7 @@ const GetUserTable = () => {
                 header: () => <span className="font-bold">Username</span>,
                 cell: ({ row }) => row.original.userName,
                 enableSorting: false,
-                size: 150,
+                size: 350,
             },
             {
                 id: 'email',

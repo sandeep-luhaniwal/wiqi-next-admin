@@ -37,6 +37,8 @@ export default function ProCreateCategory() {
     const [subCategoryId, setSubCategoryId] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
+    const [pdfFile, setPdfFile] = useState(null);
+    const [pdfLink, setPdfLink] = useState(null);
     const [categoryId, setCategoryId] = useState("");
     const [categoryList, setCategoryList] = useState([]);
     const [subCategoryList, setSubCategoryList] = useState([]);
@@ -123,6 +125,9 @@ export default function ProCreateCategory() {
             setCategoryId(proCategoryToEdit.categoryId?._id || "");
             setSubCategoryId(proCategoryToEdit.subCategoryId?._id || "");
             setPreview(proCategoryToEdit.image || null);
+            setPdfLink(proCategoryToEdit.pdf || null);
+            setImageFile(null);
+            setPdfFile(null);
             setOpen(true);
         }
     }, [proCategoryToEdit]);
@@ -136,6 +141,8 @@ export default function ProCreateCategory() {
         setSubCategoryId("");
         setImageFile(null);
         setPreview(null);
+        setPdfFile(null);
+        setPdfLink(null);
         setErrors({});
         setProCategoryToEdit(null);
         setCategorySearch("");
@@ -146,11 +153,27 @@ export default function ProCreateCategory() {
 
     const validate = () => {
         const newErrors = {};
-        if (!name && !url) newErrors.name = "Either Name or URL is required";
-        if (name && url) {
-            newErrors.name = "You cannot provide both Name and URL";
-            newErrors.url = "You cannot provide both Name and URL";
+        let provided = 0;
+        if (name) provided++;
+        if (url) provided++;
+        if (pdfFile || pdfLink) provided++;
+
+        if (type === "Reads") {
+            if (provided === 0) {
+                newErrors.name = "Either Name, URL, or PDF is required";
+            } else if (provided > 1) {
+                newErrors.name = "Provide only one of Name, URL, or PDF";
+                newErrors.url = "Provide only one of Name, URL, or PDF";
+                newErrors.pdf = "Provide only one of Name, URL, or PDF";
+            }
+        } else {
+            if (!name && !url) newErrors.name = "Either Name or URL is required";
+            if (name && url) {
+                newErrors.name = "You cannot provide both Name and URL";
+                newErrors.url = "You cannot provide both Name and URL";
+            }
         }
+
         if (!title.trim()) newErrors.title = "Title is required";
         if (!type.trim()) newErrors.type = "Type is required";
         if (!categoryId) newErrors.categoryId = "Category is required";
@@ -186,6 +209,9 @@ export default function ProCreateCategory() {
             formData.append("categoryId", categoryId);
             formData.append("subCategoryId", subCategoryId);
             if (url !== null) formData.append("url", url);
+            if (type === "Reads" && pdfFile) {
+                formData.append("pdf", pdfFile);
+            }
             if (proCategoryToEdit?._id) {
                 formData.append("id", proCategoryToEdit._id);
                 if (imageFile) formData.append("image", imageFile);
@@ -220,7 +246,7 @@ export default function ProCreateCategory() {
                 </DialogHeader>
                 <DialogContent className="w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5">
                     <DialogHeader>
-                        <DialogTitle>{proCategoryToEdit ? "Edit Product" : "Create New Product"}</DialogTitle>
+                        <DialogTitle>{proCategoryToEdit ? "Edit Product" : "Create New Pro Sub Category"}</DialogTitle>
                     </DialogHeader>
 
                     <div className="overflow-y-auto max-h-[75vh] pr-2">
@@ -290,6 +316,27 @@ export default function ProCreateCategory() {
                                         </Select>
                                         {errors.type && <p className="text-sm text-red-600">{errors.type}</p>}
                                     </div>
+
+                                    {type === "Reads" && (
+                                        <div className="col-span-1 md:col-span-1 w-full">
+                                            <Label htmlFor="pdf">Upload PDF</Label>
+                                            <div className="flex items-center gap-3 mt-1">
+                                                <Input
+                                                    id="pdf"
+                                                    type="file"
+                                                    accept=".pdf"
+                                                    onChange={(e) => setPdfFile(e.target.files[0])}
+                                                    className="cursor-pointer"
+                                                />
+                                                {pdfLink && !pdfFile && (
+                                                    <a href={pdfLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm underline shrink-0">
+                                                        View Current PDF
+                                                    </a>
+                                                )}
+                                            </div>
+                                            {errors.pdf && <p className="text-sm text-red-600 mt-1">{errors.pdf}</p>}
+                                        </div>
+                                    )}
 
                                     {/* Category with Search */}
                                     <div>
