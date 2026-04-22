@@ -29,7 +29,7 @@ export default function Terms() {
                 {/* Content */}
                 <div className="bg-white rounded-3xl md:shadow-xl p-2 md:p-12 space-y-10 leading-relaxed text-purple-700">
                     <Section title="1. Acceptance of Terms">
-                        By downloading, installing, or using the <strong>Wiqi</strong> mobile
+                        By downloading, installing, or using the <strong>WiQi</strong> mobile
                         or web application ("the App"), you agree to be bound by these Terms
                         and Conditions ("Terms"). If you do not agree, please do not use the
                         App.

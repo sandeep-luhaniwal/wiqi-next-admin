@@ -105,7 +105,7 @@ export default function Page() {
     <Suspense>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-md mx-auto mt-2 md:mt-8 lg:mt-10">
-          <h2 className="text-xl font-bold text-center">Login to WiQi Streams</h2>
+          <h2 className="text-xl font-bold text-center">Login to WiQi</h2>
 
           {error && <p className="text-red-600 text-sm">{error}</p>}
 

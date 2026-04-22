@@ -34,7 +34,7 @@ export function BrandedLayout({ children }) {
             />
             <div className="flex flex-col gap-4">
               <h3 className="lg:text-4xl text-2xl md:text-3xl text-center text-destructive-foreground font-semibold">
-                Welcome to Wiqi
+                Welcome to WiQi
               </h3>
               <div className="text-sm md:text-base text-center font-medium text-white/70">
                 Securely access your personalized dashboard with WiQi — {" "}

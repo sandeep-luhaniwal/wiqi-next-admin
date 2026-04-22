@@ -22,9 +22,9 @@ export default function PrivacyPolicy() {
         {/* Content */}
         <div className="bg-white rounded-3xl md:shadow-xl p-2 md:p-12 space-y-10 leading-relaxed text-purple-700">
           <Section title="1. Introduction">
-            This Privacy Policy explains how <strong>Wiqi</strong> (“we”, “our”, or
+            This Privacy Policy explains how <strong>WiQi</strong> (“we”, “our”, or
             “us”) collects, uses, and protects your personal information when you
-            use our mobile or web application (“App”). By using Wiqi, you agree to
+            use our mobile or web application (“App”). By using WiQi, you agree to
             the terms outlined in this Privacy Policy.
           </Section>
 
@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
               </li>
               <li>
                 <strong>Optional Data:</strong> Any data you upload (tasks,
-                projects, or notes) for using Wiqi’s features.
+                projects, or notes) for using WiQi’s features.
               </li>
             </ul>
           </Section>
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
           <Section title="3. How We Use Your Information">
             We use your data to:
             <ul className="list-disc list-inside mt-2 ml-4 space-y-1">
-              <li>Provide and improve Wiqi’s services</li>
+              <li>Provide and improve WiQi’s services</li>
               <li>Personalize your experience</li>
               <li>Send updates, reminders, or support notifications</li>
               <li>Ensure account security and prevent fraud</li>

@@ -16,8 +16,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: {
-    template: '%s | WiQi Plus',
-    default: 'WiQi Plus',
+    template: '%s | WiQi',
+    default: 'WiQi',
   },
 };
 

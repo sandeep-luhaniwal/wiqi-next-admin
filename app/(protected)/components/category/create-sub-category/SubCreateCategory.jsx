@@ -246,7 +246,7 @@ export default function SubCreateCategory() {
                                                 <SelectValue placeholder="Select Type" />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                <SelectItem value="Wiqi Plus">Wiqi Plus</SelectItem>
+                                                <SelectItem value="Wiqi Plus">WiQi Plus</SelectItem>
                                                 <SelectItem value="TV">TV</SelectItem>
                                                 <SelectItem value="Radio">Radio</SelectItem>
                                                 <SelectItem value="Shops">Shops</SelectItem>
