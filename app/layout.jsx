@@ -11,6 +11,7 @@ import { I18nProvider } from '@/providers/i18n-provider';
 import { ModulesProvider } from '@/providers/modules-provider';
 import { QueryProvider } from '@/providers/query-provider';
 import { ThemeProvider } from '@/providers/theme-provider';
+import ReduxProvider from '@/providers/redux-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,20 +32,22 @@ export default async function RootLayout({ children }) {
         )}
       >
         <QueryProvider>
-          <AuthProvider>
-            <SettingsProvider>
-              <ThemeProvider>
-                <I18nProvider>
-                  <TooltipsProvider>
-                    <ModulesProvider>
-                      <Suspense>{children}</Suspense>
-                      <Toaster />
-                    </ModulesProvider>
-                  </TooltipsProvider>
-                </I18nProvider>
-              </ThemeProvider>
-            </SettingsProvider>
-          </AuthProvider>
+          <ReduxProvider>
+            <AuthProvider>
+              <SettingsProvider>
+                <ThemeProvider>
+                  <I18nProvider>
+                    <TooltipsProvider>
+                      <ModulesProvider>
+                        <Suspense>{children}</Suspense>
+                        <Toaster />
+                      </ModulesProvider>
+                    </TooltipsProvider>
+                  </I18nProvider>
+                </ThemeProvider>
+              </SettingsProvider>
+            </AuthProvider>
+          </ReduxProvider>
         </QueryProvider>
       </body>
     </html>

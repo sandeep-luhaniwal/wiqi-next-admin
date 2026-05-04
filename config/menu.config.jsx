@@ -73,12 +73,13 @@ export const MENU_SIDEBAR = [
       { title: 'Pro Sub Categories', path: '/category/pro-sub-category' },
     ]
   },
+
   {
     title: 'Stream Categories',
     icon: Users2,
     children: [
       { title: 'Stream', path: '/stream-category/all-category' },
-     
+
     ]
   },
   {
@@ -86,7 +87,17 @@ export const MENU_SIDEBAR = [
     icon: Database,
     children: [
       { title: 'User Post', path: '/post' },
-     
+
+    ]
+  },
+  {
+    title: 'Rating',
+    icon: Flag,
+    children: [
+      { title: 'Manage Countries', path: '/country' },
+      { title: 'Country Category', path: '/country-category' },
+      { title: 'Explore Options', path: '/explore-options' },
+      { title: 'Explore Ratings', path: '/explore-ratings' },
     ]
   },
   {
@@ -94,6 +105,13 @@ export const MENU_SIDEBAR = [
     icon: BookOpen,
     children: [
       { title: 'Banner', path: '/banner' },
+    ]
+  },
+  {
+    title: 'Help & Support',
+    icon: MessageSquare,
+    children: [
+      { title: 'All Questions', path: '/support' },
     ]
   },
   // {

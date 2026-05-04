@@ -21,8 +21,12 @@ export function SidebarMenu() {
 
   // Memoize matchPath to prevent unnecessary re-renders
   const matchPath = useCallback(
-    (path) =>
-      path === pathname || (path.length > 1 && pathname.startsWith(path)),
+    (path) => {
+      if (!path) return false;
+      if (path === pathname) return true;
+      if (path === '/') return pathname === '/';
+      return pathname.startsWith(path + '/');
+    },
     [pathname],
   );
 
