@@ -94,7 +94,49 @@ export default function AllExploreOptions() {
                     {row.original.categoryId?.name || "N/A"}
                 </span>
             ),
-            size: 200,
+            size: 150,
+        },
+        {
+            id: "address",
+            accessorFn: (row) => row.address,
+            header: () => <span className="font-bold text-gray-700">Address</span>,
+            cell: ({ row }) => (
+                <span className="text-gray-600">{row.original.address || "N/A"}</span>
+            ),
+            size: 150,
+        },
+        {
+            id: "city",
+            accessorFn: (row) => row.city,
+            header: () => <span className="font-bold text-gray-700">City</span>,
+            cell: ({ row }) => (
+                <span className="text-gray-600">{row.original.city || "N/A"}</span>
+            ),
+            size: 100,
+        },
+        {
+            id: "telephoneNumber",
+            accessorFn: (row) => row.telephoneNumber,
+            header: () => <span className="font-bold text-gray-700">Phone</span>,
+            cell: ({ row }) => (
+                <span className="text-gray-600">{row.original.telephoneNumber || "N/A"}</span>
+            ),
+            size: 120,
+        },
+        {
+            id: "website",
+            accessorFn: (row) => row.website,
+            header: () => <span className="font-bold text-gray-700">Website</span>,
+            cell: ({ row }) => (
+                <span className="text-gray-600">
+                    {row.original.website && row.original.website !== "null" ? (
+                        <a href={row.original.website} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                            Link
+                        </a>
+                    ) : "N/A"}
+                </span>
+            ),
+            size: 100,
         },
         {
             id: "createdAt",

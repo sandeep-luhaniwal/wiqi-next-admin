@@ -22,7 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Check, ChevronsUpDown, Star, Loader2 } from "lucide-react";
+import { Check, ChevronsUpDown, Star, Loader2, Plus, Trash2 } from "lucide-react";
 import {
     Command,
     CommandEmpty,
@@ -44,14 +44,13 @@ export default function CreateExploreRating() {
     const { ratingToEdit, categoryNames, inputNames } = useSelector((state) => state.country);
     const { countryNames } = useSelector((state) => state.countryCategory);
 
-    const [ratingValue, setRatingValue] = useState(5);
+    const [ratings, setRatings] = useState([{ title: "", rating: 5 }]);
     const [selectedCountryId, setSelectedCountryId] = useState("");
     const [selectedCountryName, setSelectedCountryName] = useState("");
     const [selectedCategoryId, setSelectedCategoryId] = useState("");
     const [selectedCategoryName, setSelectedCategoryName] = useState("");
     const [selectedInputId, setSelectedInputId] = useState("");
     const [selectedInputName, setSelectedInputName] = useState("");
-    const [description, setDescription] = useState("");
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -84,27 +83,30 @@ export default function CreateExploreRating() {
 
     useEffect(() => {
         if (ratingToEdit) {
-            setRatingValue(ratingToEdit.rating || 5);
             setSelectedCountryId(ratingToEdit.countryId?._id || "");
             setSelectedCountryName(ratingToEdit.countryId?.name || "");
             setSelectedCategoryId(ratingToEdit.categoryId?._id || "");
             setSelectedCategoryName(ratingToEdit.categoryId?.name || "");
             setSelectedInputId(ratingToEdit.inputId?._id || "");
             setSelectedInputName(ratingToEdit.inputId?.name || ratingToEdit.inputId?.inputName || "");
-            setDescription(ratingToEdit.description || "");
+            
+            if (ratingToEdit.ratings && ratingToEdit.ratings.length > 0) {
+                setRatings(ratingToEdit.ratings.map(r => ({ title: r.title, rating: r.rating })));
+            } else {
+                setRatings([{ title: "", rating: 5 }]);
+            }
             setOpen(true);
         }
     }, [ratingToEdit]);
 
     const resetForm = () => {
-        setRatingValue(5);
+        setRatings([{ title: "", rating: 5 }]);
         setSelectedCountryId("");
         setSelectedCountryName("");
         setSelectedCategoryId("");
         setSelectedCategoryName("");
         setSelectedInputId("");
         setSelectedInputName("");
-        setDescription("");
         setErrors({});
         dispatch(setRatingToEdit(null));
     };
@@ -114,7 +116,14 @@ export default function CreateExploreRating() {
         if (!selectedCountryId) newErrors.countryId = "Required";
         if (!selectedCategoryId) newErrors.categoryId = "Required";
         if (!selectedInputId) newErrors.inputId = "Required";
-        if (ratingValue < 1 || ratingValue > 5) newErrors.rating = "Rating must be 1-5";
+        
+        if (ratings.length === 0) {
+            newErrors.ratings = "At least one rating is required";
+        } else {
+            const hasEmptyTitle = ratings.some(r => !r.title.trim());
+            if (hasEmptyTitle) newErrors.ratings = "All rating categories must have a title";
+        }
+        
         return newErrors;
     };
 
@@ -133,8 +142,7 @@ export default function CreateExploreRating() {
                 countryId: selectedCountryId,
                 categoryId: selectedCategoryId,
                 inputId: selectedInputId,
-                rating: Number(ratingValue),
-                description: description,
+                ratings: ratings.map(r => ({ title: r.title.trim(), rating: Number(r.rating) })),
             };
 
             if (ratingToEdit) {
@@ -309,43 +317,79 @@ export default function CreateExploreRating() {
                                     </Popover>
                                 </div>
 
-                                {/* --- Rating --- */}
-                                <div className="space-y-3 pt-2">
-                                    <Label className={cn(errors.rating && "text-red-600")}>Rating (1-5)</Label>
-                                    <div className="flex items-center gap-4">
-                                        <div className="flex gap-1">
-                                            {[1, 2, 3, 4, 5].map((star) => (
-                                                <button
-                                                    key={star}
-                                                    type="button"
-                                                    onClick={() => setRatingValue(star)}
-                                                    className="transition-transform hover:scale-110 active:scale-95"
-                                                >
-                                                    <Star 
-                                                        size={32} 
-                                                        fill={star <= ratingValue ? "#eab308" : "none"} 
-                                                        className={star <= ratingValue ? "text-yellow-500" : "text-gray-300"}
-                                                    />
-                                                </button>
-                                            ))}
-                                        </div>
-                                        <span className="text-2xl font-bold text-primary bg-primary/5 px-4 py-1 rounded-full border border-primary/10">
-                                            {ratingValue}.0
-                                        </span>
+                                {/* --- Ratings Dynamic Rows --- */}
+                                <div className="space-y-4 pt-2">
+                                    <div className="flex items-center justify-between">
+                                        <Label className={cn("text-base font-semibold", errors.ratings && "text-red-600")}>
+                                            Rating Categories *
+                                        </Label>
+                                        <Button 
+                                            type="button" 
+                                            variant="outline" 
+                                            size="sm" 
+                                            onClick={() => setRatings([...ratings, { title: "", rating: 5 }])}
+                                            className="h-8 text-xs px-3"
+                                        >
+                                            <Plus size={14} className="mr-1" /> Add Category
+                                        </Button>
                                     </div>
-                                    {errors.rating && <p className="text-sm text-red-600">{errors.rating}</p>}
-                                </div>
-                                
-                                {/* --- Description --- */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="description">Description</Label>
-                                    <Textarea
-                                        id="description"
-                                        placeholder="Add more details about this rating..."
-                                        value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                        className="min-h-[100px] rounded-2xl resize-none border-slate-200 focus:border-primary"
-                                    />
+                                    
+                                    <div className="space-y-3">
+                                        {ratings.map((ratingObj, index) => (
+                                            <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 bg-gray-50/50 border border-gray-100 rounded-xl relative">
+                                                <div className="flex-1 w-full">
+                                                    <Input 
+                                                        placeholder="e.g. Reception, Ambiance..." 
+                                                        value={ratingObj.title}
+                                                        onChange={(e) => {
+                                                            const newRatings = [...ratings];
+                                                            newRatings[index].title = e.target.value;
+                                                            setRatings(newRatings);
+                                                        }}
+                                                        className="bg-white"
+                                                    />
+                                                </div>
+                                                <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
+                                                    <div className="flex gap-1">
+                                                        {[1, 2, 3, 4, 5].map((star) => (
+                                                            <button
+                                                                key={star}
+                                                                type="button"
+                                                                onClick={() => {
+                                                                    const newRatings = [...ratings];
+                                                                    newRatings[index].rating = star;
+                                                                    setRatings(newRatings);
+                                                                }}
+                                                                className="transition-transform hover:scale-110 active:scale-95"
+                                                            >
+                                                                <Star 
+                                                                    size={24} 
+                                                                    fill={star <= ratingObj.rating ? "#eab308" : "none"} 
+                                                                    className={star <= ratingObj.rating ? "text-yellow-500" : "text-gray-300"}
+                                                                />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                    <span className="font-bold text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/10 w-8 text-center text-sm">
+                                                        {ratingObj.rating}
+                                                    </span>
+                                                </div>
+                                                {ratings.length > 1 && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            const newRatings = ratings.filter((_, i) => i !== index);
+                                                            setRatings(newRatings);
+                                                        }}
+                                                        className="text-red-400 hover:text-red-600 p-1.5 hover:bg-red-50 rounded-md transition-colors absolute sm:static right-1 top-1 sm:right-auto sm:top-auto"
+                                                    >
+                                                        <Trash2 size={16} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {errors.ratings && <p className="text-sm text-red-600 font-medium">{errors.ratings}</p>}
                                 </div>
 
                             </CardContent>

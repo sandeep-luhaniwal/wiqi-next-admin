@@ -47,6 +47,10 @@ export default function CreateExploreOption() {
     const [selectedCountryName, setSelectedCountryName] = useState("");
     const [selectedCategoryId, setSelectedCategoryId] = useState("");
     const [selectedCategoryName, setSelectedCategoryName] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [telephoneNumber, setTelephoneNumber] = useState("");
+    const [website, setWebsite] = useState("");
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -75,6 +79,10 @@ export default function CreateExploreOption() {
             setSelectedCountryName(inputToEdit.countryId?.name || "");
             setSelectedCategoryId(inputToEdit.categoryId?._id || "");
             setSelectedCategoryName(inputToEdit.categoryId?.name || "");
+            setAddress(inputToEdit.address || "");
+            setCity(inputToEdit.city || "");
+            setTelephoneNumber(inputToEdit.telephoneNumber || "");
+            setWebsite(inputToEdit.website === "null" ? "" : (inputToEdit.website || ""));
             setOpen(true);
         }
     }, [inputToEdit]);
@@ -85,6 +93,10 @@ export default function CreateExploreOption() {
         setSelectedCountryName("");
         setSelectedCategoryId("");
         setSelectedCategoryName("");
+        setAddress("");
+        setCity("");
+        setTelephoneNumber("");
+        setWebsite("");
         setErrors({});
         dispatch(setInputToEdit(null));
     };
@@ -94,6 +106,9 @@ export default function CreateExploreOption() {
         if (!inputName.trim()) newErrors.inputName = "Input Name is required";
         if (!selectedCountryId) newErrors.countryId = "Please select a country";
         if (!selectedCategoryId) newErrors.categoryId = "Please select a category";
+        if (!address.trim()) newErrors.address = "Address is required";
+        if (!city.trim()) newErrors.city = "City is required";
+        if (!String(telephoneNumber).trim()) newErrors.telephoneNumber = "Telephone number is required";
         return newErrors;
     };
 
@@ -112,7 +127,18 @@ export default function CreateExploreOption() {
                 inputName,
                 countryId: selectedCountryId,
                 categoryId: selectedCategoryId,
+                address,
+                city,
+                telephoneNumber: Number(telephoneNumber),
             };
+
+            if (website && website.trim() !== "") {
+                payload.website = website.trim();
+            } else {
+                payload.website = null;
+            }
+
+            console.log("🚀 ~ Sending Payload to API:", payload);
 
             if (inputToEdit) {
                 payload.id = inputToEdit._id;
@@ -149,7 +175,7 @@ export default function CreateExploreOption() {
                     </DialogTrigger>
                 </DialogHeader>
 
-                <DialogContent className="w-[95%] max-w-[600px] max-h-[95%] !px-0 md:!p-5">
+                <DialogContent className="w-[95%] max-w-[800px] max-h-[95%] !px-0 md:!p-5">
                     <DialogHeader>
                         <DialogTitle>
                             {inputToEdit ? "Edit Option" : "Create New Option"}
@@ -157,7 +183,7 @@ export default function CreateExploreOption() {
                     </DialogHeader>
                     <div className="overflow-y-auto max-h-[75vh] pr-2">
                         <Card className="w-full shadow-none border-none">
-                            <CardContent className="space-y-6">
+                            <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
                                 {/* --- Country Selector --- */}
                                 <div className="space-y-2">
                                     <Label className={cn(errors.countryId && "text-red-600")}>Select Country</Label>
@@ -270,6 +296,65 @@ export default function CreateExploreOption() {
                                         className={cn(errors.inputName && "border-red-300 focus-visible:ring-red-500")}
                                     />
                                     {errors.inputName && <p className="text-sm text-red-600">{errors.inputName}</p>}
+                                </div>
+
+                                {/* --- Address --- */}
+                                <div className="space-y-2">
+                                    <Label htmlFor="address" className={cn(errors.address && "text-red-600")}>
+                                        Address
+                                    </Label>
+                                    <Input
+                                        id="address"
+                                        placeholder="Address"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        className={cn(errors.address && "border-red-300 focus-visible:ring-red-500")}
+                                    />
+                                    {errors.address && <p className="text-sm text-red-600">{errors.address}</p>}
+                                </div>
+
+                                {/* --- City --- */}
+                                <div className="space-y-2">
+                                    <Label htmlFor="city" className={cn(errors.city && "text-red-600")}>
+                                        City
+                                    </Label>
+                                    <Input
+                                        id="city"
+                                        placeholder="City"
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
+                                        className={cn(errors.city && "border-red-300 focus-visible:ring-red-500")}
+                                    />
+                                    {errors.city && <p className="text-sm text-red-600">{errors.city}</p>}
+                                </div>
+
+                                {/* --- Telephone Number --- */}
+                                <div className="space-y-2">
+                                    <Label htmlFor="telephoneNumber" className={cn(errors.telephoneNumber && "text-red-600")}>
+                                        Telephone Number
+                                    </Label>
+                                    <Input
+                                        id="telephoneNumber"
+                                        type="number"
+                                        placeholder="e.g. 1234567890"
+                                        value={telephoneNumber}
+                                        onChange={(e) => setTelephoneNumber(e.target.value)}
+                                        className={cn(errors.telephoneNumber && "border-red-300 focus-visible:ring-red-500")}
+                                    />
+                                    {errors.telephoneNumber && <p className="text-sm text-red-600">{errors.telephoneNumber}</p>}
+                                </div>
+
+                                {/* --- Website (Optional) --- */}
+                                <div className="space-y-2">
+                                    <Label htmlFor="website">
+                                        Website (Optional)
+                                    </Label>
+                                    <Input
+                                        id="website"
+                                        placeholder="e.g. https://delaine.tech/"
+                                        value={website}
+                                        onChange={(e) => setWebsite(e.target.value)}
+                                    />
                                 </div>
                             </CardContent>
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useReactTable, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel } from "@tanstack/react-table";
-import { Pencil, Trash2, Search, X, Star } from "lucide-react";
+import { useReactTable, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, getExpandedRowModel } from "@tanstack/react-table";
+import { Pencil, Trash2, Search, X, Star, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardToolbar, CardTable, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -28,7 +28,7 @@ import {
 export default function AllExploreRatings() {
     const dispatch = useDispatch();
     const { ratings, loading, error } = useSelector((state) => state.country);
-    
+
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [ratingToDelete, setRatingToDelete] = useState(null);
 
@@ -48,7 +48,7 @@ export default function AllExploreRatings() {
             r.inputId?.name?.toLowerCase().includes(q) ||
             r.countryId?.name?.toLowerCase().includes(q) ||
             r.categoryId?.name?.toLowerCase().includes(q) ||
-            String(r.rating).includes(q)
+            r.ratings?.some(ratingObj => ratingObj.title?.toLowerCase().includes(q) || String(ratingObj.rating).includes(q))
         );
     }, [searchQuery, ratings]);
 
@@ -68,16 +68,57 @@ export default function AllExploreRatings() {
 
     const columns = useMemo(() => [
         {
-            id: "rating",
-            accessorFn: (row) => row.rating,
+            id: "expander",
+            header: () => <span className="w-10"></span>,
+            cell: ({ row }) => (
+                <button
+                    onClick={() => row.toggleExpanded()}
+                    className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors"
+                >
+                    <Eye size={18} className={row.getIsExpanded() ? "text-primary" : ""} />
+                </button>
+            ),
+            size: 50,
+        },
+        {
+            id: "ratings",
+            accessorFn: (row) => row.ratings,
             header: () => <span className="font-bold text-gray-700">Rating</span>,
             cell: ({ row }) => (
-                <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100 w-fit">
-                    <Star size={14} fill="#eab308" className="text-yellow-500" />
-                    <span className="font-bold text-yellow-700">{row.original.rating}.0</span>
+                <div className="flex items-center gap-1.5">
+                    {row.original.ratings?.length > 0 ? (
+                        <div className="flex items-center gap-1 bg-yellow-50 px-2 py-0.5 rounded border border-yellow-100 text-[10px]">
+                            <span className="font-medium text-gray-700">{row.original.ratings[0].title}:</span>
+                            <span className="font-bold text-yellow-700">{row.original.ratings[0].rating}</span>
+                            <Star size={10} fill="#eab308" className="text-yellow-500" />
+                        </div>
+                    ) : (
+                        <span className="text-gray-400 text-xs italic">N/A</span>
+                    )}
+                    {row.original.ratings?.length > 1 && (
+                        <span className="text-[10px] text-gray-400 font-medium">+{row.original.ratings.length - 1} more</span>
+                    )}
                 </div>
             ),
-            size: 100,
+            size: 200,
+            meta: {
+                expandedContent: (data) => (
+                    <div className="p-4 bg-gray-50/50 rounded-lg border border-dashed border-gray-200 m-2">
+                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Full Rating Details</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                            {data.ratings?.map((r) => (
+                                <div key={r._id || r.title} className="flex items-center justify-between bg-white p-2.5 rounded-md border border-gray-100 shadow-sm">
+                                    <span className="text-sm font-medium text-gray-700">{r.title}</span>
+                                    <div className="flex items-center gap-1">
+                                        <span className="font-bold text-primary">{r.rating}</span>
+                                        <Star size={14} fill="currentColor" className="text-yellow-500" />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
         },
         {
             id: "option",
@@ -86,7 +127,7 @@ export default function AllExploreRatings() {
             cell: ({ row }) => (
                 <span className="font-semibold text-gray-900">{row.original.inputId?.name || "N/A"}</span>
             ),
-            size: 200,
+            size: 180,
         },
         {
             id: "country",
@@ -97,7 +138,7 @@ export default function AllExploreRatings() {
                     {row.original.countryId?.name || "N/A"}
                 </span>
             ),
-            size: 180,
+            size: 150,
         },
         {
             id: "category",
@@ -108,27 +149,7 @@ export default function AllExploreRatings() {
                     {row.original.categoryId?.name || "N/A"}
                 </span>
             ),
-            size: 180,
-        },
-        {
-            id: "description",
-            accessorFn: (row) => row.description,
-            header: () => <span className="font-bold text-gray-700">Description</span>,
-            cell: ({ row }) => (
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <p className="text-sm text-gray-500 line-clamp-1 max-w-[250px]">
-                                {row.original.description || "—"}
-                            </p>
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-[300px] break-words">
-                            {row.original.description || "No description provided"}
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-            ),
-            size: 250,
+            size: 150,
         },
         {
             id: "actions",
@@ -138,7 +159,7 @@ export default function AllExploreRatings() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <button 
+                                <button
                                     onClick={() => dispatch(setRatingToEdit(row.original))}
                                     className="p-2 rounded-lg cursor-pointer text-primary hover:bg-primary/10 transition-colors"
                                 >
@@ -151,7 +172,7 @@ export default function AllExploreRatings() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <button 
+                                <button
                                     onClick={() => handleDelete(row.original)}
                                     className="p-2 rounded-lg cursor-pointer text-red-600 hover:bg-red-50 transition-colors"
                                 >
@@ -179,6 +200,8 @@ export default function AllExploreRatings() {
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
+        getExpandedRowModel: getExpandedRowModel(),
+        getRowCanExpand: () => true,
     });
 
     if (loading && ratings.length === 0) return <div className="p-10 text-center text-gray-500">Loading ratings...</div>;
@@ -223,7 +246,7 @@ export default function AllExploreRatings() {
                     </AlertDialogHeader>
                     <AlertDialogFooter className="mt-6 gap-3">
                         <AlertDialogCancel className="bg-gray-100 hover:bg-gray-200 border-none">Cancel</AlertDialogCancel>
-                        <AlertDialogAction 
+                        <AlertDialogAction
                             onClick={confirmDelete}
                             className="bg-red-600 hover:bg-red-700 text-white border-none"
                         >
